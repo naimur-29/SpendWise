@@ -5,7 +5,7 @@ import { query, where, onSnapshot } from "firebase/firestore";
 
 // local variables:
 
-export const DisplayHistory = () => {
+export const GetUser = () => {
   // states:
   const [userData, setUserData] = useState({
     name: "",
@@ -26,7 +26,6 @@ export const DisplayHistory = () => {
             ...snapshot?.docs[0]?.data(),
             id: snapshot?.docs[0]?.id,
           };
-          delete data?.userId;
 
           // set the state:
           console.log(data);
@@ -51,6 +50,7 @@ export const DisplayHistory = () => {
       <div>
         <p>{userData.name}</p>
         <p>{userData.accounts[0].alias}</p>
+        <p>{userData.userId}</p>
       </div>
     </div>
   );

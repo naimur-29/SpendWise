@@ -1,10 +1,13 @@
 // importing libraries:
 import { useState } from "react";
-import { updateDoc, arrayUnion, setDoc } from "firebase/firestore";
-import { getIncomeRef } from "../services/firebaseApi";
+import {
+  getIncomeExpenseHistoriesRef,
+  getAccountsRef,
+} from "../services/firebaseApi";
+import { updateDoc, arrayUnion, setDoc, getDoc } from "firebase/firestore";
 
+// get user info from contextApi's context and extract account id:
 const accountId = "<userId>.<accountAlias>";
-const accountBalance = 1000; // todo: increase account balance "onSubmitIncome"
 
 const getTemplateDoc = (date) => {
   const monthDict = {
@@ -55,17 +58,51 @@ export const IncomePostForm = () => {
   const onSubmitIncome = async () => {
     if (checkData()) {
       setIsLoading(true);
+
       // create history id:
       const historyId = `${accountId}.${incomeData.dateAdded.split("-")[1]}${
         incomeData.dateAdded.split("-")[0]
       }`;
 
       try {
+        // get previous history:
+        const prevDataSnapshot = await getDoc(
+          getIncomeExpenseHistoriesRef(historyId)
+        );
+        const prevData = prevDataSnapshot.data();
+
         // if history with this 'id' exists:
-        // update income history:
-        await updateDoc(getIncomeRef(historyId), {
-          incomes: arrayUnion(incomeData),
-        });
+        if (prevDataSnapshot.exists()) {
+          // update income history:
+          await updateDoc(getIncomeExpenseHistoriesRef(historyId), {
+            incomes: arrayUnion(incomeData),
+            totalIncomeAmount: prevData.totalIncomeAmount + incomeData.amount,
+          });
+
+          // get prev currentBalance:
+          const prevCurrentBalance = (
+            await getDoc(getAccountsRef(accountId))
+          ).data().currentBalance;
+
+          // update account data:
+          await updateDoc(getAccountsRef(accountId), {
+            currentBalance: prevCurrentBalance + incomeData.amount,
+          });
+          // else history with this 'id' doesn't exist:
+        } else {
+          // create history with that 'id':
+          await setDoc(getIncomeExpenseHistoriesRef(historyId), {
+            ...getTemplateDoc(incomeData.dateAdded),
+            incomes: [incomeData],
+            totalIncomeAmount: incomeData.amount,
+          });
+
+          // update account's history data:
+          await updateDoc(getAccountsRef(accountId), {
+            histories: arrayUnion(historyId),
+            currentBalance: incomeData.amount,
+          });
+        }
 
         // clear input fields:
         setIncomeData({
@@ -76,26 +113,8 @@ export const IncomePostForm = () => {
       } catch (error) {
         // set error message:
         console.log(error.message);
-
-        // if history with this 'id' doesn't exist:
-        if (String(error.message).startsWith("No document to update:")) {
-          console.log("create new!");
-
-          // create history with that 'id':
-          await setDoc(getIncomeRef(historyId), {
-            ...getTemplateDoc(incomeData.dateAdded),
-            incomes: [incomeData],
-            totalIncomeAmount: incomeData.amount,
-          });
-
-          // clear input fields:
-          setIncomeData({
-            amount: 0,
-            context: "",
-            dateAdded: "",
-          });
-        }
       }
+
       setIsLoading(false);
     } else {
       console.log("Invalid Data!");

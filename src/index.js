@@ -21,10 +21,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // rendering root:
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AppContextProvider>
-        <App />
-      </AppContextProvider>
-    </BrowserRouter>
+    {/* <BrowserRouter> */}
+    {/* <AppContextProvider> */}
+    <App />
+    {/* </AppContextProvider> */}
+    {/* </BrowserRouter> */}
   </React.StrictMode>
 );
