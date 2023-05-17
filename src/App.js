@@ -1,19 +1,13 @@
-// importing libraries:
-import React from "react";
-
-// importing stylesheets:
 import "./App.css";
+import React, { PureComponent } from "react";
+import SideBar from "./Billal's file/Layout/SideBar/SideBar";
 
-// importing components:
-import { IncomePostForm } from "./components/IncomePostForm";
-import { ExpensePostForm } from "./components/ExpensePostForm";
-
-const App = () => {
+function App() {
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-slate-300 ">
-      <IncomePostForm />
-    </div>
+    <>
+      <SideBar />
+    </>
   );
-};
+}
 
 export default App;
