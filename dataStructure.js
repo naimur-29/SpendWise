@@ -24,6 +24,7 @@ export const accountsData = [
     id: "<userId>.<accountAlias>", // key
     alias: "<accountAlias>",
     currentBalance: 10000,
+    currentTimeFrame: "<month><year>",
     history: [
       "<userId>.<accountAlias>.<month><year>", // key
       "<userId>.<accountAlias>.<month><year>", // key
@@ -42,15 +43,15 @@ export const incomeExpenseHistories = [
     incomes: [
       {
         amount: 100,
-        context: "<comment>",
+        context: "<source>",
         dateAdded: "<day>/<month>/<year>",
       },
     ],
     expenses: [
       {
         amount: 100,
-        context: "<comment>",
-        dateAdded: "<day>/<month>/<year>",
+        context: "<source>",
+        dateAdded: "<month>/<day>/<year>",
       },
     ],
   },

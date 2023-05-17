@@ -1,50 +1,56 @@
 // importing libraries:
 import { useState, useEffect } from "react";
 import { auth, usersCollectionRef } from "../services/firebaseApi";
-import { getDocs } from "firebase/firestore";
+import { query, where, onSnapshot } from "firebase/firestore";
 
 // local variables:
 
 export const DisplayHistory = () => {
   // states:
   const [userData, setUserData] = useState({
-    userId: "",
     name: "",
     accounts: [],
   });
+  //   const [errorMsg, setErrorMsg] = useState("");
 
   // init functions:
   useEffect(() => {
-    const getUserData = async () => {
+    const getUserData = async (uid) => {
       try {
-        // read the data
-        const data = await getDocs(usersCollectionRef);
+        // set up query:
+        const userQuery = query(usersCollectionRef, where("userId", "==", uid));
 
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        console.log(filteredData);
+        // read the data on change to db:
+        onSnapshot(userQuery, (snapshot) => {
+          const data = {
+            ...snapshot?.docs[0]?.data(),
+            id: snapshot?.docs[0]?.id,
+          };
+          delete data?.userId;
 
-        // set the state
-        setUserData(filteredData[0]);
+          // set the state:
+          console.log(data);
+          setUserData(data);
+        });
       } catch (error) {
         console.log(error.message);
       }
     };
 
-    getUserData();
+    setTimeout(() => {
+      getUserData(auth?.currentUser?.uid);
+    }, 1000);
   }, []);
 
-  return !userData.userId ? (
-    <p>Loading...</p>
+  return !userData.name ? (
+    <p>{"Loading..."}</p>
   ) : (
     <div>
       <h2>{auth?.currentUser?.email}</h2>
 
       <div>
         <p>{userData.name}</p>
-        <p>{userData.userId}</p>
+        <p>{userData.accounts[0].alias}</p>
       </div>
     </div>
   );

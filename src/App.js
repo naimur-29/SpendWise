@@ -5,13 +5,13 @@ import React from "react";
 import "./App.css";
 
 // importing components:
-// import { AuthForm } from "./components/AuthForm";
-import { DisplayHistory } from "./components/DisplayHistory";
+import { IncomePostForm } from "./components/IncomePostForm";
+import { ExpensePostForm } from "./components/ExpensePostForm";
 
 const App = () => {
   return (
     <div className="flex items-center justify-center w-full min-h-screen bg-slate-300 ">
-      <DisplayHistory />
+      <IncomePostForm />
     </div>
   );
 };
