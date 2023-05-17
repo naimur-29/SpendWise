@@ -8,6 +8,9 @@ import "./index.css";
 // importing components:
 import App from "./App";
 
+// importing remixicon
+import "remixicon/fonts/remixicon.css";
+
 // creating root:
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
