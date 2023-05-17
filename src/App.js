@@ -1,11 +1,14 @@
-// importing libraries:
-import React from "react";
-
-// importing stylesheets:
 import "./App.css";
+import React, { PureComponent } from "react";
 
-const App = () => {
-  return <div>App</div>;
-};
+import SideBar from "./Components/SideBar/SideBar";
+
+function App() {
+  return (
+    <>
+      <SideBar />
+    </>
+  );
+}
 
 export default App;
