@@ -1,7 +1,7 @@
 export const usersData = [
   {
     userId: "<auth User Id>", // key
-    name: "<name>",
+    username: "<name>",
     accounts: [
       {
         alias: "<accountAlias>",
@@ -25,7 +25,7 @@ export const accountsData = [
     alias: "<accountAlias>",
     currentBalance: 10000,
     currentTimeFrame: "<month><year>",
-    history: [
+    histories: [
       "<userId>.<accountAlias>.<month><year>", // key
       "<userId>.<accountAlias>.<month><year>", // key
       "<userId>.<accountAlias>.<month><year>", // key
