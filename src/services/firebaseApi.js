@@ -14,7 +14,7 @@ export const db = getFirestore(app);
 
 // users:
 export const usersCollectionRef = collection(db, "users");
-export const getUserRef = (uid) => doc(db, "users", uid);
+export const getUsersRef = (uid) => doc(db, "users", uid);
 
 // accounts:
 export const getAccountsRef = (id) => doc(db, "accounts", id);

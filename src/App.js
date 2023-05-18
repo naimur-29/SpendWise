@@ -10,13 +10,16 @@ import LandingPage from "./Billal's file/Pages/LandingPage";
 // }
 
 // temp:
+import { UserContextProvider } from "./contexts/UserContext";
 import { IncomeExpensePostForm } from "./components/IncomeExpensePostForm";
 
 function App() {
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen gap-6 bg-slate-300 ">
-      <IncomeExpensePostForm isIncome />
-      <IncomeExpensePostForm />
+      <UserContextProvider>
+        <IncomeExpensePostForm isIncome />
+        <IncomeExpensePostForm />
+      </UserContextProvider>
     </div>
   );
 }
