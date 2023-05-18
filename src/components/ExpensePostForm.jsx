@@ -1,7 +1,7 @@
 // importing libraries:
 import { useState } from "react";
 import { updateDoc, arrayUnion, setDoc, getDoc } from "firebase/firestore";
-import { getIncomeRef } from "../services/firebaseApi";
+import { getIncomeExpenseHistoriesRef } from "../services/firebaseApi";
 
 const accountId = "<userId>.<accountAlias>";
 const accountBalance = 1000; // todo: decrease account balance "onSubmitIncome"
@@ -69,7 +69,7 @@ export const ExpensePostForm = () => {
       try {
         // if history with this 'id' exists:
         // update income history:
-        await updateDoc(getIncomeRef(historyId), {
+        await updateDoc(getIncomeExpenseHistoriesRef(historyId), {
           // totalExpenseAmount:
           expenses: arrayUnion(expenseData),
         });
@@ -90,12 +90,12 @@ export const ExpensePostForm = () => {
 
           // create history with that 'id':
           await setDoc(
-            getIncomeRef(historyId),
+            getIncomeExpenseHistoriesRef(historyId),
             getTemplateDoc(expenseData.dateAdded)
           );
 
           // update income history:
-          await updateDoc(getIncomeRef(historyId), {
+          await updateDoc(getIncomeExpenseHistoriesRef(historyId), {
             expenses: arrayUnion(expenseData),
           });
 

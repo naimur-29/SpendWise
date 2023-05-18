@@ -1,20 +1,18 @@
 // importing libraries:
 import { useState } from "react";
-import { auth, googleProvider } from "../services/firebaseApi";
+import { auth, googleProvider, getUserRef } from "../services/firebaseApi";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
+import { setDoc } from "firebase/firestore";
 
 export const AuthForm = () => {
-  console.log(auth?.currentUser?.email);
-
   // states:
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
-  const [name, setName] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
 
@@ -29,10 +27,14 @@ export const AuthForm = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      await createNewUserOnSignUp(
+        auth?.currentUser?.uid,
+        auth?.currentUser?.email?.split("@")[0]
+      );
 
       setEmail("");
       setPassword("");
-      setName("");
+      setRePassword("");
       setErrorMsg("");
     } catch (error) {
       setErrorMsg(error.message);
@@ -54,10 +56,14 @@ export const AuthForm = () => {
   const signUpInGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      await createNewUserOnSignUp(
+        auth?.currentUser?.uid,
+        auth?.currentUser?.email?.split("@")[0]
+      );
 
       setEmail("");
       setPassword("");
-      setName("");
+      setRePassword("");
       setErrorMsg("");
     } catch (error) {
       setErrorMsg(error.message);
@@ -65,7 +71,7 @@ export const AuthForm = () => {
   };
 
   const demoLogin = async () => {
-    const demoEmail = "fakecake@gmail.com";
+    const demoEmail = "fakecake420@gmail.com";
     const demoPassword = "fake123";
 
     try {
@@ -79,6 +85,17 @@ export const AuthForm = () => {
     }
   };
 
+  const createNewUserOnSignUp = async (uid, username) => {
+    try {
+      await setDoc(getUserRef(uid), {
+        userId: uid,
+        username: username,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="shadow-lg flex flex-col justify-center gap-2 w-[540px] text-slate-200 bg-blue-400 p-4 rounded-lg">
       {/* heading */}
@@ -89,22 +106,6 @@ export const AuthForm = () => {
       {/* showing error message if any */}
       {errorMsg ? (
         <p className="font-semibold text-red-600 error-msg mb-1">{errorMsg}</p>
-      ) : (
-        <></>
-      )}
-
-      {/* name field */}
-      {!isSignIn ? (
-        <input
-          type="text"
-          placeholder="enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className={
-            "w-full px-4 py-3 focus:placeholder:translate-x-[-100%] focus:bg-blue-950 duration-700" +
-            (name ? " bg-green-950" : "")
-          }
-        />
       ) : (
         <></>
       )}
@@ -136,16 +137,20 @@ export const AuthForm = () => {
       />
 
       {/* re-type password field */}
-      <input
-        type="password"
-        placeholder="re-enter your password"
-        value={rePassword}
-        onChange={(e) => setRePassword(e.target.value)}
-        className={
-          "w-full px-4 py-3 focus:placeholder:translate-x-[-100%] focus:bg-blue-950 duration-700" +
-          (rePassword && password === rePassword ? " bg-green-950" : "")
-        }
-      />
+      {!isSignIn ? (
+        <input
+          type="password"
+          placeholder="re-enter your password"
+          value={rePassword}
+          onChange={(e) => setRePassword(e.target.value)}
+          className={
+            "w-full px-4 py-3 focus:placeholder:translate-x-[-100%] focus:bg-blue-950 duration-700" +
+            (rePassword && password === rePassword ? " bg-green-950" : "")
+          }
+        />
+      ) : (
+        <></>
+      )}
 
       {/* disclaimer/context */}
       <div className="flex justify-between">

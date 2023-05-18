@@ -11,5 +11,14 @@ export const googleProvider = new GoogleAuthProvider();
 
 // db:
 export const db = getFirestore(app);
+
+// users:
 export const usersCollectionRef = collection(db, "users");
-export const getIncomeRef = (id) => doc(db, "incomeExpenseHistories", id);
+export const getUserRef = (uid) => doc(db, "users", uid);
+
+// accounts:
+export const getAccountsRef = (id) => doc(db, "accounts", id);
+
+// histories:
+export const getIncomeExpenseHistoriesRef = (id) =>
+  doc(db, "incomeExpenseHistories", id);
