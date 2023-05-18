@@ -1,13 +1,18 @@
 import React from "react";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlinePlus, AiTwotoneDelete } from "react-icons/ai";
+import { FaBitcoin } from "react-icons/fa";
+import { GoPrimitiveDot } from "react-icons/go";
+import { TbCurrencyTaka, TbMessageCircle2Filled } from "react-icons/tb";
+import { MdDateRange } from "react-icons/md";
+import { FiMessageCircle } from "react-icons/fi";
 
 export default function Income() {
   return (
     <>
-      <div className="incomeContainer h-full bg-green-300">
-        <div className="incomeContainerWrapper p-4 bg-red-400">
+      <div className="incomeContainer h-full bg-gray-300">
+        <div className="incomeContainerWrapper p-3 ">
           {/* top container starts  */}
-          <h1 className="mb-4">Incomes</h1>
+          <h1 className="mb-3 text-2xl font-semibold">Incomes</h1>
           <div className="topContainerCard mb-4">
             <a
               href="#"
@@ -25,8 +30,8 @@ export default function Income() {
           {/* body container starts */}
           <div className="bodyContainer grid grid-cols-12">
             {/* body left container starts  */}
-            <div className="bodyContainerLeft col-span-4 p-2 bg-pink-400 ">
-              <h1 className="mb-3">All fields are required</h1>
+            <div className="bodyContainerLeft col-span-4 p-2  ">
+              <h1 className="mb-2">All fields are required</h1>
               <div className="inputContainer">
                 {/* salary title input field */}
                 <div className="mb-3 p-2 border-2 border-gray-50 rounded-sm w-full bg-gray-200 shadow-md">
@@ -44,13 +49,13 @@ export default function Income() {
                     type="number"
                     id="base-input"
                     className="bg-gray-200  text-gray-900 text-sm border-none outline-none block w-full  "
-                    placeholder="Salary title"
+                    placeholder="Salary Amount"
                     onWheel={(e) => e.target.blur()}
                   />
                 </div>
 
                 {/* salary Date input field */}
-                <div className="mb-3 p-2 border-2 border-gray-50 rounded-sm w-full bg-gray-200 shadow-md">
+                <div className="mb-2 p-2 border-2 border-gray-50 rounded-sm w-full bg-gray-200 shadow-md">
                   <input
                     type="date"
                     id="base-input"
@@ -59,8 +64,8 @@ export default function Income() {
                   />
                 </div>
 
-                {/* salary Type input field */}
-                <div className="mb-3 p-2 w-full flex justify-end">
+                {/* salary option input field */}
+                <div className="mb-2 p-2 w-full flex justify-end">
                   <select
                     id="countries"
                     className="bg-gray-200 border-2 border-gray-50 text-gray-900 text-sm rounded-md block w-1/2 p-2.5 outline-none "
@@ -74,10 +79,8 @@ export default function Income() {
                 </div>
 
                 {/* salary reference input field */}
-                <div className="mb-3 p-1 border-2 border-gray-50 rounded-sm w-full bg-gray-200 shadow-md">
+                <div className="mb-2 p-1 border-2 border-gray-50 rounded-sm w-full bg-gray-200 shadow-md">
                   <textarea
-                    name=""
-                    id=""
                     rows="4"
                     className="border-none outline-none w-full p-1"
                     placeholder="Enter Reference"
@@ -99,28 +102,515 @@ export default function Income() {
             {/* body left container ends  */}
 
             {/* body Right container starts  */}
-            <div className="bodyContainerRight  col-span-8 p-2 bg-fuchsia-300">
-              <div className="rightCardSection  h-[70vh] overflow-auto ">
+            <div className="bodyContainerRight col-span-8 p-2 ">
+              <div className="rightCardSection h-[68vh] overflow-auto ">
                 <a
                   href="#"
-                  className="block mb-3 w-full p-1 bg-gray-50  rounded-md shadow-md "
+                  className="block mb-2 w-full p-2 bg-gray-50  rounded-md shadow-md "
                 >
                   <div className="cardContainer grid grid-cols-12">
                     {/* left side of card starts  */}
-                    <div className="cardLeft col-span-2 bg-cyan-300">left</div>
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
                     {/* left side of card ends  */}
 
                     {/* mid side of card starts  */}
-                    <div className="cardMid col-span-8 bg-orange-400">Mid</div>
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
                     {/* mid side of card ends  */}
 
                     {/* right side of card starts  */}
-                    <div className="cardRight col-span-2 bg-teal-500">
-                      Right
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
                     </div>
                     {/* right side of card ends  */}
                   </div>
                 </a>
+
+                {/* test file  */}
+
+                <a
+                  href="#"
+                  className="block mb-3 w-full p-2 bg-gray-50  rounded-md shadow-md "
+                >
+                  <div className="cardContainer grid grid-cols-12">
+                    {/* left side of card starts  */}
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* left side of card ends  */}
+
+                    {/* mid side of card starts  */}
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
+                    {/* mid side of card ends  */}
+
+                    {/* right side of card starts  */}
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* right side of card ends  */}
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  className="block mb-3 w-full p-2 bg-gray-50  rounded-md shadow-md "
+                >
+                  <div className="cardContainer grid grid-cols-12">
+                    {/* left side of card starts  */}
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* left side of card ends  */}
+
+                    {/* mid side of card starts  */}
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
+                    {/* mid side of card ends  */}
+
+                    {/* right side of card starts  */}
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* right side of card ends  */}
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  className="block mb-3 w-full p-2 bg-gray-50  rounded-md shadow-md "
+                >
+                  <div className="cardContainer grid grid-cols-12">
+                    {/* left side of card starts  */}
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* left side of card ends  */}
+
+                    {/* mid side of card starts  */}
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
+                    {/* mid side of card ends  */}
+
+                    {/* right side of card starts  */}
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* right side of card ends  */}
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  className="block mb-3 w-full p-2 bg-gray-50  rounded-md shadow-md "
+                >
+                  <div className="cardContainer grid grid-cols-12">
+                    {/* left side of card starts  */}
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* left side of card ends  */}
+
+                    {/* mid side of card starts  */}
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
+                    {/* mid side of card ends  */}
+
+                    {/* right side of card starts  */}
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* right side of card ends  */}
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  className="block mb-3 w-full p-2 bg-gray-50  rounded-md shadow-md "
+                >
+                  <div className="cardContainer grid grid-cols-12">
+                    {/* left side of card starts  */}
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* left side of card ends  */}
+
+                    {/* mid side of card starts  */}
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
+                    {/* mid side of card ends  */}
+
+                    {/* right side of card starts  */}
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* right side of card ends  */}
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  className="block mb-3 w-full p-2 bg-gray-50  rounded-md shadow-md "
+                >
+                  <div className="cardContainer grid grid-cols-12">
+                    {/* left side of card starts  */}
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* left side of card ends  */}
+
+                    {/* mid side of card starts  */}
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
+                    {/* mid side of card ends  */}
+
+                    {/* right side of card starts  */}
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* right side of card ends  */}
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  className="block mb-3 w-full p-2 bg-gray-50  rounded-md shadow-md "
+                >
+                  <div className="cardContainer grid grid-cols-12">
+                    {/* left side of card starts  */}
+                    <div className="cardLeft col-span-2 flex justify-center ">
+                      <div className="bodyIcon  ">
+                        <FaBitcoin className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* left side of card ends  */}
+
+                    {/* mid side of card starts  */}
+                    <div className="cardMid col-span-8 ">
+                      <div className="midContainer ">
+                        {/* midTop starts */}
+                        <div className="midTop flex mb-1">
+                          <div className="iconContainer self-center">
+                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                          </div>
+                          <h1 className="text-lg ml-3">Bitcoin</h1>
+                        </div>
+                        {/* midTop ends */}
+
+                        {/* midBottom starts  */}
+                        <div className="midBottom flex justify-between w-[80%] ">
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbCurrencyTaka />
+                            </div>
+                            <h1>2500 taka</h1>
+                          </div>
+
+                          <div className="midBottomMid flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <MdDateRange />
+                            </div>
+                            <h1>06/02/2023</h1>
+                          </div>
+
+                          <div className="midBottomLeft flex">
+                            <div className="iconContainer  self-center mr-1">
+                              <TbMessageCircle2Filled />
+                            </div>
+                            <h1>Bitcoin money</h1>
+                          </div>
+                        </div>
+                        {/* midBottom ends  */}
+                      </div>
+                    </div>
+                    {/* mid side of card ends  */}
+
+                    {/* right side of card starts  */}
+                    <div className="cardRight col-span-2 m-auto">
+                      <div className="iconContainer  ">
+                        <AiTwotoneDelete className="text-3xl" />
+                      </div>
+                    </div>
+                    {/* right side of card ends  */}
+                  </div>
+                </a>
+
+                {/* test file ends  */}
               </div>
             </div>
             {/* body Right container ends  */}

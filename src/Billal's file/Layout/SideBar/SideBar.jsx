@@ -55,7 +55,8 @@ export default function SideBar() {
       {/* sidebar container ends  */}
 
       {/* sidebar child components starts */}
-      <div className="ml-64 duration-300 h-screen p-5">
+      {/* <div className="ml-64 duration-300 h-screen p-5"> */}
+      <div className="ml-64 duration-300 h-100% p-5">
         {/* <HomePage /> */}
         <Income />
       </div>
