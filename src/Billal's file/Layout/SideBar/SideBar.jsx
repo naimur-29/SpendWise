@@ -1,5 +1,6 @@
 import React from "react";
 import HomePage from "../../Pages/HomePage";
+import Income from "../../Components/Income/Income";
 
 export default function SideBar() {
   return (
@@ -55,7 +56,8 @@ export default function SideBar() {
 
       {/* sidebar child components starts */}
       <div className="ml-64 duration-300 h-screen p-5">
-        <HomePage />
+        {/* <HomePage /> */}
+        <Income />
       </div>
       {/* sidebar child components ends */}
     </>
