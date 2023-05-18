@@ -3,12 +3,6 @@ import React, { PureComponent } from "react";
 import SideBar from "./Billal's file/Layout/SideBar/SideBar";
 import LandingPage from "./Billal's file/Pages/LandingPage";
 
-// function App() {
-//   return <>
-//     <SideBar />
-//   </>
-// }
-
 // temp:
 import { UserContextProvider } from "./contexts/UserContext";
 import { IncomeExpensePostForm } from "./components/IncomeExpensePostForm";

@@ -23,8 +23,7 @@ export default function LandingPage() {
           {/* top left logo ends  */}
 
           {/* login page starts  */}
-
-          <div className="loginPage text-center mt-36">
+          <div className="loginPage text-center m-32">
             <div className="loginPageWrapper w-11/12 m-auto ">
               <h1 className="text-5xl font-semibold py-2 mb-3">
                 login into your account
@@ -35,7 +34,7 @@ export default function LandingPage() {
                 <h1 className="text-2xl mb-3">login using social media</h1>
                 {/* social media icons  */}
                 <div className="socialIcons w-1/6 justify-evenly flex m-auto py-1 ">
-                  <BsFacebook className="m-auto h-9 w-9 cursor-pointer text-blue-900" />
+                  <BsFacebook className="m-auto h-8 w-8 cursor-pointer text-blue-900" />
                   <AiFillGooglePlusCircle className="m-auto h-9 w-9 cursor-pointer text-red-800" />
                   <AiFillLinkedin className="m-auto h-9 w-9 cursor-pointer text-blue-900" />
                 </div>

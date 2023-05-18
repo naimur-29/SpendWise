@@ -31,28 +31,6 @@ export default function Card() {
         </a>
         {/* card1 ends */}
         {/* card 2 */}
-        {/* <a
-          href="#"
-          className="block max-w-xs p-4 bg-white border border-gray-200 rounded-md shadow hover:bg-gray-100 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 ">
-              Revenue
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold"> $245</div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-600">Compared to last month</p>
-          </div>
-        </a> */}
         <a
           href="#"
           className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
@@ -79,28 +57,6 @@ export default function Card() {
         </a>
         {/* card 2 ends */}
         {/* card 3 */}
-        {/* <a
-          href="#"
-          className="block max-w-xs p-4 bg-white border border-gray-200 rounded-md shadow hover:bg-gray-100 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 ">
-              Revenue
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold"> $245</div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-600">Compared to last month</p>
-          </div>
-        </a> */}
         <a
           href="#"
           className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
@@ -127,28 +83,6 @@ export default function Card() {
         </a>
         {/* card 3 ends */}
         {/* card 4 */}
-        {/* <a
-          href="#"
-          className="block max-w-sm p-4 bg-white border border-gray-200 rounded-md shadow hover:bg-gray-100 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 ">
-              Revenue
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold"> $245</div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-600">Compared to last month</p>
-          </div>
-        </a> */}
         <a
           href="#"
           className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
@@ -175,28 +109,6 @@ export default function Card() {
         </a>
         {/* card 4 ends */}
         {/* card 5 */}
-        {/* <a
-          href="#"
-          className="block max-w-xs p-4 bg-white border border-gray-200 rounded-md shadow hover:bg-gray-100 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 ">
-              Revenue
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold"> $245</div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-600">Compared to last month</p>
-          </div>
-        </a> */}{" "}
         <a
           href="#"
           className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
@@ -249,54 +161,10 @@ export default function Card() {
             </div>
           </div>
         </a>
-        {/* <a
-          href="#"
-          className="block row-span-2 max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
-            </h1>
-          </div>
 
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a> */}
         {/* card 6 ends */}
         {/* card 7 */}
-        {/* <a
-          href="#"
-          className="block max-w-sm p-4 bg-white border border-gray-200 rounded-md shadow hover:bg-gray-100 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 ">
-              Revenue
-            </h1>
-          </div>
 
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold"> $245</div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-600">Compared to last month</p>
-          </div>
-        </a> */}
         <a
           href="#"
           className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
@@ -323,28 +191,7 @@ export default function Card() {
         </a>
         {/* card 7 ends */}
         {/* card 8 */}
-        {/* <a
-          href="#"
-          className="block max-w-xs p-4 bg-white border border-gray-200 rounded-md shadow hover:bg-gray-100 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 ">
-              Revenue
-            </h1>
-          </div>
 
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold"> $245</div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-600">Compared to last month</p>
-          </div>
-        </a> */}{" "}
         <a
           href="#"
           className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
