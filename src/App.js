@@ -6,8 +6,8 @@ import LandingPage from "./Billal's file/Pages/LandingPage";
 function App() {
   return (
     <>
-      <SideBar />
-      {/* <LandingPage /> */}
+      {/* <SideBar /> */}
+      <LandingPage />
     </>
   );
 }
