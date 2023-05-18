@@ -10,12 +10,13 @@ import LandingPage from "./Billal's file/Pages/LandingPage";
 // }
 
 // temp:
-import { AuthForm } from "./components/AuthForm";
+import { IncomeExpensePostForm } from "./components/IncomeExpensePostForm";
 
 function App() {
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-slate-300 ">
-      <AuthForm />
+    <div className="flex flex-col items-center justify-center w-full min-h-screen gap-6 bg-slate-300 ">
+      <IncomeExpensePostForm isIncome />
+      <IncomeExpensePostForm />
     </div>
   );
 }
