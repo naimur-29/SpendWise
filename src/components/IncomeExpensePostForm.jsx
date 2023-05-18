@@ -1,174 +1,52 @@
 // importing libraries:
-import { useState } from "react";
-import {
-  getIncomeExpenseHistoriesRef,
-  getAccountsRef,
-} from "../services/firebaseApi";
-import { updateDoc, arrayUnion, setDoc, getDoc } from "firebase/firestore";
+import { useState, useContext, useEffect } from "react";
 
-// get user info from contextApi's context and extract account id:
-const accountId = "<userId>.<accountAlias>";
+// importing custom hooks:
+import usePostIncomeExpense from "../hooks/usePostIncomeExpense";
 
-const getTemplateDoc = (date) => {
-  const monthDict = {
-    "01": "Jan",
-    "02": "Feb",
-    "03": "Mar",
-    "04": "Apr",
-    "05": "May",
-    "06": "Jun",
-    "07": "Jul",
-    "08": "Aug",
-    "09": "Sep",
-    10: "Oct",
-    11: "Nov",
-    12: "Dec",
-  };
+// import contexts:
+import { userContext } from "../contexts/UserContext";
 
-  const tF = `${monthDict[date.split("-")[1]]}, ${date.split("-")[0]}`;
-
-  return {
-    timeFrame: tF,
-    totalIncomeAmount: 0,
-    totalExpenseAmount: 0,
-    budgetTarget: 0,
-    incomes: [],
-    expenses: [],
-  };
+// functions:
+const filterAmount = (num) => {
+  return isNaN(num) || Number(num) < 0 ? 0 : Number(num);
 };
 
 export const IncomeExpensePostForm = ({ isIncome }) => {
+  // get userData from userContext:
+  const { userData, activeAccountIndex } = useContext(userContext);
+
   // states:
   const [incomeExpenseData, setIncomeExpenseData] = useState({
     amount: 0,
     context: "",
     dateAdded: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
 
-  // functions:
-  const filterAmount = (num) => {
-    return isNaN(num) || Number(num) < 0 ? 0 : Number(num);
-  };
+  // using custom hooks:
+  const { isLoading, post, responseMessage, errorMessage } =
+    usePostIncomeExpense(incomeExpenseData, isIncome);
 
-  const checkData = () => {
-    return incomeExpenseData.amount > 0 && incomeExpenseData.dateAdded;
-  };
+  const onSubmitIncome = () => {
+    const accountId = userData.accounts[activeAccountIndex].id;
 
-  const onSubmitIncome = async () => {
-    if (checkData()) {
-      setIsLoading(true);
+    post(accountId);
 
-      // create history id:
-      const historyId = `${accountId}.${
-        incomeExpenseData.dateAdded.split("-")[1]
-      }${incomeExpenseData.dateAdded.split("-")[0]}`;
-
-      try {
-        // get prev currentBalance:
-        const thisAccountData = (
-          await getDoc(getAccountsRef(accountId))
-        ).data();
-        const prevCurrentBalance = thisAccountData.currentBalance;
-
-        // if expense is greater than income:
-        if (!isIncome && incomeExpenseData.amount > prevCurrentBalance) {
-          console.log("Expense can't exceed the Total account balance!!");
-          setIsLoading(false);
-          return;
-        }
-
-        // get previous history:
-        const prevDataSnapshot = await getDoc(
-          getIncomeExpenseHistoriesRef(historyId)
-        );
-        const prevData = prevDataSnapshot.data();
-
-        // functions:
-        const getNewIncomeExpenseData = (prev, historyIdExists) =>
-          isIncome
-            ? {
-                incomes: historyIdExists
-                  ? arrayUnion(incomeExpenseData)
-                  : [incomeExpenseData],
-                totalIncomeAmount: historyIdExists
-                  ? prev.totalIncomeAmount + incomeExpenseData.amount
-                  : incomeExpenseData.amount,
-              }
-            : {
-                expenses: historyIdExists
-                  ? arrayUnion(incomeExpenseData)
-                  : [incomeExpenseData],
-                totalExpenseAmount: historyIdExists
-                  ? prev.totalExpenseAmount + incomeExpenseData.amount
-                  : incomeExpenseData.amount,
-              };
-
-        const getNewCurrentBalance = (prev) =>
-          isIncome
-            ? {
-                currentBalance: prev + incomeExpenseData.amount,
-              }
-            : {
-                currentBalance: prev - incomeExpenseData.amount,
-              };
-
-        // if history with this 'id' exists:
-        if (prevDataSnapshot.exists()) {
-          // update income history:
-          await updateDoc(
-            getIncomeExpenseHistoriesRef(historyId),
-            getNewIncomeExpenseData(prevData, true)
-          );
-
-          // update account data:
-          await updateDoc(
-            getAccountsRef(accountId),
-            getNewCurrentBalance(prevCurrentBalance)
-          );
-
-          // else history with this 'id' doesn't exist:
-        } else {
-          // create history with that 'id':
-          await setDoc(getIncomeExpenseHistoriesRef(historyId), {
-            ...getTemplateDoc(incomeExpenseData.dateAdded),
-            ...getNewIncomeExpenseData({}, false),
-          });
-
-          // update account's history data:
-          await updateDoc(getAccountsRef(accountId), {
-            histories: arrayUnion(historyId),
-            ...getNewCurrentBalance(prevCurrentBalance),
-          });
-        }
-
-        // clear input fields:
-        setIncomeExpenseData({
-          amount: 0,
-          context: "",
-          dateAdded: "",
-        });
-
-        // log response:
-        console.log(
-          `$${incomeExpenseData.amount} has been ${
-            isIncome ? "added to" : "deducted from"
-          } the ${thisAccountData.alias} account!`
-        );
-      } catch (error) {
-        // set error message:
-        console.log(error.message);
-      }
-
-      setIsLoading(false);
-    } else {
-      console.log("Invalid Data!");
-    }
+    // clear input fields:
+    setIncomeExpenseData({
+      amount: 0,
+      context: "",
+      dateAdded: "",
+    });
   };
 
   return (
     <div className="flex justify-center w-full">
       <div className="flex flex-col gap-2 w-[400px] items-center">
+        {responseMessage ? <p>Response: {responseMessage}</p> : <></>}
+
+        {errorMessage ? <p>Error: {errorMessage}</p> : <></>}
+
         <div className="flex justify-between w-full gap-3">
           <label htmlFor="amount">Amount: </label>
           <input
