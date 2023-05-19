@@ -11,12 +11,18 @@ import { setDoc } from "firebase/firestore";
 // importing icons:
 import { FcGoogle } from "react-icons/fc";
 
+// importing custom hooks:
+import useFocusNext from "../hooks/useFocusNext";
+
 export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
   // states:
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+
+  // using custom hooks:
+  const focusNext = useFocusNext();
 
   // auth functions:
   const signUpEmailPassword = async () => {
@@ -142,48 +148,55 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
 
       {/* email field */}
       <input
+        ref={focusNext}
         type="email"
         placeholder="enter your email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className={
           isSignIn
-            ? "w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]" +
-              (email && email.includes("@") && email.includes(".")
-                ? " bg-[#0f76]"
-                : "")
-            : "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-200 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 bg-[#fff3]" +
-              (email && email.includes("@") && email.includes(".")
-                ? " bg-[#0f73]"
-                : "")
+            ? `w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 ${
+                email && email.includes("@") && email.includes(".")
+                  ? "bg-[#0f76]"
+                  : "bg-[#39aca433]"
+              }`
+            : `w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-100 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 ${
+                email && email.includes("@") && email.includes(".")
+                  ? "bg-[#0f73]"
+                  : "bg-[#fff3]"
+              }`
         }
       />
 
       {/* password field */}
       <input
+        ref={focusNext}
         type="password"
         placeholder="enter your password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className={
           isSignIn
-            ? "w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]" +
-              (password.length > 5 ? " bg-[#0f76]" : "")
-            : "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-200 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 bg-[#fff3]" +
-              (password.length > 5 ? " bg-[#0f73]" : "")
+            ? "w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 " +
+              (password.length > 5 ? "bg-[#0f76]" : "bg-[#39aca433]")
+            : "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-100 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 " +
+              (password.length > 5 ? "bg-[#0f73]" : "bg-[#fff3]")
         }
       />
 
       {/* re-type password field */}
       {!isSignIn ? (
         <input
+          ref={focusNext}
           type="password"
           placeholder="re-enter your password"
           value={rePassword}
           onChange={(e) => setRePassword(e.target.value)}
           className={
-            "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-200 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 bg-[#fff3]" +
-            (rePassword && password === rePassword ? " bg-[#0f73]" : "")
+            "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-100 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 " +
+            (rePassword && password === rePassword
+              ? "bg-[#0f73]"
+              : "bg-[#fff3]")
           }
         />
       ) : (
@@ -218,7 +231,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       </div>
 
       {/* sign in/up buttons */}
-      <div className="btn-container flex flex-col items-center w-full gap-2">
+      <div className="flex flex-col items-center w-full gap-2 btn-container">
         <div
           className={
             isSignIn
@@ -231,7 +244,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
             onClick={isSignIn ? signInEmailPassword : signUpEmailPassword}
             className={
               isSignIn
-                ? "w-full p-2 font-semibold uppercase bg-[#39aca4] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#2f8e88]"
+                ? "w-full p-2 font-semibold uppercase bg-[#3dc0b7] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#39aca4]"
                 : "w-full p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg text-center shadow-md active:scale-[97%] hover:shadow-xl"
             }
           >
@@ -244,7 +257,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
               onClick={demoLogin}
               className={
                 isSignIn
-                  ? "w-full p-2 font-semibold uppercase bg-[#39aca4] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#2f8e88]"
+                  ? "w-full p-2 font-semibold uppercase bg-[#3dc0b7] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#39aca4]"
                   : "w-full p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg text-center shadow-md active:scale-[97%] hover:shadow-xl"
               }
             >
@@ -260,7 +273,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           onClick={signUpInGoogle}
           className={
             isSignIn
-              ? "w-[95%] lg:w-[90%] flex items-center gap-1 justify-center p-2 font-semibold uppercase bg-[#39aca4] text-slate-100 rounded-full shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#2f8e88]"
+              ? "w-[95%] lg:w-[90%] flex items-center gap-1 justify-center p-2 font-semibold uppercase bg-[#3dc0b7] text-slate-100 rounded-full shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#39aca4]"
               : "w-full flex items-center gap-1 justify-center p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg shadow-md active:scale-[97%] hover:shadow-xl"
           }
         >

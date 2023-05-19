@@ -8,28 +8,26 @@ import { RxCross2 } from "react-icons/rx";
 import SignUpModal from "../components/SignUpModal";
 import { AuthForm } from "../components/AuthForm";
 
+// importing local assets:
+import Logo from "../assets/spend-wise-logo.webp";
+
 export default function LandingPage() {
   const [isSignUpModalActive, setIsSignUpModalActive] = useState(true);
 
   return (
-    <section className="overflow-hidden bg-white w-full max-w-[1920px] h-screen flex">
+    <section className="flex w-full h-screen overflow-hidden bg-white">
       {/* left side */}
       <div
-        className={
-          "left w-[100%] h-full md:w-[60%] p-3 duration-300" +
-          (isSignUpModalActive ? "" : " md:w-[100%]")
-        }
+        className={`left w-[100%] h-full ${
+          isSignUpModalActive ? "md:w-[60%] " : "md:w-[100%] "
+        }p-3 duration-300`}
       >
-        <div className="logo flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8 mr-2 cursor-pointer"
-            alt="Flowbite Logo"
-          />
-          <span className="font-semibold text-2xl">SpendWise</span>
+        <div className="flex items-center logo">
+          <img src={Logo} className="h-8 mr-2 cursor-pointer" alt="Logo" />
+          <span className="text-2xl font-semibold">SpendWise</span>
         </div>
 
-        <div className="login-container h-full flex flex-col items-center justify-center gap-6 rounded-md p-2">
+        <div className="flex flex-col items-center justify-center h-full gap-6 p-2 rounded-md login-container">
           <AuthForm isSignIn setIsSignUpModalActive={setIsSignUpModalActive} />
         </div>
       </div>

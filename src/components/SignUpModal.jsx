@@ -4,24 +4,36 @@ import { useState } from "react";
 // importing local components:
 import { AuthForm } from "../components/AuthForm";
 
+// importing local assets:
+import Logo from "../assets/spend-wise-logo.webp";
+import BGImage from "../assets/landing-page-bg.webp";
+
 const SignUpModal = ({ isSignUpModalActive, setIsSignUpModalActive }) => {
   const [isSignUpFormActive, setIsSignUpFormActive] = useState(false);
 
   return (
     <div
+      style={{
+        backgroundImage: `url("${BGImage}")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       className={
-        "right flex flex-col p-3 bg-[#39aca4] w-[100%] h-full md:w-[40%] duration-300 absolute top-0 right-0" +
+        "right flex flex-col p-3 w-[100%] h-full md:w-[40%] duration-300 absolute top-0 right-0" +
         (isSignUpModalActive ? "" : " top-[-100%]")
       }
     >
-      <div className="close-modal flex justify-between md:justify-end">
-        <div className="logo flex items-center md:hidden">
+      {/* image overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[#39aca4] opacity-[0.8]"></div>
+
+      <div className="z-10 flex justify-between close-modal md:justify-end">
+        <div className="flex items-center logo md:hidden">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8 mr-2 cursor-pointer bg-white p-1 rounded-full min-w-[33px]"
-            alt="Flowbite Logo"
+            src={Logo}
+            className="h-8 mr-2 cursor-pointer bg-white rounded-full p-[2px] min-w-[33px] object-cover object-center"
+            alt="Logo"
           />
-          <span className="font-semibold text-2xl text-white">SpendWise</span>
+          <span className="text-2xl font-semibold text-white">SpendWise</span>
         </div>
 
         <div
@@ -47,8 +59,8 @@ export default SignUpModal;
 // Sign Up Prompt:
 const SignUpPrompt = ({ setIsSignUpFormActive }) => {
   return (
-    <div className="signup-modal-container bg-[#fff3] h-full flex flex-col items-center justify-center gap-6 rounded-md shadow p-2">
-      <h3 className="text-white text-5xl font-bold">New Here?</h3>
+    <div className="z-10 signup-modal-container bg-[#fff3] h-full flex flex-col items-center justify-center gap-6 rounded-md shadow p-2">
+      <h3 className="text-5xl font-bold text-white">New Here?</h3>
       <p className="text-slate-100 text-center text-[1.2rem] max-w-[400px]">
         Sign up and discover a great way to spend you money wisely!
       </p>
@@ -65,7 +77,7 @@ const SignUpPrompt = ({ setIsSignUpFormActive }) => {
 // sign up form:
 const SignUpForm = ({ setIsSignUpModalActive }) => {
   return (
-    <div className="signup-modal-container bg-[#fff3] h-full flex flex-col items-center justify-center gap-6 rounded-md shadow p-2">
+    <div className="z-10 signup-modal-container bg-[#fff3] h-full flex flex-col items-center justify-center gap-6 rounded-md shadow p-2">
       <AuthForm setIsSignUpModalActive={setIsSignUpModalActive} />
     </div>
   );
