@@ -4,15 +4,14 @@ import { FaBitcoin } from "react-icons/fa";
 import { GoPrimitiveDot } from "react-icons/go";
 import { TbCurrencyTaka, TbMessageCircle2Filled } from "react-icons/tb";
 import { MdDateRange } from "react-icons/md";
-import { FiMessageCircle } from "react-icons/fi";
 
-export default function Income() {
+export default function Expense() {
   return (
     <>
       <div className="incomeContainer h-full bg-gray-300">
         <div className="incomeContainerWrapper p-3 ">
           {/* top container starts  */}
-          <h1 className="mb-3 text-2xl font-semibold">Incomes</h1>
+          <h1 className="mb-3 text-2xl font-semibold">Expenses</h1>
           <div className="topContainerCard mb-4">
             <a
               href="#"
@@ -20,7 +19,7 @@ export default function Income() {
             >
               <div className="cardTop ">
                 <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 flex justify-center items-center">
-                  Total income :
+                  Total expenses :
                   <span>
                     <TbCurrencyTaka />
                   </span>
@@ -43,7 +42,7 @@ export default function Income() {
                     type="text"
                     id="base-input"
                     className="bg-gray-200  text-gray-900 text-sm border-none outline-none block w-full  "
-                    placeholder="Salary title"
+                    placeholder="Expense title"
                   />
                 </div>
 
@@ -53,7 +52,7 @@ export default function Income() {
                     type="number"
                     id="base-input"
                     className="bg-gray-200  text-gray-900 text-sm border-none outline-none block w-full  "
-                    placeholder="Salary Amount"
+                    placeholder="Expense Amount"
                     onWheel={(e) => e.target.blur()}
                   />
                 </div>
@@ -68,7 +67,7 @@ export default function Income() {
                   />
                 </div>
 
-                {/* salary option input field */}
+                {/* Expense option input field */}
                 <div className="mb-2 p-2 w-full flex justify-end">
                   <select
                     id="countries"
@@ -95,10 +94,10 @@ export default function Income() {
                 <div className="  ">
                   <button
                     type="button"
-                    className="py-2 px-2.5 w-[40%] font-medium text-gray-50  bg-green-600 rounded-2xl border border-gray-200 hover:bg-green-700 text-base self-center flex justify-center"
+                    className="py-2 px-2.5 w-[45%] font-medium text-gray-50  bg-red-600 rounded-2xl border border-gray-200 hover:bg-red-700 text-base self-center flex justify-center"
                   >
                     <AiOutlinePlus className="self-center mr-1" />
-                    Add income
+                    Add expense
                   </button>
                 </div>
               </div>
@@ -127,7 +126,7 @@ export default function Income() {
                         {/* midTop starts */}
                         <div className="midTop flex mb-1">
                           <div className="iconContainer self-center">
-                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                            <GoPrimitiveDot className="text-red-700 text-xl" />
                           </div>
                           <h1 className="text-lg ml-3">Bitcoin</h1>
                         </div>

@@ -12,11 +12,11 @@ export default function SearchBar() {
         <div className="rightContainer  flex justify-around w-1/12 ">
           {/* right side , search button  */}
           <div className="rightLeft self-center">
-            <i class="ri-search-line cursor-pointer text-white"></i>
+            <i className="ri-search-line cursor-pointer text-white"></i>
           </div>
           {/* right side , plus button  */}
           <div className="rightRight px-3 py-2 bg-green-400 rounded-lg">
-            <i class="ri-add-line cursor-pointer text-white text-xl"></i>
+            <i className="ri-add-line cursor-pointer text-white text-xl"></i>
           </div>
         </div>
       </div>

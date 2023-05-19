@@ -21,7 +21,7 @@ export default function Card() {
             </div>
             <div className="cardMidRight flex gap-x-2 self-center">
               <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
             </div>
           </div>
 
@@ -47,7 +47,7 @@ export default function Card() {
             </div>
             <div className="cardMidRight flex gap-x-2 self-center">
               <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
             </div>
           </div>
 
@@ -73,7 +73,7 @@ export default function Card() {
             </div>
             <div className="cardMidRight flex gap-x-2 self-center">
               <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export default function Card() {
             </div>
             <div className="cardMidRight flex gap-x-2 self-center">
               <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
             </div>
           </div>
 
@@ -125,7 +125,7 @@ export default function Card() {
             </div>
             <div className="cardMidRight flex gap-x-2 self-center">
               <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export default function Card() {
               </div>
               <div className="cardMidRight flex gap-x-2 self-center">
                 <h1 className="self-center text-gray-50">-11.5</h1>
-                <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+                <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
               </div>
             </div>
 
@@ -181,7 +181,7 @@ export default function Card() {
             </div>
             <div className="cardMidRight flex gap-x-2 self-center">
               <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
             </div>
           </div>
 
@@ -208,7 +208,7 @@ export default function Card() {
             </div>
             <div className="cardMidRight flex gap-x-2 self-center">
               <h1 className="self-center text-gray-100">-11.5</h1>
-              <i class="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
             </div>
           </div>
 
