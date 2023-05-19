@@ -14,14 +14,32 @@ export default function SideBar() {
       <div className="SideBarContainer fixed z-20 top-0 left-0 ">
         <div className="flex">
           <div className="mainContainer w-64  bg-gray-700 h-screen p-5 pt-5 relative duration-300">
+            {/* top account container starts */}
+            <div className="topContainer AccountContainer ">
+              <div className="flex items-center space-x-4 ">
+                <img
+                  className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 cursor-pointer"
+                  src="https://static.theprint.in/wp-content/uploads/2021/06/Elon-Musk.jpg?compress=true&quality=80&w=376&dpr=2.6"
+                  alt="Bordered avatar"
+                />
+
+                <div className="font-medium dark:text-white">
+                  <div>Jese Leos</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                    Your Money
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* top account container ends */}
             {/* top list items starts  */}
-            <ul className="pt-5 topList ">
+            <ul className="pt-4 topList ">
               <li
                 className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 
               `}
               >
                 <div className="icon text-lg">
-                  <i class="ri-line-chart-fill"></i>
+                  <i className="ri-line-chart-fill"></i>
                 </div>
                 <span className={` origin-left duration-200`}>Dashboard</span>
               </li>
@@ -30,7 +48,7 @@ export default function SideBar() {
               `}
               >
                 <div className="icon text-lg">
-                  <i class="ri-inbox-line"></i>
+                  <i className="ri-inbox-line"></i>
                 </div>
                 <span className={` origin-left duration-200`}>
                   View transactions
@@ -41,7 +59,7 @@ export default function SideBar() {
               `}
               >
                 <div className="icon text-lg">
-                  <i class="ri-money-dollar-box-line"></i>
+                  <i className="ri-money-dollar-box-line"></i>
                 </div>
                 <span className={` origin-left duration-200`}>Incomes</span>
               </li>
@@ -50,7 +68,7 @@ export default function SideBar() {
               `}
               >
                 <div className="icon text-lg">
-                  <i class="ri-wallet-2-line"></i>
+                  <i className="ri-wallet-2-line"></i>
                 </div>
                 <span className={` origin-left duration-200`}>Expense</span>
               </li>
@@ -58,8 +76,8 @@ export default function SideBar() {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="pt-5 bottomList mt-6 ">
-              <h1 className="text-gray-50">Accounts</h1>
+            <ul className="pt-4 bottomList mt-5 ">
+              <h1 className="text-gray-50 mb-2">Accounts</h1>
               <li
                 className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 
               `}
