@@ -6,6 +6,7 @@ import { BsCash, BsGraphUpArrow } from "react-icons/bs";
 import { AiFillCreditCard, AiOutlineShop } from "react-icons/ai";
 import { MdBusinessCenter, MdOutlineDiamond } from "react-icons/md";
 import { TbCurrencyTaka } from "react-icons/tb";
+import Expense from "../../Components/Expense/Expense";
 
 export default function SideBar() {
   return (
@@ -33,7 +34,7 @@ export default function SideBar() {
             </div>
             {/* top account container ends */}
             {/* top list items starts  */}
-            <ul className="pt-4 topList ">
+            <ul className="pt-5 topList ">
               <li
                 className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 
               `}
@@ -185,8 +186,9 @@ export default function SideBar() {
       {/* sidebar child components starts */}
       {/* <div className="ml-64 duration-300 h-screen p-5"> */}
       <div className="ml-64 duration-300 h-100% p-5">
-        <HomePage />
+        {/* <HomePage /> */}
         {/* <Income /> */}
+        <Expense />
       </div>
       {/* sidebar child components ends */}
     </>
