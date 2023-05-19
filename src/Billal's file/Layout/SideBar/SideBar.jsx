@@ -1,14 +1,14 @@
 import React from "react";
 import HomePage from "../../Pages/HomePage";
 import Income from "../../Components/Income/Income";
+import Expense from "../../Components/Expense/Expense";
+import History from "../../Components/History/History";
 import { ImBook } from "react-icons/im";
 import { BsCash, BsGraphUpArrow } from "react-icons/bs";
 import { AiFillCreditCard, AiOutlineShop } from "react-icons/ai";
 import { MdBusinessCenter, MdOutlineDiamond } from "react-icons/md";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { GiReceiveMoney } from "react-icons/gi";
-import Expense from "../../Components/Expense/Expense";
-import History from "../../Components/History/History";
 
 export default function SideBar() {
   const topMenuItems = [
@@ -85,9 +85,10 @@ export default function SideBar() {
             {/* top account container ends */}
             {/* top list items starts  */}
             <ul className="pt-5 topList ">
-              {topMenuItems.map((ele) => (
+              {topMenuItems.map((ele, ind) => (
                 <>
                   <li
+                    key={ind}
                     className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 
               `}
                   >
@@ -119,9 +120,10 @@ export default function SideBar() {
                 </span>
               </li>
 
-              {bottomMenuItems.map((ele) => (
+              {bottomMenuItems.map((ele, ind) => (
                 <>
                   <li
+                    key={ind}
                     className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4`}
                   >
                     <div className="icon text-lg">{ele.icon}</div>
@@ -152,8 +154,8 @@ export default function SideBar() {
       {/* <div className="ml-64 duration-300 h-screen p-5"> */}
       <div className="ml-24 duration-300 h-100% p-2 sm:ml-64">
         {/* <div className="ml-64 duration-300 h-100% p-2"> */}
-        <HomePage />
-        {/* <Income /> */}
+        {/* <HomePage /> */}
+        <Income />
         {/* <Expense /> */}
         {/* <History /> */}
       </div>
