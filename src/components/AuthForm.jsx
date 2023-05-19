@@ -1,6 +1,6 @@
 // importing libraries:
 import { useState } from "react";
-import { auth, googleProvider, getUserRef } from "../services/firebaseApi";
+import { auth, googleProvider, getUsersRef } from "../services/firebaseApi";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -8,13 +8,15 @@ import {
 } from "firebase/auth";
 import { setDoc } from "firebase/firestore";
 
-export const AuthForm = () => {
+// importing icons:
+import { FcGoogle } from "react-icons/fc";
+
+export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
   // states:
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [isSignIn, setIsSignIn] = useState(false);
 
   // auth functions:
   const signUpEmailPassword = async () => {
@@ -87,7 +89,7 @@ export const AuthForm = () => {
 
   const createNewUserOnSignUp = async (uid, username) => {
     try {
-      await setDoc(getUserRef(uid), {
+      await setDoc(getUsersRef(uid), {
         userId: uid,
         username: username,
       });
@@ -97,15 +99,43 @@ export const AuthForm = () => {
   };
 
   return (
-    <div className="shadow-lg flex flex-col justify-center gap-2 w-[540px] text-slate-200 bg-blue-400 p-4 rounded-lg">
+    <div
+      className={
+        isSignIn
+          ? "flex flex-col gap-3 w-full max-w-[640px] items-center translate-y-[-10%]"
+          : "flex flex-col gap-2 w-full max-w-[640px] items-center"
+      }
+    >
       {/* heading */}
-      <h3 className="text-center mb-3 font-bold text-3xl">
-        {isSignIn ? "Sign In" : "Sign Up"}
+      <h3
+        className={
+          isSignIn
+            ? "text-slate-900 leading-tight text-[2.4rem] mb-1 text-center lg:text-6xl font-bold"
+            : "text-white text-4xl lg:text-5xl mb-4 font-bold text-center"
+        }
+      >
+        {isSignIn ? "Login to Your Account" : "Sign Up"}
       </h3>
+
+      {isSignIn ? (
+        <p className="text-slate-700 text-center mb-6 text-[1.2rem] max-w-[400px]">
+          Sign in and take control of your finances with ease and precision.
+        </p>
+      ) : (
+        <></>
+      )}
 
       {/* showing error message if any */}
       {errorMsg ? (
-        <p className="font-semibold text-red-600 error-msg mb-1">{errorMsg}</p>
+        <p
+          className={
+            isSignIn
+              ? "error-msg font-semibold text-slate-100 bg-[#f48a] shadow w-[95%] lg:w-[90%] px-1 py-2 text-center rounded-full mb-1"
+              : "error-msg font-semibold text-slate-100 bg-[#f48a] shadow w-full px-1 py-2 text-center rounded-lg mb-1"
+          }
+        >
+          {errorMsg}
+        </p>
       ) : (
         <></>
       )}
@@ -117,10 +147,15 @@ export const AuthForm = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className={
-          "w-full px-4 py-3 focus:placeholder:translate-x-[-100%] focus:bg-blue-950 duration-700" +
-          (email && email.includes("@") && email.includes(".")
-            ? " bg-green-950"
-            : "")
+          isSignIn
+            ? "w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]" +
+              (email && email.includes("@") && email.includes(".")
+                ? " bg-[#0f76]"
+                : "")
+            : "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-200 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 bg-[#fff3]" +
+              (email && email.includes("@") && email.includes(".")
+                ? " bg-[#0f73]"
+                : "")
         }
       />
 
@@ -131,8 +166,11 @@ export const AuthForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className={
-          "w-full px-4 py-3 focus:placeholder:translate-x-[-100%] focus:bg-blue-950 duration-700" +
-          (password ? " bg-green-950" : "")
+          isSignIn
+            ? "w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]" +
+              (password.length > 5 ? " bg-[#0f76]" : "")
+            : "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-200 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 bg-[#fff3]" +
+              (password.length > 5 ? " bg-[#0f73]" : "")
         }
       />
 
@@ -144,8 +182,8 @@ export const AuthForm = () => {
           value={rePassword}
           onChange={(e) => setRePassword(e.target.value)}
           className={
-            "w-full px-4 py-3 focus:placeholder:translate-x-[-100%] focus:bg-blue-950 duration-700" +
-            (rePassword && password === rePassword ? " bg-green-950" : "")
+            "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-200 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 bg-[#fff3]" +
+            (rePassword && password === rePassword ? " bg-[#0f73]" : "")
           }
         />
       ) : (
@@ -153,50 +191,83 @@ export const AuthForm = () => {
       )}
 
       {/* disclaimer/context */}
-      <div className="flex justify-between">
+      <div
+        className={
+          isSignIn
+            ? "flex justify-between w-[95%] lg:w-[90%] text-slate-700 px-1"
+            : "flex justify-between w-full text-slate-100 px-1"
+        }
+      >
         <button
           onClick={() => {
-            setIsSignIn(!isSignIn);
+            setIsSignUpModalActive(isSignIn);
             setErrorMsg("");
           }}
-          className="hover:underline hover:text-slate-900"
+          className={
+            "hover:underline hover:text-slate-700 duration-200 md:w-full text-left"
+          }
         >
           {isSignIn ? "create new account?" : "already have an account?"}
         </button>
 
-        <p className="text-right">*min 6 characters*</p>
+        {isSignIn ? (
+          <></>
+        ) : (
+          <p className="text-right md:w-full">*min 6 characters*</p>
+        )}
       </div>
 
       {/* sign in/up buttons */}
-      <div className="flex justify-center w-full gap-2 btn-container">
-        {/* email/password sign in btn */}
-        <button
-          onClick={isSignIn ? signInEmailPassword : signUpEmailPassword}
-          className="flex-1 p-2 font-semibold uppercase bg-blue-700 rounded-lg hover:shadow-lg hover:translate-y-[-2%] hover:bg-blue-800"
+      <div className="btn-container flex flex-col items-center w-full gap-2">
+        <div
+          className={
+            isSignIn
+              ? "flex items-center w-[95%] lg:w-[90%] gap-2"
+              : "flex items-center w-full gap-2"
+          }
         >
-          {isSignIn ? "Sign In" : "Sign Up"}
-        </button>
+          {/* email/password sign in btn */}
+          <button
+            onClick={isSignIn ? signInEmailPassword : signUpEmailPassword}
+            className={
+              isSignIn
+                ? "w-full p-2 font-semibold uppercase bg-[#39aca4] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#2f8e88]"
+                : "w-full p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg text-center shadow-md active:scale-[97%] hover:shadow-xl"
+            }
+          >
+            {isSignIn ? "Sign In" : "Sign Up"}
+          </button>
+
+          {/* demo login button */}
+          {isSignIn ? (
+            <button
+              onClick={demoLogin}
+              className={
+                isSignIn
+                  ? "w-full p-2 font-semibold uppercase bg-[#39aca4] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#2f8e88]"
+                  : "w-full p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg text-center shadow-md active:scale-[97%] hover:shadow-xl"
+              }
+            >
+              Demo Login
+            </button>
+          ) : (
+            <></>
+          )}
+        </div>
 
         {/* google authentication sign in btn*/}
         <button
           onClick={signUpInGoogle}
-          className="flex-1 p-2 font-semibold uppercase bg-blue-700 rounded-lg hover:shadow-lg hover:translate-y-[-2%] hover:bg-blue-800"
+          className={
+            isSignIn
+              ? "w-[95%] lg:w-[90%] flex items-center gap-1 justify-center p-2 font-semibold uppercase bg-[#39aca4] text-slate-100 rounded-full shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#2f8e88]"
+              : "w-full flex items-center gap-1 justify-center p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg shadow-md active:scale-[97%] hover:shadow-xl"
+          }
         >
           {isSignIn ? "Sign In With Google" : "Sign Up With Google"}
+          <FcGoogle className="text-2xl" />
         </button>
       </div>
-
-      {/* demo login button */}
-      {isSignIn ? (
-        <button
-          onClick={demoLogin}
-          className="flex-1 p-2 font-semibold uppercase bg-blue-700 rounded-lg  hover:shadow-lg hover:translate-y-[-2%] hover:bg-blue-800"
-        >
-          Demo Login
-        </button>
-      ) : (
-        <></>
-      )}
     </div>
   );
 };

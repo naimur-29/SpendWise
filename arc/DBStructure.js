@@ -1,6 +1,7 @@
-export const usersData = [
+export const users = [
   {
-    userId: "<auth User Id>", // key
+    uid: "<from Auth auto-generated>",
+    userId: "<uid>", // key
     username: "<name>",
     accounts: [
       {
@@ -19,7 +20,7 @@ export const usersData = [
   },
 ];
 
-export const accountsData = [
+export const accounts = [
   {
     id: "<userId>.<accountAlias>", // key
     alias: "<accountAlias>",
