@@ -7,6 +7,7 @@ import { AiFillCreditCard, AiOutlineShop } from "react-icons/ai";
 import { MdBusinessCenter, MdOutlineDiamond } from "react-icons/md";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Expense from "../../Components/Expense/Expense";
+import History from "../../Components/History/History";
 
 export default function SideBar() {
   return (
@@ -185,10 +186,11 @@ export default function SideBar() {
 
       {/* sidebar child components starts */}
       {/* <div className="ml-64 duration-300 h-screen p-5"> */}
-      <div className="ml-64 duration-300 h-100% p-5">
+      <div className="ml-64 duration-300 h-100% p-2">
         {/* <HomePage /> */}
         {/* <Income /> */}
-        <Expense />
+        {/* <Expense /> */}
+        <History />
       </div>
       {/* sidebar child components ends */}
     </>
