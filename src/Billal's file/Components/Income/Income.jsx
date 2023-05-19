@@ -20,7 +20,7 @@ export default function Income() {
             >
               <div className="cardTop text-center">
                 <h1 className="mb-2 text-2xl font-bold self-center text-gray-800 ">
-                  Total income : 500 taka
+                  Total income : 00 taka
                 </h1>
               </div>
             </a>
