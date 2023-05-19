@@ -3,15 +3,16 @@ import React from "react";
 export default function Card() {
   return (
     <>
-      <div className="cardContainer grid grid-cols-3 gap-5">
+      {/* <div className="cardContainer grid grid-cols-3 gap-5"> */}
+      <div className="cardContainer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {/* card 1 */}
         <a
           href="#"
-          className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
+          className="block max-w-sm p-4 bg-gray-600 rounded-md shadow-md hover:bg-gray-700 "
         >
           <div className="cardTop text-center">
             <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
+              card 1
             </h1>
           </div>
 
@@ -37,7 +38,7 @@ export default function Card() {
         >
           <div className="cardTop text-center">
             <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
+              card 2
             </h1>
           </div>
 
@@ -63,7 +64,7 @@ export default function Card() {
         >
           <div className="cardTop text-center">
             <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
+              card 3
             </h1>
           </div>
 
@@ -89,7 +90,7 @@ export default function Card() {
         >
           <div className="cardTop text-center">
             <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
+              card 4
             </h1>
           </div>
 
@@ -115,7 +116,7 @@ export default function Card() {
         >
           <div className="cardTop text-center">
             <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
+              card 5
             </h1>
           </div>
 
@@ -142,7 +143,7 @@ export default function Card() {
           <div className=" h-full flex flex-col justify-center items-center">
             <div className="cardTop text-center">
               <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-                Revenue
+                card 6 , row span 2
               </h1>
             </div>
 
@@ -171,7 +172,7 @@ export default function Card() {
         >
           <div className="cardTop text-center">
             <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
+              card 7
             </h1>
           </div>
 
@@ -198,7 +199,7 @@ export default function Card() {
         >
           <div className="cardTop text-center">
             <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              Revenue
+              card 8
             </h1>
           </div>
 
