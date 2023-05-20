@@ -33,7 +33,7 @@ export default function Income() {
           {/* body container starts */}
           <div className="bodyContainer grid grid-cols-2 customMid:grid-cols-12">
             {/* body left container starts  */}
-            <div className="bodyContainerLeft col-span-2 p-2 m-auto w-[98%] sm:w-[98%] md:w-[85%] customMid:col-span-4 customMid:w-[100%] ">
+            <div className="bodyContainerLeft col-span-2 p-2 m-auto w-[98%] sm:w-[98%] md:w-[85%] customMid:col-span-4 customMid:w-[100%]">
               <h1 className="mb-2">All fields are required</h1>
               <div className="inputContainer">
                 {/* salary title input field */}
@@ -62,7 +62,7 @@ export default function Income() {
                   <input
                     type="date"
                     id="base-input"
-                    className="bg-gray-200  text-gray-900 text-sm border-none outline-none block w-full  "
+                    className="bg-gray-200  text-gray-900 text-sm border-none outline-none block w-full"
                     placeholder="Salary title"
                   />
                 </div>
@@ -105,7 +105,8 @@ export default function Income() {
             {/* body left container ends  */}
 
             {/* body Right container starts  */}
-            <div className="bodyContainerRight col-span-2 customMid:col-span-8 p-0 md:p-2 ">
+            {/* <div className="bodyContainerRight  mt-1 col-span-2 customMid:col-span-8 customMid:mt-3 p-0 md:p-2 "> */}
+            <div className="bodyContainerRight w-full customSm:w-[80%] md:w-full m-auto mt-1 col-span-2 customMid:col-span-8 customMid:mt-3 p-1 md:p-2 ">
               <div className="rightCardSection  h-[68vh] w-[100%] md:w-[95%] customMid:w-[99%] lg:w-[92%] m-auto overflow-auto">
                 <a
                   href="#"
@@ -122,36 +123,36 @@ export default function Income() {
                     {/* left side of card ends  */}
 
                     {/* mid side of card starts  */}
-                    <div className="cardMid col-span-10 ">
+                    <div className="cardMid  col-span-10 ">
                       <div className="midContainer">
                         {/* midTop starts */}
                         <div className="midTop flex mb-1">
                           <div className="iconContainer self-center">
                             <GoPrimitiveDot className="text-green-700 text-sm sm:text-xl" />
                           </div>
-                          <h1 className="text-sm ml-2 sm:text-lg ">Bitcoin</h1>
+                          <h1 className="text-sm ml-2 sm:text-lg">Bitcoin</h1>
                         </div>
                         {/* midTop ends */}
 
                         {/* midBottom starts  */}
 
-                        <div className="midBottom flex justify-between w-[100%] sm:w-[98%] md:w-[95%] lg:w-[92%] ">
+                        <div className="midBottom flex justify-between w-[100%] sm:w-[96%] md:w-[95%] lg:w-[92%] ">
                           <div className="midBottomLeft flex">
-                            <div className="iconContainer hidden customSm:flex self-center mr-1">
+                            <div className="iconContainer hidden customVerySm:flex  self-center mr-1">
                               <TbCurrencyTaka />
                             </div>
                             <h1 className="text-sm md:text-base">2500 taka</h1>
                           </div>
 
                           <div className="midBottomMid flex">
-                            <div className="iconContainer hidden customSm:flex  self-center mr-1">
+                            <div className="iconContainer hidden customVerySm:flex  self-center mr-1">
                               <MdDateRange />
                             </div>
                             <h1 className="text-sm md:text-base">06/02/2023</h1>
                           </div>
 
                           <div className="midBottomLeft flex">
-                            <div className="iconContainer hidden customSm:flex  self-center mr-1">
+                            <div className="iconContainer hidden customVerySm:flex  self-center mr-1">
                               <TbMessageCircle2Filled />
                             </div>
                             <h1 className="text-sm md:text-base">
@@ -174,10 +175,6 @@ export default function Income() {
                     {/* right side of card ends  */}
                   </div>
                 </a>
-
-                {/* test file starts  */}
-
-                {/* test file ends  */}
               </div>
             </div>
             {/* body Right container ends  */}

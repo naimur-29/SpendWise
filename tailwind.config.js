@@ -6,6 +6,7 @@ module.exports = {
       screens: {
         customMid: "930px",
         customSm: "518px",
+        customVerySm: "374px",
       },
     },
   },
