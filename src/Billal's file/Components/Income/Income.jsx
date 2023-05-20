@@ -33,7 +33,7 @@ export default function Income() {
           {/* body container starts */}
           <div className="bodyContainer grid grid-cols-2 customMid:grid-cols-12">
             {/* body left container starts  */}
-            <div className="bodyContainerLeft col-span-2 customMid:col-span-4 p-2  ">
+            <div className="bodyContainerLeft col-span-2 p-2 m-auto w-[98%] sm:w-[98%] md:w-[85%] customMid:col-span-4 customMid:w-[100%] ">
               <h1 className="mb-2">All fields are required</h1>
               <div className="inputContainer">
                 {/* salary title input field */}
@@ -91,10 +91,10 @@ export default function Income() {
                 </div>
 
                 {/* button section  */}
-                <div className="  ">
+                <div className="">
                   <button
                     type="button"
-                    className="py-2 px-2.5 w-[40%] font-medium text-gray-50  bg-green-600 rounded-2xl border border-gray-200 hover:bg-green-700 text-base self-center flex justify-center"
+                    className="py-2 px-2.5 w-[75%] customSm:w-[38%] sm:w-[42%] customMid:w-[68%] lg:w-[58%] xl:w-[50%] font-medium text-gray-50  bg-green-600 rounded-2xl border border-gray-200 hover:bg-green-700 text-base self-center flex justify-center"
                   >
                     <AiOutlinePlus className="self-center mr-1" />
                     Add income
@@ -105,18 +105,18 @@ export default function Income() {
             {/* body left container ends  */}
 
             {/* body Right container starts  */}
-            <div className="bodyContainerRight col-span-2 customMid:col-span-8 p-2 ">
+            <div className="bodyContainerRight col-span-2 customMid:col-span-8 p-0 md:p-2 ">
               <div className="rightCardSection  h-[68vh] w-[100%] md:w-[95%] customMid:w-[99%] lg:w-[92%] m-auto overflow-auto">
                 <a
                   href="#"
-                  className="block mb-2 w-full  p-1 customMid:p-2 bg-gray-50 hover:bg-gray-100  rounded-md shadow-md "
+                  className="block mb-2 w-full  p-0 sm:p-1 customMid:p-2 bg-gray-50 hover:bg-gray-100  rounded-md shadow-md "
                 >
                   <div className="cardContainer grid grid-cols-12">
                     {/* left side of card starts  */}
 
                     <div className="cardLeft col-span-1  m-auto">
                       <div className="bodyIcon flex">
-                        <FaBitcoin className="text-xl md:text-2xl lg:text-3xl" />
+                        <FaBitcoin className="text-sm sm:text-xl md:text-2xl lg:text-3xl" />
                       </div>
                     </div>
                     {/* left side of card ends  */}
@@ -127,31 +127,31 @@ export default function Income() {
                         {/* midTop starts */}
                         <div className="midTop flex mb-1">
                           <div className="iconContainer self-center">
-                            <GoPrimitiveDot className="text-green-700 text-xl" />
+                            <GoPrimitiveDot className="text-green-700 text-sm sm:text-xl" />
                           </div>
-                          <h1 className="text-lg ml-2 ">Bitcoin</h1>
+                          <h1 className="text-sm ml-2 sm:text-lg ">Bitcoin</h1>
                         </div>
                         {/* midTop ends */}
 
                         {/* midBottom starts  */}
 
-                        <div className="midBottom flex justify-between w-[99%] md:w-[95%] lg:w-[92%] ">
+                        <div className="midBottom flex justify-between w-[100%] sm:w-[98%] md:w-[95%] lg:w-[92%] ">
                           <div className="midBottomLeft flex">
-                            <div className="iconContainer  self-center mr-1">
+                            <div className="iconContainer hidden customSm:flex self-center mr-1">
                               <TbCurrencyTaka />
                             </div>
                             <h1 className="text-sm md:text-base">2500 taka</h1>
                           </div>
 
                           <div className="midBottomMid flex">
-                            <div className="iconContainer  self-center mr-1">
+                            <div className="iconContainer hidden customSm:flex  self-center mr-1">
                               <MdDateRange />
                             </div>
                             <h1 className="text-sm md:text-base">06/02/2023</h1>
                           </div>
 
                           <div className="midBottomLeft flex">
-                            <div className="iconContainer  self-center mr-1">
+                            <div className="iconContainer hidden customSm:flex  self-center mr-1">
                               <TbMessageCircle2Filled />
                             </div>
                             <h1 className="text-sm md:text-base">
