@@ -199,10 +199,10 @@ export default function SideBar() {
       {/* <div className="h-screen p-5 ml-64 duration-300"> */}
       <div className="w-[100%] md:w-[calc(100%-16rem)] bg-slate-400">
         {/* <div className="ml-64 duration-300 h-100% p-2"> */}
-        {/* <HomePage /> */}
+        <HomePage />
         {/* <Income /> */}
         {/* <Expense /> */}
-        <History />
+        {/* <History /> */}
       </div>
       {/* sidebar child components ends */}
     </section>

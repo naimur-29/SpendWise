@@ -4,7 +4,7 @@ export default function Card() {
   return (
     <>
       {/* <div className="cardContainer grid grid-cols-3 gap-5"> */}
-      <div className="cardContainer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="cardContainer grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {/* card 1 */}
         <a
           href="#"

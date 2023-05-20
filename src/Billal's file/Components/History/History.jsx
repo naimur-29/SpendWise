@@ -60,10 +60,8 @@ export default function History() {
       <div className="HistoryContainer h-full bg-gray-300">
         <div className="HistoryContainerWrapper px-2">
           <h1 className=" mb-1 sm:mb-2 text-2xl font-semibold">Expenses</h1>
-          {/* <div className="bodyContainer grid grid-cols-12 "> */}
           <div className="bodyContainer grid sm:grid-cols-1 customMid:grid-cols-12 ">
             {/* left side of body starts  */}
-            {/* <div className="bodyLeft col-span-7 bg-red-400"> */}
             <div className="bodyLeft sm:col-span-1 customMid:col-span-7">
               <h1 className="text-2xl mb-2">All Transactions</h1>
               {/* graph container starts  */}
@@ -164,7 +162,6 @@ export default function History() {
             {/* left side of body endss  */}
 
             {/* right side of body starts  */}
-            {/* <div className="bodyRight col-span-5 p-3 bg-blue-400"> */}
             <div className="bodyRight mt-2 p-3 sm:mt-0 sm:col-span-1 customMid:col-span-5">
               <h1 className="text-2xl">Recent History</h1>
               <div className="rightCardSection topSection mt-3 mb-2 w-[96%] m-auto overflow-auto">
@@ -263,7 +260,6 @@ export default function History() {
                 {/* expense section ends */}
               </div>
             </div>
-
             {/* right side of body endss  */}
           </div>
         </div>
