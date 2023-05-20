@@ -105,7 +105,6 @@ export default function Income() {
             {/* body left container ends  */}
 
             {/* body Right container starts  */}
-            {/* <div className="bodyContainerRight  mt-1 col-span-2 customMid:col-span-8 customMid:mt-3 p-0 md:p-2 "> */}
             <div className="bodyContainerRight w-full customSm:w-[80%] md:w-full m-auto mt-1 col-span-2 customMid:col-span-8 customMid:mt-3 p-1 md:p-2 ">
               <div className="rightCardSection  h-[68vh] w-[100%] md:w-[95%] customMid:w-[99%] lg:w-[92%] m-auto overflow-auto">
                 <a
@@ -114,7 +113,6 @@ export default function Income() {
                 >
                   <div className="cardContainer grid grid-cols-12">
                     {/* left side of card starts  */}
-
                     <div className="cardLeft col-span-1  m-auto">
                       <div className="bodyIcon flex">
                         <FaBitcoin className="text-sm sm:text-xl md:text-2xl lg:text-3xl" />
@@ -135,7 +133,6 @@ export default function Income() {
                         {/* midTop ends */}
 
                         {/* midBottom starts  */}
-
                         <div className="midBottom flex justify-between w-[100%] sm:w-[96%] md:w-[95%] lg:w-[92%] ">
                           <div className="midBottomLeft flex">
                             <div className="iconContainer hidden customVerySm:flex  self-center mr-1">
@@ -166,7 +163,6 @@ export default function Income() {
                     {/* mid side of card ends  */}
 
                     {/* right side of card starts  */}
-                    {/* <div className="cardRight col-span-2 m-auto"> */}
                     <div className="cardRight col-span-1 m-auto">
                       <div className="iconContainer  ">
                         <AiTwotoneDelete className="text-xl md:text-2xl lg:text-3xl " />

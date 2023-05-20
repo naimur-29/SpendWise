@@ -82,9 +82,9 @@ export default function SideBar() {
         } z-20 SideBarContainer md:left-0 duration-200`}
       >
         <div className="flex">
-          <div className="relative w-64 h-screen p-5 pt-5 duration-300 bg-gray-700 mainContainer sm:w-64">
+          <div className="relative w-64 h-screen p-5 pt-2 duration-300 bg-gray-700 mainContainer sm:w-64">
             {/* top account container starts */}
-            <div className="topContainer AccountContainer mb-2 ">
+            <div className="topContainer AccountContainer mb-1 ">
               <div className="flex items-center space-x-4 ">
                 <img
                   className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 cursor-pointer"
@@ -138,7 +138,7 @@ export default function SideBar() {
                 <div className="icon text-lg">
                   <ImBook />
                 </div>
-                <span className={` hidden origin-left duration-200 sm:flex `}>
+                <span className={`  origin-left duration-200  `}>
                   All transactions
                 </span>
               </li>
@@ -147,12 +147,10 @@ export default function SideBar() {
                 <>
                   <li
                     key={ind}
-                    className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4`}
+                    className={`flex rounded-md p-1 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4`}
                   >
                     <div className="icon text-lg">{ele.icon}</div>
-                    <h1
-                      className={`hidden gap-1  origin-left duration-200 w-full sm:flex`}
-                    >
+                    <h1 className={`gap-1 origin-left duration-200 w-full `}>
                       {ele.title}
                       <span
                         className={` ${
@@ -203,8 +201,8 @@ export default function SideBar() {
         {/* <div className="ml-64 duration-300 h-100% p-2"> */}
         {/* <HomePage /> */}
         {/* <Income /> */}
-        <Expense />
-        {/* <History /> */}
+        {/* <Expense /> */}
+        <History />
       </div>
       {/* sidebar child components ends */}
     </section>
