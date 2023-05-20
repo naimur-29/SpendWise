@@ -20,8 +20,9 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // using custom hooks:
+  // using hooks:
   const focusNext = useFocusNext();
 
   // auth functions:
@@ -33,6 +34,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       return;
     }
 
+    setIsLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await createNewUserOnSignUp(
@@ -44,24 +46,30 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       setPassword("");
       setRePassword("");
       setErrorMsg("");
+      window.location.reload();
     } catch (error) {
-      setErrorMsg(error.message);
+      setErrorMsg(error.message.slice(10));
     }
+    setIsLoading(false);
   };
 
   const signInEmailPassword = async () => {
+    setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
 
       setEmail("");
       setPassword("");
       setErrorMsg("");
+      window.location.reload();
     } catch (error) {
-      setErrorMsg(error.message);
+      setErrorMsg(error.message.slice(10));
     }
+    setIsLoading(false);
   };
 
   const signUpInGoogle = async () => {
+    setIsLoading(true);
     try {
       await signInWithPopup(auth, googleProvider);
       await createNewUserOnSignUp(
@@ -73,24 +81,29 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       setPassword("");
       setRePassword("");
       setErrorMsg("");
+      window.location.reload();
     } catch (error) {
-      setErrorMsg(error.message);
+      setErrorMsg(error.message.slice(10));
     }
+    setIsLoading(false);
   };
 
   const demoLogin = async () => {
     const demoEmail = "fakecake420@gmail.com";
     const demoPassword = "fake123";
 
+    setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, demoEmail, demoPassword);
 
       setEmail("");
       setPassword("");
       setErrorMsg("");
+      window.location.reload();
     } catch (error) {
-      setErrorMsg(error.message);
+      setErrorMsg(error.message.slice(10));
     }
+    setIsLoading(false);
   };
 
   const createNewUserOnSignUp = async (uid, username) => {
@@ -100,7 +113,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         username: username,
       });
     } catch (error) {
-      console.log(error.message);
+      setErrorMsg(error.message.slice(10));
     }
   };
 
@@ -120,7 +133,11 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
             : "text-white text-4xl lg:text-5xl mb-4 font-bold text-center"
         }
       >
-        {isSignIn ? "Login to Your Account" : "Sign Up"}
+        {isLoading
+          ? "Loading..."
+          : isSignIn
+          ? "Login to Your Account"
+          : "Sign Up"}
       </h3>
 
       {isSignIn ? (

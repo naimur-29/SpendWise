@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import { BsFacebook } from "react-icons/bs";
-import { AiFillGooglePlusCircle } from "react-icons/ai";
-import { AiFillLinkedin } from "react-icons/ai";
-import { RxCross2 } from "react-icons/rx";
 
 // importing local components:
 import SignUpModal from "../components/SignUpModal";
