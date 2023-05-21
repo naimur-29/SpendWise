@@ -13,7 +13,7 @@ const useGetUser = (uid) => {
       // if no uid:
       if (!uid) {
         setErrorMessage("Invalid UID");
-        return;
+        setIsLoading(false);
       }
 
       // fetch data:

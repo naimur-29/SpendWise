@@ -1,10 +1,10 @@
 // importing libraries:
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 
 // importing custom hooks:
 import usePostIncomeExpense from "../hooks/usePostIncomeExpense";
 
-// import contexts:
+// importing contexts:
 import { userContext } from "../contexts/UserContext";
 
 // functions:
