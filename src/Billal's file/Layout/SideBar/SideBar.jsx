@@ -1,14 +1,70 @@
 import { useState } from "react";
+
 import HomePage from "../../Pages/HomePage";
 import Income from "../../Components/Income/Income";
-import { ImBook } from "react-icons/im";
-import { BsCash, BsGraphUpArrow } from "react-icons/bs";
-import { AiFillCreditCard, AiOutlineShop } from "react-icons/ai";
-import { MdBusinessCenter, MdOutlineDiamond } from "react-icons/md";
-import { TbCurrencyTaka } from "react-icons/tb";
-import { GiReceiveMoney } from "react-icons/gi";
 import Expense from "../../Components/Expense/Expense";
 import History from "../../Components/History/History";
+
+// importing icons:
+import { ImBook } from "react-icons/im";
+import { BsCash, BsGraphUpArrow } from "react-icons/bs";
+import { TbCurrencyTaka } from "react-icons/tb";
+import { GiReceiveMoney } from "react-icons/gi";
+import { AiFillCreditCard, AiOutlineShop } from "react-icons/ai";
+import { MdBusinessCenter, MdOutlineDiamond } from "react-icons/md";
+
+// global variables:
+const topMenuItems = [
+  {
+    title: "Dashboard",
+    path: "/",
+    src: <BsGraphUpArrow />,
+  },
+  {
+    title: "Incomes",
+    path: "incomes",
+    src: <BsCash />,
+  },
+  {
+    title: "Expenses",
+    path: "expenses",
+    src: <GiReceiveMoney />,
+  },
+  {
+    title: "Recent Transactions",
+    path: "histories",
+    src: <ImBook />,
+  },
+];
+
+const bottomMenuItems = [
+  {
+    title: " Cash",
+    icon: <BsCash />,
+  },
+  {
+    title: "Credit card",
+    icon: <AiFillCreditCard />,
+  },
+  {
+    title: "Business",
+    icon: <MdBusinessCenter />,
+  },
+  {
+    title: "Loan",
+    icon: <AiOutlineShop />,
+    red: true,
+  },
+
+  {
+    title: "Investment",
+    icon: <BsGraphUpArrow />,
+  },
+  {
+    title: "Asset",
+    icon: <MdOutlineDiamond />,
+  },
+];
 
 export default function SideBar() {
   const [isSidebarActive, setIsSidebarActive] = useState(false);
@@ -73,6 +129,7 @@ export default function SideBar() {
           <div className="relative w-64 h-screen p-5 pt-5 duration-300 bg-gray-700 mainContainer sm:w-64">
             {/* top account container starts */}
             <div className="mb-2 topContainer AccountContainer ">
+
               <div className="flex items-center space-x-4 ">
                 <img
                   className="object-cover w-10 h-10 p-1 rounded-full cursor-pointer ring-2 ring-gray-300 dark:ring-gray-500"
@@ -80,7 +137,7 @@ export default function SideBar() {
                   alt="Bordered avatar"
                 />
 
-                <div className="hidden font-medium dark:text-white sm:block">
+                <div className=" font-medium dark:text-white sm:block">
                   <div>Jese Leos</div>
                   <div className="text-sm text-gray-500 dark:text-gray-400">
                     Your Money
@@ -88,7 +145,9 @@ export default function SideBar() {
                 </div>
               </div>
             </div>
+
             {/* top account container ends */}
+
             {/* top list items starts  */}
             <ul className="pt-5 topList ">
               {topMenuItems.map((ele) => (
@@ -120,15 +179,16 @@ export default function SideBar() {
                 <div className="text-lg icon">
                   <ImBook />
                 </div>
-                <span className={` hidden origin-left duration-200 sm:flex `}>
+                <span className={`  origin-left duration-200  `}>
                   All transactions
                 </span>
               </li>
 
-              {bottomMenuItems.map((ele) => (
+              {bottomMenuItems.map((ele, ind) => (
                 <>
                   <li
-                    className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4`}
+                    key={ind}
+                    className={`flex rounded-md p-1 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4`}
                   >
                     <div className="text-lg icon">{ele.icon}</div>
                     <h1
@@ -148,6 +208,8 @@ export default function SideBar() {
                 </>
               ))}
             </ul>
+            {/* bottom list items end  */}
+
             {/* bottom list items end  */}
           </div>
         </div>
