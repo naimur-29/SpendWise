@@ -16,7 +16,8 @@ import { auth } from "./services/firebaseApi";
 
 // importing local components:
 import Unauthorized from "./components/Unauthorized";
-import LandingPage from "./pages/LandingPage";
+
+// importing pages:
 import { SideBar } from "./components/SideBar";
 
 // importing context providers:
@@ -33,7 +34,7 @@ function App() {
           </Unauthorized>
         }
       >
-        <Route index element={<h1>Overview</h1>} />
+        <Route index element={<h1>Overviews</h1>} />
         <Route path="incomes" element={<h1>Incomes</h1>} />
         <Route path="expenses" element={<h1>Expenses</h1>} />
         <Route path="histories" element={<h1>Recent Transactions</h1>} />
@@ -47,7 +48,6 @@ function App() {
                   try {
                     await signOut(auth);
                     console.log("Logout Successful!");
-                    window.location.reload();
                   } catch (error) {
                     console.log(error.message);
                   }
@@ -59,15 +59,16 @@ function App() {
             </>
           }
         />
+
         <Route path="*" element={<h1>404 page not found!</h1>} />
       </Route>
     )
   );
 
   return (
-    <div>
+    <UserContextProvider>
       <RouterProvider router={router} />
-    </div>
+    </UserContextProvider>
   );
 }
 
@@ -75,9 +76,9 @@ export default App;
 
 const Root = () => {
   return (
-    <UserContextProvider>
+    <>
       <SideBar />
       <Outlet />
-    </UserContextProvider>
+    </>
   );
 };

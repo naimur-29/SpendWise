@@ -38,11 +38,11 @@ const topMenuItems = [
 ];
 
 export const SideBar = () => {
-  // get userData from userContext:
-  const { userData, activeAccountIndex } = useContext(userContext);
-
   // states:
   const [isSidebarActive, setIsSidebarActive] = useState(false);
+
+  // get userData from userContext:
+  const { userData, activeAccountIndex } = useContext(userContext);
 
   return (
     <section className="relative flex justify-end">

@@ -8,6 +8,7 @@ import { AuthForm } from "../components/AuthForm";
 import Logo from "../assets/spend-wise-logo.webp";
 
 export default function LandingPage() {
+  // states:
   const [isSignUpModalActive, setIsSignUpModalActive] = useState(true);
 
   return (

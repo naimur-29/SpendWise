@@ -1,22 +1,41 @@
 // importing libraries:
-import { useState, useEffect } from "react";
-import { auth } from "../services/firebaseApi";
+import { useState, useEffect, useContext } from "react";
+import { Navigate } from "react-router-dom";
+
+// importing contexts:
+import { userContext } from "../contexts/UserContext";
 
 // importing pages:
 import LandingPage from "../pages/LandingPage";
 
 const Unauthorized = ({ children }) => {
-  // states:
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      const uid = auth?.currentUser?.uid;
-      setIsAuthorized(uid ? true : false);
-    }, 1000);
-  });
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
-  if (!isAuthorized) return <LandingPage />;
+  // contexts:
+  const { currentUser } = useContext(userContext);
+
+  // loading screen:
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  // if not signed in, then return to landing page:
+  if (!currentUser) {
+    return (
+      <>
+        <LandingPage />
+        <Navigate to={"/"} />
+      </>
+    );
+  }
+
+  // else return children:
   return <>{children}</>;
 };
 

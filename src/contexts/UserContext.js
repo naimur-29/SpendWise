@@ -9,18 +9,20 @@ import useGetUser from "../hooks/useGetUser";
 export const userContext = createContext(null);
 
 export const UserContextProvider = ({ children }) => {
-  const [uid, setUid] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
   const [activeAccountIndex, setActiveAccountIndex] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      setUid(auth?.currentUser?.uid);
-    }, 1000);
-  });
+    auth.onAuthStateChanged(setCurrentUser);
+  }, []);
 
-  const { isLoading: isUserDataLoading, data: userData } = useGetUser(uid);
+  // getting user using custom hook:
+  const { data: userData, isLoading: isUserDataLoading } = useGetUser(
+    currentUser?.uid
+  );
 
   const value = {
+    currentUser,
     userData,
     isUserDataLoading,
     activeAccountIndex,

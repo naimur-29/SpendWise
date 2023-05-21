@@ -46,7 +46,6 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       setPassword("");
       setRePassword("");
       setErrorMsg("");
-      window.location.reload();
     } catch (error) {
       setErrorMsg(error.message.slice(10));
     }
@@ -61,7 +60,6 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       setEmail("");
       setPassword("");
       setErrorMsg("");
-      window.location.reload();
     } catch (error) {
       setErrorMsg(error.message.slice(10));
     }
@@ -81,7 +79,6 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       setPassword("");
       setRePassword("");
       setErrorMsg("");
-      window.location.reload();
     } catch (error) {
       setErrorMsg(error.message.slice(10));
     }
@@ -99,7 +96,6 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       setEmail("");
       setPassword("");
       setErrorMsg("");
-      window.location.reload();
     } catch (error) {
       setErrorMsg(error.message.slice(10));
     }
