@@ -1,6 +1,5 @@
 // importing libraries:
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 
 import HomePage from "../../Pages/HomePage";
 import Income from "../../Components/Income/Income";
@@ -10,7 +9,6 @@ import History from "../../Components/History/History";
 // importing icons:
 import { ImBook } from "react-icons/im";
 import { BsCash, BsGraphUpArrow } from "react-icons/bs";
-import { FaPiggyBank } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { GiReceiveMoney } from "react-icons/gi";
 import { AiFillCreditCard, AiOutlineShop } from "react-icons/ai";
@@ -196,9 +194,7 @@ export default function SideBar() {
       </div>
 
       {/* sidebar child components starts */}
-      {/* <div className="h-screen p-5 ml-64 duration-300"> */}
       <div className="w-[100%] md:w-[calc(100%-16rem)] bg-slate-400">
-        {/* <div className="ml-64 duration-300 h-100% p-2"> */}
         <HomePage />
         {/* <Income /> */}
         {/* <Expense /> */}
