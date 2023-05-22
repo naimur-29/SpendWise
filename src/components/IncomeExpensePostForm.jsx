@@ -7,6 +7,9 @@ import usePostIncomeExpense from "../hooks/usePostIncomeExpense";
 // importing contexts:
 import { userContext } from "../contexts/UserContext";
 
+// importing custom hooks:
+import useFocusNext from "../hooks/useFocusNext";
+
 // functions:
 const filterAmount = (num) => {
   return isNaN(num) || Number(num) < 0 ? 0 : Number(num);
@@ -27,6 +30,8 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
   const { isLoading, post, responseMessage, errorMessage } =
     usePostIncomeExpense(incomeExpenseData, isIncome);
 
+  const focusNext = useFocusNext();
+
   const onSubmitIncome = () => {
     const accountId = userData.accounts[activeAccountIndex].id;
 
@@ -42,14 +47,29 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
 
   return (
     <div className="flex justify-center w-full">
-      <div className="flex flex-col gap-2 lg:w-[400px] w-[95%] items-center">
-        {responseMessage ? <p>Response: {responseMessage}</p> : <></>}
+      <div className="flex flex-col gap-2 extra-lg:w-[400px] lg:w-[90%] w-[95%] items-center">
+        {responseMessage ? (
+          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2">
+            Latest: {responseMessage}
+          </p>
+        ) : (
+          <></>
+        )}
 
-        {errorMessage ? <p>Error: {errorMessage}</p> : <></>}
+        {errorMessage ? (
+          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2">
+            Error: {errorMessage}
+          </p>
+        ) : (
+          <></>
+        )}
 
-        <div className="flex justify-between w-full gap-3">
-          <label htmlFor="amount">Amount: </label>
+        <div className="flex justify-between items-center w-full gap-3">
+          <label htmlFor="amount" className="flex-[2]">
+            Amount:{" "}
+          </label>
           <input
+            ref={focusNext}
             type="text"
             value={incomeExpenseData.amount}
             onChange={(e) => {
@@ -58,14 +78,18 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
                 amount: filterAmount(e.target.value),
               }));
             }}
-            className="w-[80%] text-slate-300 px-1"
+            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]"
           />
         </div>
 
-        <div className="flex justify-between w-full gap-3">
-          <label htmlFor="context">Context: </label>
-          <input
+        <div className="flex justify-between items-center w-full gap-3">
+          <label htmlFor="context" className="flex-[2]">
+            Context:{" "}
+          </label>
+          <textarea
+            ref={focusNext}
             type="text"
+            rows={2}
             placeholder={isIncome ? "from where?" : "for what?"}
             value={incomeExpenseData.context}
             onChange={(e) => {
@@ -74,13 +98,16 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
                 context: e.target.value,
               }));
             }}
-            className="w-[80%] text-slate-300 px-1"
+            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]"
           />
         </div>
 
-        <div className="flex justify-between w-full gap-3">
-          <label htmlFor="dateAdded">Date: </label>
+        <div className="flex justify-between items-center w-full gap-3">
+          <label htmlFor="dateAdded" className="flex-[2]">
+            Date:{" "}
+          </label>
           <input
+            ref={focusNext}
             type="date"
             value={incomeExpenseData.dateAdded}
             onChange={(e) => {
@@ -89,15 +116,15 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
                 dateAdded: e.target.value,
               }));
             }}
-            className="w-[80%] text-slate-300 px-1"
+            className="flex-[8] px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]"
           />
         </div>
 
         <button
           onClick={onSubmitIncome}
-          className="w-full px-4 py-2 mt-1 text-xl font-bold bg-blue-700 rounded-lg text-slate-100 hover:shadow-lg hover:bg-blue-800"
+          className="w-full px-4 py-2 mt-1 text-xl font-bold flex justify-center items-center gap-1 bg-[#fff] rounded-lg text-[#42c8bf] hover:shadow-lg hover:bg-[#42c8bf11] duration-200 border-[3px] border-[#42c8bf] active:shadow-none"
         >
-          {isLoading ? "Loading..." : isIncome ? "Add Income" : "Add Expense"}
+          {isLoading ? "Loading..." : "Add"}
         </button>
       </div>
     </div>

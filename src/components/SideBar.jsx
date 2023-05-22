@@ -54,21 +54,21 @@ export const SideBar = () => {
     <>
       {/* sidebar container starts  */}
       <div
-        className={`fixed top-0 ${
+        className={`fixed bg-[#2c8781] top-0 ${
           isSidebarActive ? "left-[0%]" : "left-[-100%]"
         } z-20 SideBarContainer md:left-0 duration-200`}
       >
         <div className="flex">
-          <div className="relative w-64 h-screen p-5 pt-5 duration-300 bg-gray-700 mainContainer sm:w-64">
+          <div className="relative w-64 h-screen p-4 pt-5 duration-300 mainContainer sm:w-64 shadow-xl flex flex-col gap-1">
             {/* top account container starts */}
             <Link
               to={"profile"}
               onClick={() => setIsSidebarActive(false)}
-              className="mb-2 topContainer AccountContainer "
+              className="mb-2 topContainer AccountContainer"
             >
-              <div className="flex items-center space-x-4 ">
+              <div className="flex items-center space-x-4 hover:bg-[#fff4] hover:-translate-y-[0.1rem] duration-200 rounded-xl p-1 bg-[#fff3]">
                 <img
-                  className="object-cover p-[2px] rounded-full w-11 h-11 bg-slate-300"
+                  className="object-cover p-[2px] rounded-full w-11 h-11 bg-gray-100"
                   src={
                     auth?.currentUser?.photoURL ||
                     "https://static.theprint.in/wp-content/uploads/2021/06/Elon-Musk.jpg?compress=true&quality=80&w=376&dpr=2.6"
@@ -76,9 +76,9 @@ export const SideBar = () => {
                   alt="Bordered avatar"
                 />
 
-                <div className="block font-medium dark:text-white">
+                <div className="block font-medium text-gray-100">
                   <div>{userData ? userData?.username : "Loading..."}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                  <div className="text-sm text-gray-300">
                     {userData?.accounts
                       ? userData?.accounts[activeAccountIndex]?.alias
                       : ""}
@@ -89,7 +89,7 @@ export const SideBar = () => {
             {/* top account container ends */}
 
             {/* top list items starts  */}
-            <ul className="pt-5 topList">
+            <ul className="topList bg-[#fff3] rounded-xl p-2 cursor-pointer">
               {topMenuItems.map((ele, i) => (
                 <NavLink
                   key={i}
@@ -97,9 +97,9 @@ export const SideBar = () => {
                   onClick={() => setIsSidebarActive(false)}
                   className={({ isActive }) =>
                     isActive
-                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 mb-1 
+                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `
-                      : `flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-[#fff3] duration-100 text-sm items-center gap-x-4 mb-1 
+                      : `flex rounded-md p-2 cursor-pointer text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `
                   }
                 >
@@ -113,8 +113,8 @@ export const SideBar = () => {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="pt-4 mt-5 bottomList ">
-              <h1 className="mb-2 text-gray-50">Accounts</h1>
+            <ul className="mt-5 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer">
+              <h1 className="mb-3 text-gray-100 font-semibold">Accounts</h1>
 
               {userData?.accounts?.map((ele, i) => (
                 <li
@@ -122,20 +122,22 @@ export const SideBar = () => {
                   onClick={() => setActiveAccountIndex(i)}
                   className={
                     i === activeAccountIndex
-                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 mb-1 
+                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `
-                      : `flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-[#fff3] duration-100 text-sm items-center gap-x-4 mb-1 
+                      : `flex rounded-md p-2 cursor-pointer text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `
                   }
                 >
                   <div className="text-lg icon">
                     <FaPiggyBank />
                   </div>
-                  <h1 className={`flex gap-1  origin-left duration-200 w-full`}>
+                  <h1
+                    className={`flex flex-wrap gap-1  origin-left duration-200 w-full`}
+                  >
                     {ele?.alias}
 
                     {i === activeAccountIndex ? (
-                      <span className={`text-green-500 flex`}>
+                      <span className={`text-[#38a097] flex font-bold`}>
                         (<TbCurrencyTaka className="self-center" />
                         {isAccountDataLoading
                           ? "Loading..."
@@ -158,23 +160,25 @@ export const SideBar = () => {
       {/* hamburger menu */}
       <div
         onClick={() => setIsSidebarActive(!isSidebarActive)}
-        className="fixed bottom-[20px] h-[50px] right-[20px] md:hidden flex flex-col justify-center gap-2 bg-[#fff3] p-2 rounded cursor-pointer"
+        className="fixed bottom-[10px] h-[50px] right-[10px] md:hidden bg-[#153d3b] rounded z-50 shadow-2xl"
       >
-        <div
-          className={`line duration-300 h-[5px] w-[40px] bg-white rounded ${
-            isSidebarActive ? "-rotate-[135deg] translate-y-[13px]" : ""
-          }`}
-        ></div>
-        <div
-          className={`line duration-300 h-[5px] w-[40px] bg-white rounded ${
-            isSidebarActive ? "opacity-0 translate-x-[100%]" : ""
-          }`}
-        ></div>
-        <div
-          className={`line duration-300 h-[5px] w-[40px] bg-white rounded ${
-            isSidebarActive ? "rotate-[135deg] translate-y-[-13px]" : ""
-          }`}
-        ></div>
+        <div className="w-full h-full flex flex-col justify-center gap-2 p-2 rounded cursor-pointer shadow-xl hover:scale-105 duration-200">
+          <div
+            className={`line duration-300 h-[5px] w-[40px] bg-[#fff] rounded ${
+              isSidebarActive ? "-rotate-[135deg] translate-y-[13px]" : ""
+            }`}
+          ></div>
+          <div
+            className={`line duration-300 h-[5px] w-[40px]  bg-[#fff] rounded ${
+              isSidebarActive ? "opacity-0" : ""
+            }`}
+          ></div>
+          <div
+            className={`line duration-300 h-[5px] w-[40px]  bg-[#fff] rounded ${
+              isSidebarActive ? "rotate-[135deg] translate-y-[-13px]" : ""
+            }`}
+          ></div>
+        </div>
       </div>
 
       {/* sidebar child components starts */}

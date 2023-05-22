@@ -22,7 +22,13 @@ export const Unauthorized = ({ children }) => {
 
   // loading screen:
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <section className="w-full min-h-screen bg-gray-100 flex justify-center items-center">
+        <h3 className="text-4xl text-center w-full text-gray-700">
+          Loading...
+        </h3>
+      </section>
+    );
   }
 
   // if not signed in, then return to landing page:

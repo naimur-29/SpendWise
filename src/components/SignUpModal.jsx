@@ -23,7 +23,7 @@ const SignUpModal = ({ isSignUpModalActive, setIsSignUpModalActive }) => {
         (isSignUpModalActive ? "" : " top-[-100%]")
       }
     >
-      {/* image overlay */}
+      {/* color overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-[#39aca4] opacity-[0.8]"></div>
 
       <div className="z-10 flex justify-between close-modal md:justify-end">
