@@ -42,7 +42,7 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
 
   return (
     <div className="flex justify-center w-full">
-      <div className="flex flex-col gap-2 w-[400px] items-center">
+      <div className="flex flex-col gap-2 lg:w-[400px] w-[95%] items-center">
         {responseMessage ? <p>Response: {responseMessage}</p> : <></>}
 
         {errorMessage ? <p>Error: {errorMessage}</p> : <></>}

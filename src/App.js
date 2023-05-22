@@ -15,10 +15,12 @@ import { signOut } from "firebase/auth";
 import { auth } from "./services/firebaseApi";
 
 // importing local components:
-import Unauthorized from "./components/Unauthorized";
+import { Unauthorized } from "./components/Unauthorized";
+import { SideBar } from "./components/SideBar";
 
 // importing pages:
-import { SideBar } from "./components/SideBar";
+import Overview from "./pages/Overview";
+import Incomes from "./pages/Incomes";
 
 // importing context providers:
 import { UserContextProvider } from "./contexts/UserContext";
@@ -34,8 +36,8 @@ function App() {
           </Unauthorized>
         }
       >
-        <Route index element={<h1>Overviews</h1>} />
-        <Route path="incomes" element={<h1>Incomes</h1>} />
+        <Route index element={<Overview />} />
+        <Route path="incomes" element={<Incomes />} />
         <Route path="expenses" element={<h1>Expenses</h1>} />
         <Route path="histories" element={<h1>Recent Transactions</h1>} />
         <Route
@@ -76,9 +78,9 @@ export default App;
 
 const Root = () => {
   return (
-    <>
+    <section className="relative flex justify-end">
       <SideBar />
       <Outlet />
-    </>
+    </section>
   );
 };

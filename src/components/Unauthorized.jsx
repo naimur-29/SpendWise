@@ -8,7 +8,7 @@ import { userContext } from "../contexts/UserContext";
 // importing pages:
 import LandingPage from "../pages/LandingPage";
 
-const Unauthorized = ({ children }) => {
+export const Unauthorized = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -38,5 +38,3 @@ const Unauthorized = ({ children }) => {
   // else return children:
   return <>{children}</>;
 };
-
-export default Unauthorized;

@@ -31,7 +31,7 @@ const topMenuItems = [
     src: <GiReceiveMoney />,
   },
   {
-    title: "Recent Transactions",
+    title: "All Histories",
     path: "histories",
     src: <ImBook />,
   },
@@ -42,10 +42,16 @@ export const SideBar = () => {
   const [isSidebarActive, setIsSidebarActive] = useState(false);
 
   // get userData from userContext:
-  const { userData, activeAccountIndex } = useContext(userContext);
+  const {
+    userData,
+    activeAccountIndex,
+    setActiveAccountIndex,
+    accountData,
+    isAccountDataLoading,
+  } = useContext(userContext);
 
   return (
-    <section className="relative flex justify-end">
+    <>
       {/* sidebar container starts  */}
       <div
         className={`fixed top-0 ${
@@ -93,7 +99,7 @@ export const SideBar = () => {
                     isActive
                       ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 mb-1 
               `
-                      : `flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 mb-1 
+                      : `flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-[#fff3] duration-100 text-sm items-center gap-x-4 mb-1 
               `
                   }
                 >
@@ -113,19 +119,32 @@ export const SideBar = () => {
               {userData?.accounts?.map((ele, i) => (
                 <li
                   key={i}
-                  className={`flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 mb-1 ${
-                    i === activeAccountIndex ? "bg-gray-50 text-gray-700" : ""
-                  }`}
+                  onClick={() => setActiveAccountIndex(i)}
+                  className={
+                    i === activeAccountIndex
+                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:bg-gray-50 hover:text-gray-700 text-sm items-center gap-x-4 mb-1 
+              `
+                      : `flex rounded-md p-2 cursor-pointer text-gray-300 hover:bg-[#fff3] duration-100 text-sm items-center gap-x-4 mb-1 
+              `
+                  }
                 >
                   <div className="text-lg icon">
                     <FaPiggyBank />
                   </div>
                   <h1 className={`flex gap-1  origin-left duration-200 w-full`}>
                     {ele?.alias}
-                    <span className={`text-green-600 flex`}>
-                      (<TbCurrencyTaka className="self-center" />
-                      200 )
-                    </span>
+
+                    {i === activeAccountIndex ? (
+                      <span className={`text-green-500 flex`}>
+                        (<TbCurrencyTaka className="self-center" />
+                        {isAccountDataLoading
+                          ? "Loading..."
+                          : accountData?.currentBalance}
+                        )
+                      </span>
+                    ) : (
+                      <></>
+                    )}
                   </h1>
                 </li>
               ))}
@@ -143,31 +162,31 @@ export const SideBar = () => {
       >
         <div
           className={`line duration-300 h-[5px] w-[40px] bg-white rounded ${
-            isSidebarActive ? "-rotate-45 translate-y-[13px]" : ""
+            isSidebarActive ? "-rotate-[135deg] translate-y-[13px]" : ""
           }`}
         ></div>
         <div
           className={`line duration-300 h-[5px] w-[40px] bg-white rounded ${
-            isSidebarActive ? "opacity-0" : ""
+            isSidebarActive ? "opacity-0 translate-x-[100%]" : ""
           }`}
         ></div>
         <div
           className={`line duration-300 h-[5px] w-[40px] bg-white rounded ${
-            isSidebarActive ? "rotate-45 translate-y-[-13px]" : ""
+            isSidebarActive ? "rotate-[135deg] translate-y-[-13px]" : ""
           }`}
         ></div>
       </div>
 
       {/* sidebar child components starts */}
       {/* <div className="h-screen p-5 ml-64 duration-300"> */}
-      <div className="w-[100%] md:w-[calc(100%-16rem)] bg-slate-400">
-        {/* <div className="ml-64 duration-300 h-100% p-2"> */}
-        {/* <HomePage /> */}
-        {/* <Income /> */}
-        {/* <Expense /> */}
-        {/* <History /> */}
-      </div>
+      {/* <div className="w-[100%] md:w-[calc(100%-16rem)] bg-slate-400"> */}
+      {/* <div className="ml-64 duration-300 h-100% p-2"> */}
+      {/* <HomePage /> */}
+      {/* <Income /> */}
+      {/* <Expense /> */}
+      {/* <History /> */}
+      {/* </div> */}
       {/* sidebar child components ends */}
-    </section>
+    </>
   );
 };
