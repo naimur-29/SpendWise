@@ -15,7 +15,7 @@ const filterAmount = (num) => {
   return isNaN(num) || Number(num) < 0 ? 0 : Number(num);
 };
 
-export const IncomeExpensePostForm = ({ isIncome }) => {
+export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
   // get userData from userContext:
   const { userData, activeAccountIndex } = useContext(userContext);
 
@@ -36,6 +36,9 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
     const accountId = userData.accounts[activeAccountIndex].id;
 
     post(accountId);
+
+    // set user history time frame to latest dateAdded:
+    setUserDefTimeFrame(incomeExpenseData.dateAdded);
 
     // clear input fields:
     setIncomeExpenseData({

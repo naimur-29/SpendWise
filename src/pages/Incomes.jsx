@@ -102,7 +102,10 @@ export default function Incomes() {
           {/* body left container starts  */}
           <div className="input-container flex flex-col items-center gap-[20px]">
             <h2 className="text-2xl uppercase">Add Income</h2>
-            <IncomeExpensePostForm isIncome />
+            <IncomeExpensePostForm
+              isIncome
+              setUserDefTimeFrame={setUserDefTimeFrame}
+            />
           </div>
           {/* body left container ends  */}
 

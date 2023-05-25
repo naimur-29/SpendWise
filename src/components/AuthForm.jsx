@@ -6,13 +6,14 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { setDoc } from "firebase/firestore";
+import { setDoc, updateDoc } from "firebase/firestore";
 
 // importing icons:
 import { FcGoogle } from "react-icons/fc";
 
 // importing custom hooks:
 import useFocusNext from "../hooks/useFocusNext";
+import useCreateAccount from "../hooks/useCreateAccount";
 
 export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
   // states:
@@ -87,7 +88,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
 
   const demoLogin = async () => {
     const demoEmail = "fakecake420@gmail.com";
-    const demoPassword = "fake123";
+    const demoPassword = "123456";
 
     setIsLoading(true);
     try {
@@ -102,11 +103,23 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
     setIsLoading(false);
   };
 
+  // create user:
+  const { post: createAccount } = useCreateAccount();
+
   const createNewUserOnSignUp = async (uid, username) => {
     try {
       await setDoc(getUsersRef(uid), {
         userId: uid,
         username: username,
+      });
+
+      createAccount({
+        alias: "default",
+        id: `${uid}.default`,
+        userData: {
+          userId: uid,
+          username: username,
+        },
       });
     } catch (error) {
       setErrorMsg(error.message.slice(10));

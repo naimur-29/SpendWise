@@ -19,7 +19,7 @@ export const IncomeExpenseCard = ({
           <div className="flex bodyIcon">
             <GoPrimitiveDot
               className={`text-3xl ${
-                isIncome ? "text-[#51fbce]" : "text-[#ffbdda]"
+                isIncome ? "text-[#51fbce]" : "text-[#fff8bd]"
               }`}
             />
           </div>

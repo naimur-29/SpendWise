@@ -34,7 +34,7 @@ export const UserContextProvider = ({ children }) => {
   // fetching account using custom hook:
   const { data: accountData, isLoading: isAccountDataLoading } = useGetAccount(
     !isUserDataLoading && userData?.accounts
-      ? userData.accounts[activeAccountIndex].id
+      ? userData?.accounts[activeAccountIndex].id
       : undefined
   );
 

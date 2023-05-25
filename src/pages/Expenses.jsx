@@ -85,7 +85,7 @@ export default function Expenses() {
             <div className="cardTop">
               <h3 className="text-2xl uppercase font-bold self-center text-[#fff] flex flex-wrap justify-center items-center">
                 Total expense :
-                <span className="text-[#ffbdda] flex items-center">
+                <span className="text-[#fff8bd] flex items-center">
                   <TbCurrencyTaka />
                   {isHistoryDataLoading
                     ? "Loading..."
@@ -102,7 +102,7 @@ export default function Expenses() {
           {/* body left container starts  */}
           <div className="input-container flex flex-col items-center gap-[20px]">
             <h2 className="text-2xl uppercase">Add Expense</h2>
-            <IncomeExpensePostForm />
+            <IncomeExpensePostForm setUserDefTimeFrame={setUserDefTimeFrame} />
           </div>
           {/* body left container ends  */}
 

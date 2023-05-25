@@ -6,12 +6,18 @@ import { auth } from "../services/firebaseApi";
 // importing contexts:
 import { userContext } from "../contexts/UserContext";
 
+// importing custom hooks:
+import useCreateAccount from "../hooks/useCreateAccount";
+
 // importing icons:
 import { ImBook } from "react-icons/im";
 import { BsCash, BsGraphUpArrow } from "react-icons/bs";
 import { FaPiggyBank } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { GiReceiveMoney } from "react-icons/gi";
+import { GoDiffAdded } from "react-icons/go";
+import { TiTick } from "react-icons/ti";
+import { MdOutlineCancel } from "react-icons/md";
 
 // global variables:
 const topMenuItems = [
@@ -40,6 +46,12 @@ const topMenuItems = [
 export const SideBar = () => {
   // states:
   const [isSidebarActive, setIsSidebarActive] = useState(false);
+  const [isNewAccountInputActive, setIsNewAccountInputActive] = useState(false);
+  const [newAccAlias, setNewAccAlias] = useState("");
+
+  // use create account hook:
+  const { isLoading: isCreateAccountLoading, post: createNewAccount } =
+    useCreateAccount();
 
   // get userData from userContext:
   const {
@@ -49,6 +61,20 @@ export const SideBar = () => {
     accountData,
     isAccountDataLoading,
   } = useContext(userContext);
+
+  // handle create account on click:
+  const handleCreateNewAcc = () => {
+    createNewAccount({
+      alias: newAccAlias.trim(),
+      id: userData && `${userData?.userId}.${newAccAlias}`,
+      userData,
+    });
+
+    if (!isCreateAccountLoading) {
+      setNewAccAlias("");
+      setIsNewAccountInputActive(false);
+    }
+  };
 
   return (
     <>
@@ -114,25 +140,43 @@ export const SideBar = () => {
 
             {/* bottom list items start  */}
             <ul className="mt-5 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer">
-              <h1 className="mb-3 font-semibold text-gray-100">Accounts</h1>
-
+              <h1 className="flex items-center justify-between mb-3 font-semibold text-[#fff]">
+                Accounts
+                {isNewAccountInputActive ? (
+                  <MdOutlineCancel
+                    onClick={() => {
+                      setIsNewAccountInputActive(false);
+                      setNewAccAlias("");
+                    }}
+                    className="text-xl scale-[1.1] active:scale-90"
+                  />
+                ) : (
+                  <GoDiffAdded
+                    onClick={() => setIsNewAccountInputActive(true)}
+                    className="text-xl active:scale-90"
+                  />
+                )}
+              </h1>
               {userData?.accounts?.map((ele, i) => (
                 <li
                   key={i}
-                  onClick={() => setActiveAccountIndex(i)}
+                  onClick={() => {
+                    setActiveAccountIndex(i);
+                    setIsNewAccountInputActive(false);
+                  }}
                   className={
                     i === activeAccountIndex
-                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
+                      ? `flex rounded-md p-2 bg-gray-50 text-gray-700 hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `
-                      : `flex rounded-md p-2 cursor-pointer text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
+                      : `flex rounded-md p-2 text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `
                   }
                 >
                   <div className="text-lg icon">
                     <FaPiggyBank />
                   </div>
-                  <h1
-                    className={`flex flex-wrap gap-1  origin-left duration-200 w-full`}
+                  <h3
+                    className={`flex flex-wrap gap-1 origin-left duration-200 w-full`}
                   >
                     {ele?.alias}
 
@@ -147,9 +191,33 @@ export const SideBar = () => {
                     ) : (
                       <></>
                     )}
-                  </h1>
+                  </h3>
                 </li>
               ))}
+
+              {/* Add new account input btn */}
+              <div
+                className={`flex items-center justify-between rounded-md duration-300 bg-[#fff3] overflow-hidden ${
+                  isNewAccountInputActive ? "h-[40px] mt-2" : "h-[0] opacity-0"
+                }`}
+              >
+                <input
+                  type="text"
+                  onChange={(e) => setNewAccAlias(e.target.value)}
+                  value={newAccAlias}
+                  placeholder={
+                    isCreateAccountLoading ? "Loading..." : "account name"
+                  }
+                  className="flex-[8] flex items-center bg-[#fff2] focus:bg-[#fff4] rounded-md focus:placeholder:-translate-y-3 focus:placeholder:opacity-0 placeholder:text-[#fff9] placeholder:-translate-y-[2px] outline-[#fff] text-[#fff] px-2 py-1 w-full h-full placeholder:duration-200"
+                />
+
+                <button
+                  onClick={handleCreateNewAcc}
+                  className="flex-[2] flex items-center justify-center w-full h-full outline-1 outline-[#fff] rounded-md"
+                >
+                  <TiTick className="active:scale-110 text-[#44ff9b] w-[75%] h-[75%]" />
+                </button>
+              </div>
             </ul>
             {/* bottom list items end  */}
           </div>
@@ -160,9 +228,9 @@ export const SideBar = () => {
       {/* hamburger menu */}
       <div
         onClick={() => setIsSidebarActive(!isSidebarActive)}
-        className="fixed bottom-[10px] h-[50px] right-[10px] md:hidden bg-[#153d3b] rounded z-50 shadow-2xl"
+        className="fixed bottom-[10px] h-[50px] right-[10px] md:hidden bg-[#153d3b] rounded z-50 shadow-2xl shadow-[#fff]"
       >
-        <div className="flex flex-col justify-center w-full h-full gap-2 p-2 duration-200 rounded shadow-xl cursor-pointer hover:scale-105">
+        <div className="flex flex-col justify-center w-full h-full gap-2 p-2 duration-200 rounded cursor-pointer hover:scale-105">
           <div
             className={`line duration-300 h-[5px] w-[40px] bg-[#fff] rounded ${
               isSidebarActive ? "-rotate-[135deg] translate-y-[13px]" : ""
@@ -180,17 +248,6 @@ export const SideBar = () => {
           ></div>
         </div>
       </div>
-
-      {/* sidebar child components starts */}
-      {/* <div className="h-screen p-5 ml-64 duration-300"> */}
-      {/* <div className="w-[100%] md:w-[calc(100%-16rem)] bg-slate-400"> */}
-      {/* <div className="ml-64 duration-300 h-100% p-2"> */}
-      {/* <HomePage /> */}
-      {/* <Income /> */}
-      {/* <Expense /> */}
-      {/* <History /> */}
-      {/* </div> */}
-      {/* sidebar child components ends */}
     </>
   );
 };

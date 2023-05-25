@@ -6,6 +6,9 @@ import {
 } from "../services/firebaseApi";
 import { updateDoc, arrayUnion, setDoc, getDoc } from "firebase/firestore";
 
+// importing icons:
+import { TbCurrencyTaka } from "react-icons/tb";
+
 // functions:
 const getCurrentTF = (today) =>
   String(today.getMonth() + 1).padStart(2, "0") + today.getFullYear();
@@ -45,8 +48,8 @@ const isDataValid = (data) => {
 const usePostIncomeExpense = (data, isIncome) => {
   // states:
   const [isLoading, setIsLoading] = useState(false);
-  const [responseMessage, setResponseMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [responseMessage, setResponseMessage] = useState(undefined);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   // functions:
   const post = async (accountId) => {
@@ -67,7 +70,13 @@ const usePostIncomeExpense = (data, isIncome) => {
 
         // if expense is greater than income:
         if (!isIncome && data.amount > prevCurrentBalance) {
-          setErrorMessage("Expense can't exceed the Total account balance!!");
+          setErrorMessage(
+            <span>
+              Expense can't exceed the Total account balance{" "}
+              {<TbCurrencyTaka className="inline" />}
+              {prevCurrentBalance}!
+            </span>
+          );
           setResponseMessage("");
           setIsLoading(false);
           return;
@@ -136,9 +145,19 @@ const usePostIncomeExpense = (data, isIncome) => {
 
         // set response:
         setResponseMessage(
-          `$${data.amount} has been ${
-            isIncome ? "added to" : "deducted from"
-          } the ${thisAccountData.alias} account!`
+          isIncome ? (
+            <span>
+              {<TbCurrencyTaka className="inline" />}
+              {data.amount} has been added to the {thisAccountData.alias}{" "}
+              account!
+            </span>
+          ) : (
+            <span>
+              {<TbCurrencyTaka className="inline" />}
+              {data.amount} has been deducted from the {thisAccountData.alias}{" "}
+              account!
+            </span>
+          )
         );
         setErrorMessage("");
       } catch (error) {
