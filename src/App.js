@@ -22,6 +22,7 @@ import { SideBar } from "./components/SideBar";
 import Overview from "./pages/Overview";
 import Incomes from "./pages/Incomes";
 import Expenses from "./pages/Expenses";
+import Histories from "./pages/Histories";
 
 // importing context providers:
 import { UserContextProvider } from "./contexts/UserContext";
@@ -40,7 +41,7 @@ function App() {
         <Route index element={<Overview />} />
         <Route path="incomes" element={<Incomes />} />
         <Route path="expenses" element={<Expenses />} />
-        <Route path="histories" element={<h1>Recent Transactions</h1>} />
+        <Route path="histories" element={<Histories />} />
         <Route
           path="profile"
           element={

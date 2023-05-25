@@ -46,6 +46,7 @@ export const incomeExpenseHistories = [
         amount: 100,
         context: "<source>",
         dateAdded: "<day>/<month>/<year>",
+        stat: "in",
       },
     ],
     expenses: [
@@ -53,6 +54,7 @@ export const incomeExpenseHistories = [
         amount: 100,
         context: "<source>",
         dateAdded: "<month>/<day>/<year>",
+        stat: "ex",
       },
     ],
   },

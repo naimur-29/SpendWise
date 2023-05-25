@@ -55,6 +55,12 @@ const usePostIncomeExpense = (data, isIncome) => {
   const post = async (accountId) => {
     setIsLoading(true);
 
+    // set data stat:
+    data = {
+      ...data,
+      stat: isIncome ? "incomes" : "expenses",
+    };
+
     // create history id:
     const historyId = `${accountId}.${data.dateAdded.split("-")[1]}${
       data.dateAdded.split("-")[0]

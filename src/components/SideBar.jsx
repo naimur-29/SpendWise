@@ -97,7 +97,7 @@ export const SideBar = () => {
                   className="object-cover p-[2px] rounded-full w-11 h-11 bg-gray-100"
                   src={
                     auth?.currentUser?.photoURL ||
-                    "https://static.theprint.in/wp-content/uploads/2021/06/Elon-Musk.jpg?compress=true&quality=80&w=376&dpr=2.6"
+                    "https://media.tenor.com/1Sd82w25kacAAAAC/one-punch-man-punch.gif"
                   }
                   alt="Bordered avatar"
                 />
@@ -139,7 +139,7 @@ export const SideBar = () => {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="mt-5 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer">
+            <ul className="mt-5 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer overflow-y-auto">
               <h1 className="flex items-center justify-between mb-3 font-semibold text-[#fff]">
                 Accounts
                 {isNewAccountInputActive ? (
