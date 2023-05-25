@@ -5,28 +5,46 @@ import { auth } from "../services/firebaseApi";
 // importing custom hooks:
 import useGetUser from "../hooks/useGetUser";
 import useGetAccount from "../hooks/useGetAccount";
+import useGetHistory from "../hooks/useGetHistory";
 
 // creating context:
 export const userContext = createContext(null);
 
+// functions:
+const getTFfromDate = (date) => {
+  if (!date) return "";
+  return `${date.slice(-5, -3)}${date.slice(0, 4)}`;
+};
+
 export const UserContextProvider = ({ children }) => {
+  // states:
   const [currentUser, setCurrentUser] = useState(null);
   const [activeAccountIndex, setActiveAccountIndex] = useState(0);
+  const [userDefTimeFrame, setUserDefTimeFrame] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged(setCurrentUser);
   }, []);
 
-  // getting user using custom hook:
+  // fetching user using custom hook:
   const { data: userData, isLoading: isUserDataLoading } = useGetUser(
     currentUser?.uid
   );
 
-  // getting user using custom hook:
+  // fetching account using custom hook:
   const { data: accountData, isLoading: isAccountDataLoading } = useGetAccount(
     !isUserDataLoading && userData?.accounts
       ? userData.accounts[activeAccountIndex].id
       : undefined
+  );
+
+  // fetching history using custom hook:
+  const { data: historyData, isLoading: isHistoryDataLoading } = useGetHistory(
+    `${currentUser?.uid}.${accountData?.alias}.${
+      userDefTimeFrame
+        ? getTFfromDate(userDefTimeFrame)
+        : accountData?.currentTimeFrame
+    }`
   );
 
   const value = {
@@ -37,6 +55,11 @@ export const UserContextProvider = ({ children }) => {
     isAccountDataLoading,
     activeAccountIndex,
     setActiveAccountIndex,
+    userDefTimeFrame,
+    setUserDefTimeFrame,
+    getTFfromDate,
+    historyData,
+    isHistoryDataLoading,
   };
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>;

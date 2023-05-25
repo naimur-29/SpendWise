@@ -54,12 +54,12 @@ export const SideBar = () => {
     <>
       {/* sidebar container starts  */}
       <div
-        className={`fixed bg-[#2c8781] top-0 ${
+        className={`bg-[#2c8781] border-r-[8px] border-[#fff] shadow-2xl shadow-[#fff] fixed top-0 ${
           isSidebarActive ? "left-[0%]" : "left-[-100%]"
         } z-20 SideBarContainer md:left-0 duration-200`}
       >
         <div className="flex">
-          <div className="relative w-64 h-screen p-4 pt-5 duration-300 mainContainer sm:w-64 shadow-xl flex flex-col gap-1">
+          <div className="relative flex flex-col w-64 h-screen gap-1 p-4 pt-5 duration-300 mainContainer sm:w-64">
             {/* top account container starts */}
             <Link
               to={"profile"}
@@ -114,7 +114,7 @@ export const SideBar = () => {
 
             {/* bottom list items start  */}
             <ul className="mt-5 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer">
-              <h1 className="mb-3 text-gray-100 font-semibold">Accounts</h1>
+              <h1 className="mb-3 font-semibold text-gray-100">Accounts</h1>
 
               {userData?.accounts?.map((ele, i) => (
                 <li
@@ -162,7 +162,7 @@ export const SideBar = () => {
         onClick={() => setIsSidebarActive(!isSidebarActive)}
         className="fixed bottom-[10px] h-[50px] right-[10px] md:hidden bg-[#153d3b] rounded z-50 shadow-2xl"
       >
-        <div className="w-full h-full flex flex-col justify-center gap-2 p-2 rounded cursor-pointer shadow-xl hover:scale-105 duration-200">
+        <div className="flex flex-col justify-center w-full h-full gap-2 p-2 duration-200 rounded shadow-xl cursor-pointer hover:scale-105">
           <div
             className={`line duration-300 h-[5px] w-[40px] bg-[#fff] rounded ${
               isSidebarActive ? "-rotate-[135deg] translate-y-[13px]" : ""

@@ -49,7 +49,7 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
     <div className="flex justify-center w-full">
       <div className="flex flex-col gap-2 extra-lg:w-[400px] lg:w-[90%] w-[95%] items-center">
         {responseMessage ? (
-          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2">
+          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2 mb-1">
             Latest: {responseMessage}
           </p>
         ) : (
@@ -57,14 +57,14 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
         )}
 
         {errorMessage ? (
-          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2">
+          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2 mb-1">
             Error: {errorMessage}
           </p>
         ) : (
           <></>
         )}
 
-        <div className="flex justify-between items-center w-full gap-3">
+        <div className="flex items-center justify-between w-full gap-3">
           <label htmlFor="amount" className="flex-[2]">
             Amount:{" "}
           </label>
@@ -78,11 +78,11 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
                 amount: filterAmount(e.target.value),
               }));
             }}
-            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]"
+            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 bg-[#39aca433]"
           />
         </div>
 
-        <div className="flex justify-between items-center w-full gap-3">
+        <div className="flex items-center justify-between w-full gap-3">
           <label htmlFor="context" className="flex-[2]">
             Context:{" "}
           </label>
@@ -98,11 +98,11 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
                 context: e.target.value,
               }));
             }}
-            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]"
+            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 bg-[#39aca433]"
           />
         </div>
 
-        <div className="flex justify-between items-center w-full gap-3">
+        <div className="flex items-center justify-between w-full gap-3">
           <label htmlFor="dateAdded" className="flex-[2]">
             Date:{" "}
           </label>
@@ -116,7 +116,7 @@ export const IncomeExpensePostForm = ({ isIncome }) => {
                 dateAdded: e.target.value,
               }));
             }}
-            className="flex-[8] px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 bg-[#39aca433]"
+            className="flex-[8] px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 bg-[#39aca433]"
           />
         </div>
 

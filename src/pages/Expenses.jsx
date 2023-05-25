@@ -1,5 +1,5 @@
 // importing libraries:
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 // importing icons:
 import { TbCurrencyTaka } from "react-icons/tb";
@@ -8,7 +8,6 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { userContext } from "../contexts/UserContext";
 
 // importing custom hooks:
-import useGetHistory from "../hooks/useGetHistory";
 import useDeleteIncomeExpense from "../hooks/useDeleteIncomeExpense";
 
 // importing local components:
@@ -16,11 +15,6 @@ import { IncomeExpensePostForm } from "../components/IncomeExpensePostForm";
 import { IncomeExpenseCard } from "../components/IncomeExpenseCard";
 
 // functions:
-const getTF = (date) => {
-  if (!date) return "";
-  return `${date.slice(-5, -3)}${date.slice(0, 4)}`;
-};
-
 const getTextTf = (serial) => {
   const monthDict = {
     "01": "Jan",
@@ -42,30 +36,30 @@ const getTextTf = (serial) => {
   return `${monthDict[serial.slice(0, 2)]}, ${serial.slice(2)}`;
 };
 
-export default function Incomes() {
+export default function Expenses() {
   // states:
-  const [userDefTimeFrame, setUserDefTimeFrame] = useState("");
 
   // contexts:
-  const { accountData, currentUser } = useContext(userContext);
-
-  // fetching history using custom hook:
-  const { data: historyData, isLoading: isHistoryDataLoading } = useGetHistory(
-    `${currentUser?.uid}.${accountData?.alias}.${
-      userDefTimeFrame ? getTF(userDefTimeFrame) : accountData?.currentTimeFrame
-    }`
-  );
+  const {
+    accountData,
+    currentUser,
+    userDefTimeFrame,
+    setUserDefTimeFrame,
+    getTFfromDate,
+    historyData,
+    isHistoryDataLoading,
+  } = useContext(userContext);
 
   // delete history functionality through custom hook:
-  const { deleteHistory } = useDeleteIncomeExpense(true);
+  const { deleteHistory } = useDeleteIncomeExpense();
 
   return (
     <section className="incomeContainer w-full md:w-[calc(100%-16rem)] min-h-screen bg-slate-100">
       <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
         {/* top container starts  */}
-        <div className="heading flex items-center gap-3 mb-4">
-          <h2 className="mb-3 text-2xl extra-sm:text-3xl font-semibold ">
-            Incomes of
+        <div className="flex items-center gap-3 mb-4 heading">
+          <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl ">
+            Expenses of
           </h2>
 
           <div className="relative">
@@ -81,7 +75,7 @@ export default function Incomes() {
               className="date-overlay text-slate-100 bg-[#39aca4] px-4 py-2 rounded-full absolute top-0 left-[0] w-[120px] -translate-y-1"
             >
               {getTextTf(
-                getTF(userDefTimeFrame) || accountData?.currentTimeFrame
+                getTFfromDate(userDefTimeFrame) || accountData?.currentTimeFrame
               )}
             </p>
           </div>
@@ -90,12 +84,12 @@ export default function Incomes() {
           <div className="flex justify-center items-center w-full p-2 bg-[#39aca4] rounded-md drop-shadow-md border-[3px] border-[#fff]">
             <div className="cardTop">
               <h3 className="text-2xl uppercase font-bold self-center text-[#fff] flex flex-wrap justify-center items-center">
-                Total income :
-                <span className="text-[#51fbce] flex items-center">
+                Total expense :
+                <span className="text-[#ffbdda] flex items-center">
                   <TbCurrencyTaka />
                   {isHistoryDataLoading
                     ? "Loading..."
-                    : historyData?.totalIncomeAmount || 0}
+                    : historyData?.totalExpenseAmount || 0}
                 </span>
               </h3>
             </div>
@@ -107,22 +101,22 @@ export default function Incomes() {
         <div className="bodyContainer flex flex-col gap-[40px] extra-lg:flex-row extra-lg:gap-0">
           {/* body left container starts  */}
           <div className="input-container flex flex-col items-center gap-[20px]">
-            <h2 className="text-2xl uppercase">Add Income</h2>
-            <IncomeExpensePostForm isIncome />
+            <h2 className="text-2xl uppercase">Add Expense</h2>
+            <IncomeExpensePostForm />
           </div>
           {/* body left container ends  */}
 
           {/* body Right container starts  */}
           <div className="bodyContainerRight w-full customSm:w-[80%] md:w-full m-auto mt-1 col-span-2 customMid:col-span-8 customMid:mt-3 p-1 md:p-0">
             <h2 className="text-center text-2xl uppercase mb-[20px]">
-              Income Histories
+              Expense Histories
             </h2>
 
             <div className="rightCardSection h-[68vh] w-[100%] md:w-[100%] customMid:w-[99%] lg:w-[92%] m-auto overflow-auto">
               {isHistoryDataLoading ? (
                 <h3 className="text-center text-slate-600">Loading...</h3>
-              ) : historyData?.incomes[0] ? (
-                historyData?.incomes
+              ) : historyData?.expenses[0] ? (
+                historyData?.expenses
                   ?.sort(
                     (a, b) =>
                       Number(b.dateAdded.slice(-2)) -
@@ -131,7 +125,6 @@ export default function Incomes() {
                   ?.map((ele, i) => (
                     <IncomeExpenseCard
                       key={i}
-                      isIncome
                       amount={ele.amount}
                       context={ele.context}
                       dateAdded={ele.dateAdded}

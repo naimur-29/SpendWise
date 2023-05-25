@@ -43,10 +43,12 @@ const isDataValid = (data) => {
 };
 
 const usePostIncomeExpense = (data, isIncome) => {
+  // states:
   const [isLoading, setIsLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // functions:
   const post = async (accountId) => {
     setIsLoading(true);
 

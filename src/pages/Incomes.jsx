@@ -1,5 +1,5 @@
 // importing libraries:
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 // importing icons:
 import { TbCurrencyTaka } from "react-icons/tb";
@@ -8,7 +8,6 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { userContext } from "../contexts/UserContext";
 
 // importing custom hooks:
-import useGetHistory from "../hooks/useGetHistory";
 import useDeleteIncomeExpense from "../hooks/useDeleteIncomeExpense";
 
 // importing local components:
@@ -16,11 +15,6 @@ import { IncomeExpensePostForm } from "../components/IncomeExpensePostForm";
 import { IncomeExpenseCard } from "../components/IncomeExpenseCard";
 
 // functions:
-const getTF = (date) => {
-  if (!date) return "";
-  return `${date.slice(-5, -3)}${date.slice(0, 4)}`;
-};
-
 const getTextTf = (serial) => {
   const monthDict = {
     "01": "Jan",
@@ -44,17 +38,17 @@ const getTextTf = (serial) => {
 
 export default function Incomes() {
   // states:
-  const [userDefTimeFrame, setUserDefTimeFrame] = useState("");
 
   // contexts:
-  const { accountData, currentUser } = useContext(userContext);
-
-  // fetching history using custom hook:
-  const { data: historyData, isLoading: isHistoryDataLoading } = useGetHistory(
-    `${currentUser?.uid}.${accountData?.alias}.${
-      userDefTimeFrame ? getTF(userDefTimeFrame) : accountData?.currentTimeFrame
-    }`
-  );
+  const {
+    accountData,
+    currentUser,
+    userDefTimeFrame,
+    setUserDefTimeFrame,
+    getTFfromDate,
+    historyData,
+    isHistoryDataLoading,
+  } = useContext(userContext);
 
   // delete history functionality through custom hook:
   const { deleteHistory } = useDeleteIncomeExpense(true);
@@ -63,8 +57,8 @@ export default function Incomes() {
     <section className="incomeContainer w-full md:w-[calc(100%-16rem)] min-h-screen bg-slate-100">
       <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
         {/* top container starts  */}
-        <div className="heading flex items-center gap-3 mb-4">
-          <h2 className="mb-3 text-2xl extra-sm:text-3xl font-semibold ">
+        <div className="flex items-center gap-3 mb-4 heading">
+          <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl ">
             Incomes of
           </h2>
 
@@ -81,7 +75,7 @@ export default function Incomes() {
               className="date-overlay text-slate-100 bg-[#39aca4] px-4 py-2 rounded-full absolute top-0 left-[0] w-[120px] -translate-y-1"
             >
               {getTextTf(
-                getTF(userDefTimeFrame) || accountData?.currentTimeFrame
+                getTFfromDate(userDefTimeFrame) || accountData?.currentTimeFrame
               )}
             </p>
           </div>

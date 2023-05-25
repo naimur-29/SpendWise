@@ -15,11 +15,11 @@ export const IncomeExpenseCard = ({
     <section className="block mb-2 w-full  p-0 sm:p-1 customMid:p-2 bg-[#39aca4] rounded-md shadow-md">
       <div className="cardContainer grid grid-cols-12 gap-1 py-1 hover:bg-[#fff3] hover:-translate-y-[0.1rem] duration-200">
         {/* left side of card starts  */}
-        <div className="cardLeft col-span-1 m-auto">
-          <div className="bodyIcon flex">
+        <div className="col-span-1 m-auto cardLeft">
+          <div className="flex bodyIcon">
             <GoPrimitiveDot
               className={`text-3xl ${
-                isIncome ? "text-[#51fbce]" : "text-[#fbdf51]"
+                isIncome ? "text-[#51fbce]" : "text-[#ffbdda]"
               }`}
             />
           </div>
@@ -27,10 +27,10 @@ export const IncomeExpenseCard = ({
         {/* left side of card ends  */}
 
         {/* mid side of card starts  */}
-        <div className="cardMid  col-span-10 ">
+        <div className="col-span-10 cardMid ">
           <div className="midContainer">
             {/* midTop starts */}
-            <div className="midTop flex mb-1">
+            <div className="flex mb-1 midTop">
               <span className={`text-[#fff] text-xl font-bold flex`}>
                 <TbCurrencyTaka className="self-center" />
                 {amount}
@@ -40,7 +40,7 @@ export const IncomeExpenseCard = ({
 
             {/* midBottom starts  */}
             <div className="midBottom flex justify-between w-[100%] sm:w-[96%] md:w-[95%] lg:w-[92%]">
-              <div className="midBottomLeft flex">
+              <div className="flex midBottomLeft">
                 <p className="text-[#fffd] text-sm md:text-base mr-2 line-clamp-1">
                   {context}
                 </p>
@@ -60,9 +60,9 @@ export const IncomeExpenseCard = ({
         {/* right side of card starts  */}
         <div
           onClick={() => del(accountId, { amount, context, dateAdded })}
-          className="cardRight col-span-1 flex justify-center items-center -ml-2 cursor-pointer"
+          className="flex items-center justify-center col-span-1 -ml-2 cursor-pointer cardRight"
         >
-          <div className="iconContainer  ">
+          <div className="iconContainer ">
             <AiTwotoneDelete className="text-2xl text-[#fff] hover:text-[#f48a] hover:scale-150 duration-300" />
           </div>
         </div>
