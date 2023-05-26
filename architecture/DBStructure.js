@@ -3,6 +3,7 @@ export const users = [
     uid: "<from Auth auto-generated>",
     userId: "<uid>", // key
     username: "<name>",
+    profile: "<img/gif url>",
     accounts: [
       {
         alias: "<accountAlias>",
@@ -46,7 +47,7 @@ export const incomeExpenseHistories = [
         amount: 100,
         context: "<source>",
         dateAdded: "<day>/<month>/<year>",
-        stat: "in",
+        stat: "income",
       },
     ],
     expenses: [
@@ -54,7 +55,7 @@ export const incomeExpenseHistories = [
         amount: 100,
         context: "<source>",
         dateAdded: "<month>/<day>/<year>",
-        stat: "ex",
+        stat: "expense",
       },
     ],
   },

@@ -1,7 +1,8 @@
 // importing libraries:
 import { useState, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { auth } from "../services/firebaseApi";
+import { signOut } from "firebase/auth";
 
 // importing contexts:
 import { userContext } from "../contexts/UserContext";
@@ -18,6 +19,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { GoDiffAdded } from "react-icons/go";
 import { TiTick } from "react-icons/ti";
 import { MdOutlineCancel } from "react-icons/md";
+import { IoExitOutline } from "react-icons/io5";
 
 // global variables:
 const topMenuItems = [
@@ -87,31 +89,50 @@ export const SideBar = () => {
         <div className="flex">
           <div className="relative flex flex-col w-64 h-screen gap-1 p-4 pt-5 duration-300 mainContainer sm:w-64">
             {/* top account container starts */}
-            <Link
-              to={"profile"}
+            <div
               onClick={() => setIsSidebarActive(false)}
               className="mb-2 topContainer AccountContainer"
             >
-              <div className="flex items-center space-x-4 hover:bg-[#fff4] hover:-translate-y-[0.1rem] duration-200 rounded-xl p-1 bg-[#fff3]">
-                <img
-                  className="object-cover p-[2px] rounded-full w-11 h-11 bg-gray-100"
-                  src={
-                    auth?.currentUser?.photoURL ||
-                    "https://media.tenor.com/1Sd82w25kacAAAAC/one-punch-man-punch.gif"
-                  }
-                  alt="Bordered avatar"
-                />
+              <div className="flex items-center justify-between space-x-4 hover:bg-[#fff4] hover:-translate-y-[0.1rem] duration-200 rounded-xl p-2 bg-[#fff3]">
+                <div className="flex items-center justify-center gap-[8px] max-w-[80%]">
+                  {auth?.currentUser?.photoURL ? (
+                    <img
+                      className="object-cover p-[2px] rounded-full w-11 h-11 bg-gray-100 shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]"
+                      src={auth?.currentUser?.photoURL}
+                      alt="Bordered avatar"
+                    />
+                  ) : (
+                    <p className="flex items-center justify-center min-w-[2.75rem] uppercase text-3xl font-bold object-cover p-[2px] rounded-full w-11 h-11 bg-[#fff] text-[#39aca4] shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]">
+                      {userData?.username[0]}
+                    </p>
+                  )}
 
-                <div className="block font-medium text-gray-100">
-                  <div>{userData ? userData?.username : "Loading..."}</div>
-                  <div className="text-sm text-gray-300">
-                    {userData?.accounts
-                      ? userData?.accounts[activeAccountIndex]?.alias
-                      : ""}
+                  <div className="block font-medium text-gray-100 max-w-[80%] break-words">
+                    <p>{userData?.username}</p>
+                    <div className="text-sm text-gray-300 font-normal">
+                      {userData?.accounts
+                        ? userData?.accounts[activeAccountIndex]?.alias
+                        : ""}
+                    </div>
                   </div>
                 </div>
+
+                <div
+                  title="Logout"
+                  onClick={async () => {
+                    try {
+                      await signOut(auth);
+                      console.log("Logout Successful!");
+                    } catch (error) {
+                      console.log(error.message);
+                    }
+                  }}
+                  className="flex justify-end items-center cursor-pointer h-[50px] w-full hover:scale-110 duration-200"
+                >
+                  <IoExitOutline className="text-2xl text-white" />
+                </div>
               </div>
-            </Link>
+            </div>
             {/* top account container ends */}
 
             {/* top list items starts  */}
@@ -123,7 +144,7 @@ export const SideBar = () => {
                   onClick={() => setIsSidebarActive(false)}
                   className={({ isActive }) =>
                     isActive
-                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
+                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 duration-100 text-sm items-center gap-x-4 mb-1 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] 
               `
                       : `flex rounded-md p-2 cursor-pointer text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `
@@ -144,14 +165,16 @@ export const SideBar = () => {
                 Accounts
                 {isNewAccountInputActive ? (
                   <MdOutlineCancel
+                    title="Cancel"
                     onClick={() => {
                       setIsNewAccountInputActive(false);
                       setNewAccAlias("");
                     }}
-                    className="text-xl scale-[1.1] active:scale-90"
+                    className="text-xl scale-[1.1] active:scale-90 rounded-full"
                   />
                 ) : (
                   <GoDiffAdded
+                    title="Add new account!"
                     onClick={() => setIsNewAccountInputActive(true)}
                     className="text-xl active:scale-90"
                   />
@@ -166,7 +189,7 @@ export const SideBar = () => {
                   }}
                   className={
                     i === activeAccountIndex
-                      ? `flex rounded-md p-2 bg-gray-50 text-gray-700 hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
+                      ? `flex rounded-md p-2 bg-gray-50 text-gray-700 duration-100 text-sm items-center gap-x-4 mb-1 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] 
               `
                       : `flex rounded-md p-2 text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
               `

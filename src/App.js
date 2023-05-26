@@ -42,27 +42,6 @@ function App() {
         <Route path="incomes" element={<Incomes />} />
         <Route path="expenses" element={<Expenses />} />
         <Route path="histories" element={<Histories />} />
-        <Route
-          path="profile"
-          element={
-            <>
-              <h1>User Profile</h1>
-              <button
-                onClick={async () => {
-                  try {
-                    await signOut(auth);
-                    console.log("Logout Successful!");
-                  } catch (error) {
-                    console.log(error.message);
-                  }
-                }}
-                className="px-12 py-2 bg-white"
-              >
-                Logout
-              </button>
-            </>
-          }
-        />
 
         <Route path="*" element={<h1>404 page not found!</h1>} />
       </Route>
