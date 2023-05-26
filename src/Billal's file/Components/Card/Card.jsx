@@ -1,222 +1,283 @@
 import React from "react";
+import { BsCurrencyDollar } from "react-icons/bs";
+
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+} from "recharts";
 
 export default function Card() {
+  const data = [
+    {
+      name: "Page A",
+      income: 2800,
+      expense: 2400,
+    },
+    {
+      name: "Page B",
+      income: 3000,
+      expense: 1398,
+    },
+    {
+      name: "Page C",
+      income: 2000,
+      expense: 800,
+    },
+    {
+      name: "Page D",
+      income: 2780,
+      expense: 3008,
+    },
+    {
+      name: "Page E",
+      income: 2000,
+      expense: 1800,
+    },
+    {
+      name: "Page F",
+      income: 2390,
+      expense: 2500,
+    },
+    {
+      name: "Page G",
+      income: 3490,
+      expense: 3200,
+    },
+  ];
+
+  const data2 = [
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 },
+  ];
+
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+  const RADIAN = Math.PI / 180;
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    index,
+  }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor={x > cx ? "start" : "end"}
+        dominantBaseline="central"
+      >
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
+
   return (
     <>
-      <div className="cardContainer grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {/* card 1 */}
-        <a
-          href="#"
-          className="block max-w-sm p-4 bg-gray-600 rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              card 1
-            </h1>
-          </div>
+      {/* main container */}
+      <div className="cardContainer h-full p-1 bg-gray-300">
+        <div className="cardWrapper h-full mt-1">
+          {/* first row starts  */}
 
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
+          <div className="cardTopContainer grid grid-cols-1 gap-y-3 mb-4 sm:grid-cols-3 sm:gap-x-6 ">
+            {/* 1st card starts  */}
+            <a
+              href="#"
+              className="block w-[56%] m-auto sm:w-[100%] bg-slate-700 rounded-md shadow-md"
+            >
+              <div className="cardWrapper w-[100%] grid grid-cols-12 bg-red-400">
+                {/* card wrapper left starts  */}
+                <div className="cardLeft col-span-3 flex justify-center items-center bg-slate-600">
+                  <div className="leftIcon">
+                    <BsCurrencyDollar className="text-3xl text-green-600" />
+                  </div>
+                </div>
+                {/* card wrapper left ends  */}
 
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a>
-        {/* card1 ends */}
-        {/* card 2 */}
-        <a
-          href="#"
-          className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              card 2
-            </h1>
-          </div>
+                {/* card wrapper right starts  */}
+                <div className="cardRight col-span-9 flex flex-col  bg-gray-700 text-gray-100">
+                  {/* card left top starts  */}
+                  <div className="cardLeftTop m-auto">
+                    <h1 className="text-xl">total income</h1>
+                  </div>
+                  {/* card left top ends  */}
 
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a>
-        {/* card 2 ends */}
-        {/* card 3 */}
-        <a
-          href="#"
-          className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              card 3
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a>
-        {/* card 3 ends */}
-        {/* card 4 */}
-        <a
-          href="#"
-          className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              card 4
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a>
-        {/* card 4 ends */}
-        {/* card 5 */}
-        <a
-          href="#"
-          className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              card 5
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a>
-        {/* card 5 ends */}
-        {/* card 6 */}
-        <a
-          href="#"
-          className="block row-span-2 max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700  "
-        >
-          <div className=" h-full flex flex-col justify-center items-center">
-            <div className="cardTop text-center">
-              <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-                card 6 , row span 2
-              </h1>
-            </div>
-
-            <div className="cardMid mb-2 flex gap-x-5 justify-center">
-              <div className="cardMidLeft text-3xl font-bold text-gray-50">
-                $245
+                  {/* card bottom top starts  */}
+                  <div className="cardbottom flex  items-center m-auto text-3xl font-semibold">
+                    <BsCurrencyDollar className="" />
+                    <h1 className="">200</h1>
+                  </div>
+                  {/* card bottom top ends  */}
+                </div>
+                {/* card wrapper right ends  */}
               </div>
-              <div className="cardMidRight flex gap-x-2 self-center">
-                <h1 className="self-center text-gray-50">-11.5</h1>
-                <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
+            </a>
+            {/* 1st card ends  */}
+
+            {/* 2nd card starts  */}
+            <a
+              href="#"
+              className="block  w-[56%] m-auto sm:w-[100%] bg-slate-700 rounded-md shadow-md"
+            >
+              <div className="cardWrapper w-[100%] grid grid-cols-12 bg-red-400">
+                {/* card wrapper left starts  */}
+                <div className="cardLeft col-span-3 flex justify-center items-center bg-slate-600">
+                  <div className="leftIcon">
+                    <BsCurrencyDollar className="text-3xl text-red-600" />
+                  </div>
+                </div>
+                {/* card wrapper left ends  */}
+
+                {/* card wrapper right starts  */}
+                <div className="cardRight col-span-9 flex flex-col  bg-gray-700 text-gray-100">
+                  {/* card left top starts  */}
+                  <div className="cardLeftTop m-auto">
+                    <h1 className="text-xl">total expense</h1>
+                  </div>
+                  {/* card left top ends  */}
+
+                  {/* card bottom top starts  */}
+                  <div className="cardbottom flex  items-center m-auto text-3xl font-semibold">
+                    <BsCurrencyDollar className="" />
+                    <h1 className="">200</h1>
+                  </div>
+                  {/* card bottom top ends  */}
+                </div>
+                {/* card wrapper right ends  */}
+              </div>
+            </a>
+            {/* 2nd card ends  */}
+
+            {/* 3rd card starts  */}
+            <a
+              href="#"
+              className="block w-[56%] m-auto sm:w-[100%] bg-slate-700 rounded-md shadow-md"
+            >
+              <div className="cardWrapper w-[100%] grid grid-cols-12 rounded-md  bg-red-400">
+                {/* card wrapper left starts  */}
+                <div className="cardLeft col-span-3 flex justify-center items-center bg-slate-600">
+                  <div className="leftIcon">
+                    <BsCurrencyDollar className="text-3xl text-blue-600" />
+                  </div>
+                </div>
+                {/* card wrapper left ends  */}
+
+                {/* card wrapper right starts  */}
+                <div className="cardRight col-span-9 flex flex-col  bg-gray-700 text-gray-100">
+                  {/* card left top starts  */}
+                  <div className="cardLeftTop m-auto">
+                    <h1 className="text-xl">Balance</h1>
+                  </div>
+                  {/* card left top ends  */}
+
+                  {/* card bottom top starts  */}
+                  <div className="cardbottom flex  items-center m-auto text-3xl font-semibold">
+                    <BsCurrencyDollar className="" />
+                    <h1 className="">200</h1>
+                  </div>
+                  {/* card bottom top ends  */}
+                </div>
+                {/* card wrapper right ends  */}
+              </div>
+            </a>
+            {/* 3rd card ends  */}
+          </div>
+          {/* first row ends  */}
+
+          {/* second row starts  */}
+
+          <div className="cardBottomContainer grid grid-cols-1 gap-2 customMid:grid-cols-12">
+            {/* bottom left starts  */}
+
+            <div className="bottomLeft col-span-4 flex items-center justify-center  rounded-lg shadow-md bg-gray-50">
+              <div className="graphContainer  w-[100%] sm:w-[90%] customMid:w-[98%] ">
+                <ResponsiveContainer width="100%" aspect={2 / 1}>
+                  <PieChart width={400} height={400}>
+                    <Pie
+                      data={data2}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={renderCustomizedLabel}
+                      outerRadius={80}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {data.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
               </div>
             </div>
+            {/* bottom left ends  */}
 
-            <div className="cardBottom mb-2 text-center self-center">
-              <p className="text-gray-50">Compared to last month</p>
+            {/* bottom right starts  */}
+            <div className="bottomRight col-span-8">
+              <div className="graphContainer  m-auto w-[88%] sm:w-[90%] customMid:w-[98%]">
+                <a
+                  href="#"
+                  className="block m-auto w-full py-2 bg-gray-50 rounded-lg shadow-md"
+                >
+                  <ResponsiveContainer width="100%" aspect={2 / 1}>
+                    <LineChart
+                      data={data}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line
+                        type="monotone"
+                        dataKey="income"
+                        stroke="#16A34A"
+                        activeDot={{ r: 8 }}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="expense"
+                        stroke="#EF4444"
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </a>
+              </div>
             </div>
-          </div>
-        </a>
-
-        {/* card 6 ends */}
-        {/* card 7 */}
-
-        <a
-          href="#"
-          className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              card 7
-            </h1>
+            {/* bottom right ends  */}
           </div>
 
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a>
-        {/* card 7 ends */}
-        {/* card 8 */}
-
-        <a
-          href="#"
-          className="block max-w-sm p-4 bg-gray-600  rounded-md shadow-md hover:bg-gray-700 "
-        >
-          <div className="cardTop text-center">
-            <h1 className="mb-2 text-2xl font-bold self-center text-gray-50 ">
-              card 8
-            </h1>
-          </div>
-
-          <div className="cardMid mb-2 flex gap-x-5 justify-center">
-            <div className="cardMidLeft text-3xl font-bold text-gray-100">
-              $245
-            </div>
-            <div className="cardMidRight flex gap-x-2 self-center">
-              <h1 className="self-center text-gray-100">-11.5</h1>
-              <i className="ri-arrow-up-line self-center font-semibold text-xl text-green-600"></i>
-            </div>
-          </div>
-
-          <div className="cardBottom mb-2 text-center self-center">
-            <p className="text-gray-100">Compared to last month</p>
-          </div>
-        </a>
-        {/* card 8 ends */}
+          {/* second row ends  */}
+        </div>
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import React from "react";
 export default function SearchBar() {
   return (
     <>
-      <div className="searchBar flex justify-between mb-7">
+      <div className="searchBar flex p-2  justify-between mb-3">
         {/* left container , logo */}
         <div className="leftContainer cursor-pointer text-xl sm:text-2xl text-white self-center">
           OverView

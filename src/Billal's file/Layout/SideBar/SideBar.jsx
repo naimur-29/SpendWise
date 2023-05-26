@@ -129,7 +129,6 @@ export default function SideBar() {
           <div className="relative w-64 h-screen p-5 pt-5 duration-300 bg-gray-700 mainContainer sm:w-64">
             {/* top account container starts */}
             <div className="mb-2 topContainer AccountContainer ">
-
               <div className="flex items-center space-x-4 ">
                 <img
                   className="object-cover w-10 h-10 p-1 rounded-full cursor-pointer ring-2 ring-gray-300 dark:ring-gray-500"
@@ -239,10 +238,8 @@ export default function SideBar() {
       </div>
 
       {/* sidebar child components starts */}
-      {/* <div className="h-screen p-5 ml-64 duration-300"> */}
       <div className="w-[100%] md:w-[calc(100%-16rem)] bg-slate-400">
-        {/* <div className="ml-64 duration-300 h-100% p-2"> */}
-        {/* <HomePage /> */}
+        <HomePage />
         {/* <Income /> */}
         {/* <Expense /> */}
         {/* <History /> */}
