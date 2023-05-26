@@ -194,7 +194,7 @@ export default function SideBar() {
       </div>
 
       {/* sidebar child components starts */}
-      <div className="w-[100%] md:w-[calc(100%-16rem)] bg-slate-400">
+      <div className="w-[100%] md:w-[calc(100%-16rem)] h-screen bg-slate-400">
         <HomePage />
         {/* <Income /> */}
         {/* <Expense /> */}
