@@ -129,9 +129,7 @@ export default function Incomes() {
                     <IncomeExpenseCard
                       key={i}
                       isIncome
-                      amount={ele.amount}
-                      context={ele.context}
-                      dateAdded={ele.dateAdded}
+                      data={ele}
                       del={deleteHistory}
                       accountId={`${currentUser?.uid}.${accountData?.alias}`}
                     />

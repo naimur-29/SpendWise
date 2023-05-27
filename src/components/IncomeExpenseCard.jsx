@@ -3,14 +3,7 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { GoPrimitiveDot } from "react-icons/go";
 import { TbCurrencyTaka } from "react-icons/tb";
 
-export const IncomeExpenseCard = ({
-  amount,
-  context,
-  dateAdded,
-  del,
-  accountId,
-  isIncome,
-}) => {
+export const IncomeExpenseCard = ({ data, del, accountId, isIncome }) => {
   return (
     <section className="block mb-2 w-full  p-0 sm:p-1 customMid:p-2 bg-[#39aca4] rounded-md shadow-md">
       <div className="cardContainer grid grid-cols-12 gap-1 py-1 hover:bg-[#fff3] hover:-translate-y-[0.1rem] duration-200">
@@ -33,7 +26,7 @@ export const IncomeExpenseCard = ({
             <div className="flex mb-1 midTop">
               <span className={`text-[#fff] text-xl font-bold flex`}>
                 <TbCurrencyTaka className="self-center" />
-                {amount}
+                {data?.amount}
               </span>
             </div>
             {/* midTop ends */}
@@ -42,13 +35,13 @@ export const IncomeExpenseCard = ({
             <div className="midBottom flex justify-between w-[100%] sm:w-[96%] md:w-[95%] lg:w-[92%]">
               <div className="flex midBottomLeft">
                 <p className="text-[#fffd] text-sm md:text-base mr-2 line-clamp-1">
-                  {context}
+                  {data?.context}
                 </p>
               </div>
 
               <div className="midBottomMid flex px-2 min-w-[100px]">
                 <p className="text-[#fffd] font-semibold text-sm md:text-base">
-                  {dateAdded}
+                  {data?.dateAdded}
                 </p>
               </div>
             </div>
@@ -59,7 +52,7 @@ export const IncomeExpenseCard = ({
 
         {/* right side of card starts  */}
         <div
-          onClick={() => del(accountId, { amount, context, dateAdded })}
+          onClick={() => del(accountId, data)}
           className="flex items-center justify-center col-span-1 -ml-2 cursor-pointer cardRight"
         >
           <div className="iconContainer ">

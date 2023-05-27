@@ -29,6 +29,7 @@ const useDeleteIncomeExpense = (isIncome) => {
         getIncomeExpenseHistoriesRef(historyId)
       );
       const prevData = prevDataSnapshot.data();
+      console.log(data);
 
       // functions:
       const getNewIncomeExpenseData = (prev) =>
@@ -51,10 +52,10 @@ const useDeleteIncomeExpense = (isIncome) => {
               currentBalance: prev + data.amount,
             };
 
-      // update income history:
+      // update income/expense history:
       await updateDoc(
         getIncomeExpenseHistoriesRef(historyId),
-        getNewIncomeExpenseData(prevData, true)
+        getNewIncomeExpenseData(prevData)
       );
 
       // update account data:
