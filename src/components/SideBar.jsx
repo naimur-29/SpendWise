@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { auth } from "../services/firebaseApi";
 import { signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 // importing contexts:
 import { userContext } from "../contexts/UserContext";
@@ -94,12 +95,16 @@ export const SideBar = () => {
               className="mb-2 topContainer AccountContainer"
             >
               <div className="flex items-center justify-between space-x-4 hover:bg-[#fff4] hover:-translate-y-[0.1rem] duration-200 rounded-xl p-2 bg-[#fff3]">
-                <div className="flex items-center justify-center gap-[8px] max-w-[80%]">
-                  {auth?.currentUser?.photoURL ? (
+                <Link
+                  to="profile"
+                  title="visit profile"
+                  className="flex items-center justify-center gap-[8px]"
+                >
+                  {userData?.photoUrl ? (
                     <img
                       className="object-cover p-[2px] rounded-full w-11 h-11 bg-gray-100 shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]"
-                      src={auth?.currentUser?.photoURL}
-                      alt="Bordered avatar"
+                      src={userData?.photoUrl}
+                      alt="avatar"
                     />
                   ) : (
                     <p className="flex items-center justify-center min-w-[2.75rem] uppercase text-3xl font-bold object-cover p-[2px] rounded-full w-11 h-11 bg-[#fff] text-[#39aca4] shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]">
@@ -109,13 +114,13 @@ export const SideBar = () => {
 
                   <div className="block font-medium text-gray-100 max-w-[80%] break-words">
                     <p>{userData?.username}</p>
-                    <div className="text-sm text-gray-300 font-normal">
+                    <div className="text-sm font-normal text-gray-300">
                       {userData?.accounts
                         ? userData?.accounts[activeAccountIndex]?.alias
                         : ""}
                     </div>
                   </div>
-                </div>
+                </Link>
 
                 <div
                   title="Logout"
@@ -127,7 +132,7 @@ export const SideBar = () => {
                       console.log(error.message);
                     }
                   }}
-                  className="flex justify-end items-center cursor-pointer h-[50px] w-full hover:scale-110 duration-200"
+                  className="flex justify-end items-center cursor-pointer h-[50px] hover:scale-110 duration-200"
                 >
                   <IoExitOutline className="text-2xl text-white" />
                 </div>

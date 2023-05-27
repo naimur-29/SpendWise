@@ -11,7 +11,6 @@ import {
 import "./App.css";
 
 // temp:
-import { signOut } from "firebase/auth";
 import { auth } from "./services/firebaseApi";
 
 // importing local components:
@@ -42,6 +41,15 @@ function App() {
         <Route path="incomes" element={<Incomes />} />
         <Route path="expenses" element={<Expenses />} />
         <Route path="histories" element={<Histories />} />
+
+        <Route
+          path="profile"
+          element={
+            <h1 className="flex justify-center w-full h-full bg-white">
+              Profile Page!
+            </h1>
+          }
+        />
 
         <Route path="*" element={<h1>404 page not found!</h1>} />
       </Route>

@@ -19,7 +19,7 @@ const useCreateAccount = () => {
 
     try {
       // create account:
-      console.log(id, alias, "posting...");
+      console.log("posting...");
       await setDoc(getAccountsRef(id), {
         alias: alias,
         currentBalance: 0,

@@ -65,7 +65,7 @@ export default function Expenses() {
           <div className="relative">
             <input
               type="date"
-              title="Select the month & year to see that month's Incomes!"
+              title="Select the month & year to see that month's Expenses!"
               onChange={(e) => setUserDefTimeFrame(e.target.value)}
               value={userDefTimeFrame}
               className="text-transparent bg-[#39aca4] flex items-center justify-center py-2 px-4 rounded-full -translate-y-1 outline-[#fff] hover:bg-[#39aca4aa] rounded-r-none duration-200 shadow cursor-pointer"

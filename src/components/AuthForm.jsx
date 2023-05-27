@@ -111,6 +111,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       await setDoc(getUsersRef(uid), {
         userId: uid,
         username: username,
+        photoUrl: "",
       });
 
       createAccount({
@@ -119,6 +120,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         userData: {
           userId: uid,
           username: username,
+          photoUrl: "",
         },
       });
     } catch (error) {
