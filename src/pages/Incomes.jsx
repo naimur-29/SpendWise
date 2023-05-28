@@ -58,7 +58,7 @@ export default function Incomes() {
       <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
         {/* top container starts  */}
         <div className="flex items-center gap-3 mb-4 heading">
-          <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl ">
+          <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl">
             Incomes of
           </h2>
 

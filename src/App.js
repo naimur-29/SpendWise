@@ -10,9 +10,6 @@ import {
 // importing stylesheets:
 import "./App.css";
 
-// temp:
-import { auth } from "./services/firebaseApi";
-
 // importing local components:
 import { Unauthorized } from "./components/Unauthorized";
 import { SideBar } from "./components/SideBar";
@@ -22,6 +19,7 @@ import Overview from "./pages/Overview";
 import Incomes from "./pages/Incomes";
 import Expenses from "./pages/Expenses";
 import Histories from "./pages/Histories";
+import Profile from "./pages/Profile";
 
 // importing context providers:
 import { UserContextProvider } from "./contexts/UserContext";
@@ -42,14 +40,7 @@ function App() {
         <Route path="expenses" element={<Expenses />} />
         <Route path="histories" element={<Histories />} />
 
-        <Route
-          path="profile"
-          element={
-            <h1 className="flex justify-center w-full h-full bg-white">
-              Profile Page!
-            </h1>
-          }
-        />
+        <Route path="profile" element={<Profile />} />
 
         <Route path="*" element={<h1>404 page not found!</h1>} />
       </Route>

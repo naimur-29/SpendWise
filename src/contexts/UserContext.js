@@ -16,6 +16,27 @@ const getTFfromDate = (date) => {
   return `${date.slice(-5, -3)}${date.slice(0, 4)}`;
 };
 
+const getTextTf = (serial) => {
+  const monthDict = {
+    "01": "Jan",
+    "02": "Feb",
+    "03": "Mar",
+    "04": "Apr",
+    "05": "May",
+    "06": "Jun",
+    "07": "Jul",
+    "08": "Aug",
+    "09": "Sep",
+    10: "Oct",
+    11: "Nov",
+    12: "Dec",
+  };
+
+  if (!serial) return "Loading...";
+
+  return `${monthDict[serial.slice(0, 2)]}, ${serial.slice(2)}`;
+};
+
 export const UserContextProvider = ({ children }) => {
   // states:
   const [currentUser, setCurrentUser] = useState(null);
@@ -58,6 +79,7 @@ export const UserContextProvider = ({ children }) => {
     userDefTimeFrame,
     setUserDefTimeFrame,
     getTFfromDate,
+    getTextTf,
     historyData,
     isHistoryDataLoading,
   };

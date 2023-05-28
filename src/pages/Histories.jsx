@@ -8,28 +8,6 @@ import { userContext } from "../contexts/UserContext";
 import { HistoryCard } from "../components/HistoryCard";
 import { BarChart } from "../components/BarChart";
 
-// functions:
-const getTextTf = (serial) => {
-  const monthDict = {
-    "01": "Jan",
-    "02": "Feb",
-    "03": "Mar",
-    "04": "Apr",
-    "05": "May",
-    "06": "Jun",
-    "07": "Jul",
-    "08": "Aug",
-    "09": "Sep",
-    10: "Oct",
-    11: "Nov",
-    12: "Dec",
-  };
-
-  if (!serial) return "Loading...";
-
-  return `${monthDict[serial.slice(0, 2)]}, ${serial.slice(2)}`;
-};
-
 export default function Histories() {
   // states:
   const [searchText, setSearchText] = useState("");
@@ -40,6 +18,7 @@ export default function Histories() {
     userDefTimeFrame,
     setUserDefTimeFrame,
     getTFfromDate,
+    getTextTf,
     historyData,
     isHistoryDataLoading,
   } = useContext(userContext);

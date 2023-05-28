@@ -83,12 +83,12 @@ export const SideBar = () => {
     <>
       {/* sidebar container starts  */}
       <div
-        className={`bg-[#2c8781] border-r-[8px] border-[#fff] shadow-2xl shadow-[#fff] fixed top-0 ${
+        className={`h-full absolute top-0 ${
           isSidebarActive ? "left-[0%]" : "left-[-100%]"
         } z-20 SideBarContainer md:left-0 duration-200`}
       >
-        <div className="flex">
-          <div className="relative flex flex-col w-64 h-screen gap-1 p-4 pt-5 duration-300 mainContainer sm:w-64">
+        <div className="flex fixed top-0 bg-[#2c8781] h-full border-r-[8px] border-[#fff] shadow-2xl md:shadow-none shadow-[#fff]">
+          <div className="flex flex-col w-64 h-screen gap-1 p-4 pt-5 duration-300 mainContainer sm:w-64">
             {/* top account container starts */}
             <div
               onClick={() => setIsSidebarActive(false)}
@@ -123,7 +123,7 @@ export const SideBar = () => {
                 </Link>
 
                 <div
-                  title="Logout"
+                  title="Sign Out"
                   onClick={async () => {
                     try {
                       await signOut(auth);
