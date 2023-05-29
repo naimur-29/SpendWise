@@ -125,7 +125,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
 
         <button
           onClick={onSubmitIncome}
-          className="w-full px-4 py-2 mt-1 text-xl font-bold flex justify-center items-center gap-1 bg-[#fff] rounded-lg text-[#42c8bf] hover:shadow-lg hover:bg-[#42c8bf11] duration-200 border-[3px] border-[#42c8bf] active:shadow-none"
+          className="w-full px-4 py-2 mt-1 text-xl font-bold flex justify-center items-center gap-1 bg-[#fff] rounded-lg text-[#42c8bf] hover:shadow-lg hover:bg-[#42c8bf11] duration-200 border-[3px] border-[#42c8bf] active:shadow-none shadow-[inset_-0px_-3px_4px_#39aca433]"
         >
           {isLoading ? "Loading..." : "Add"}
         </button>

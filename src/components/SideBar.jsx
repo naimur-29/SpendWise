@@ -22,6 +22,9 @@ import { TiTick } from "react-icons/ti";
 import { MdOutlineCancel } from "react-icons/md";
 import { IoExitOutline } from "react-icons/io5";
 
+// importing local assets:
+import Logo from "../assets/spend-wise-logo.webp";
+
 // global variables:
 const topMenuItems = [
   {
@@ -88,6 +91,18 @@ export const SideBar = () => {
         } z-20 SideBarContainer md:left-0 duration-200`}
       >
         <div className="flex fixed top-0 bg-[#2c8781] h-full border-r-[8px] border-[#fff] shadow-2xl md:shadow-none shadow-[#fff]">
+          {/* background overlay Logo */}
+          <div
+            style={{
+              backgroundImage: `url("${Logo}")`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              opacity: "0.1",
+            }}
+            className="overlay absolute bottom-0 left-0 w-full h-[50%] rounded-xl -z-10"
+          ></div>
+
           <div className="flex flex-col w-64 h-screen gap-1 p-4 pt-5 duration-300 mainContainer sm:w-64">
             {/* top account container starts */}
             <div
@@ -165,7 +180,7 @@ export const SideBar = () => {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="mt-5 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer overflow-y-auto">
+            <ul className="mt-2 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer overflow-y-auto">
               <h1 className="flex items-center justify-between mb-3 font-semibold text-[#fff]">
                 Accounts
                 {isNewAccountInputActive ? (
@@ -236,7 +251,7 @@ export const SideBar = () => {
                   placeholder={
                     isCreateAccountLoading ? "Loading..." : "account name"
                   }
-                  className="flex-[8] flex items-center bg-[#fff2] focus:bg-[#fff4] rounded-md focus:placeholder:-translate-y-3 focus:placeholder:opacity-0 placeholder:text-[#fff9] placeholder:-translate-y-[2px] outline-[#fff] text-[#fff] px-2 py-1 w-full h-full placeholder:duration-200"
+                  className="flex-[8] flex items-center bg-[#fff2] focus:bg-[#fff4] rounded-md focus:placeholder:-translate-y-3 focus:placeholder:opacity-0 placeholder:text-slate-600 placeholder:-translate-y-[2px] outline-[#fff] text-[#fff] px-2 py-1 w-full h-full placeholder:duration-200"
                 />
 
                 <button

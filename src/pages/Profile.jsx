@@ -8,6 +8,10 @@ import { userContext } from "../contexts/UserContext";
 // local components:
 import { BarChart } from "../components/BarChart";
 
+// importing icons:
+import { FaPiggyBank } from "react-icons/fa";
+import { AiTwotoneDelete } from "react-icons/ai";
+
 export default function Profile() {
   // states:
   const [newPhotoUrl, setNewPhotoUrl] = useState(undefined);
@@ -55,23 +59,23 @@ export default function Profile() {
         </div>
 
         <div className="bottom h-full w-full px-[10px] md:px-[20px] pb-[10px] md:pb-[20px]">
-          <div className="wrapper flex flex-col lg:flex-row w-full overflow-x-hidden h-full bg-slate-300 rounded-3xl p-[20px]">
-            <div className="left flex-[1]">
-              <div className="profile-card flex flex-col justify-evenly bg-white p-4 w-full h-full rounded-xl">
-                {userData?.photoUrl ? (
-                  <img
-                    className="object-cover object-center rounded-xl mb-[20px]"
-                    src={userData?.photoUrl}
-                    alt="avatar"
-                  />
-                ) : (
-                  <p className="">{userData?.username[0]}</p>
-                )}
+          <div className="wrapper flex flex-col lg:flex-row gap-[20px] w-full overflow-x-hidden h-full max-h-[100%] bg-slate-300 rounded-3xl p-[10px] sm:p-[20px]">
+            <div className="left sm:flex-[1]">
+              <div className="profile-card flex flex-col bg-white p-4 w-full h-full rounded-xl shadow-[inset_-0px_-3px_4px_#39aca433]">
+                <div className="wrapper h-full lg:h-0 flex-grow rounded-xl mb-[20px] overflow-hidden bg-slate-300">
+                  {userData?.photoUrl ? (
+                    <img
+                      className="object-cover object-center h-full w-full rounded-xl"
+                      src={newPhotoUrl || userData?.photoUrl}
+                      alt="avatar"
+                    />
+                  ) : (
+                    <p className="">{userData?.username[0]}</p>
+                  )}
+                </div>
 
-                <div className="flex items-center gap-2 p-1">
-                  <label className="flex-[2] font-semibold text-lg">
-                    Username :{" "}
-                  </label>
+                <div className="flex flex-col gap-1 p-1">
+                  <label className="font-semibold text-lg">Username</label>
                   <input
                     type="text"
                     onChange={(e) => setNewUsername(e.target.value)}
@@ -81,14 +85,12 @@ export default function Profile() {
                         ? userData?.username
                         : newUsername
                     }
-                    className="flex-[8] px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 placeholder:duration-200 bg-[#39aca433]"
+                    className="px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 placeholder:duration-200 bg-[#39aca433]"
                   />
                 </div>
 
-                <div className="flex items-center gap-2 p-1">
-                  <label className="flex-[2] font-semibold text-lg">
-                    Photo URL :{" "}
-                  </label>
+                <div className="flex flex-col gap-1 p-1">
+                  <label className="font-semibold text-lg">Photo URL</label>
                   <input
                     type="text"
                     onChange={(e) => setNewPhotoUrl(e.target.value)}
@@ -98,30 +100,20 @@ export default function Profile() {
                         ? userData?.photoUrl
                         : newPhotoUrl
                     }
-                    className="flex-[8] px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 placeholder:duration-200 bg-[#39aca433]"
+                    className="px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 placeholder:duration-200 bg-[#39aca433]"
                   />
                 </div>
 
-                <button>Save</button>
+                <button className="mt-5 px-8 py-2 rounded-lg bg-[#39aca4] shadow-md hover:bg-[#2c8781] hover:shadow-sm active:scale-95 duration-200 font-bold text-lg text-slate-100 uppercase">
+                  Save
+                </button>
               </div>
             </div>
 
-            <div className="right flex-[1] flex flex-col">
-              <div className="accounts">
-                <h3>My Accounts</h3>
-                <hr />
-                {userData?.accounts?.map((account, i) => (
-                  <div key={i}>
-                    <p>{account.alias}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="overview">
-                <div className="flex items-center gap-3 mb-4 heading">
-                  <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl ">
-                    Overview of
-                  </h2>
+            <div className="right sm:flex-[1] flex flex-col h-full max-h-[100%] lg:max-w-[50%] gap-[20px]">
+              <div className="overview sm:flex-[1] flex flex-col items-center bg-white p-4 w-full max-w-[100%] h-full max-h-[100%] rounded-xl shadow-[inset_-0px_-3px_4px_#39aca433]">
+                <div className="flex items-center justify-between min-w-[50%] gap-3 mb-4 heading">
+                  <h2 className="mb-2 text-2xl font-semibold">Overview</h2>
 
                   <div className="relative">
                     <input
@@ -129,7 +121,7 @@ export default function Profile() {
                       title="Select the month & year to see that month's Histories!"
                       onChange={(e) => setUserDefTimeFrame(e.target.value)}
                       value={userDefTimeFrame}
-                      className="text-transparent bg-[#39aca4] flex items-center justify-center py-2 px-4 rounded-full -translate-y-1 shadow outline-[#fff] hover:bg-[#39aca4aa] rounded-r-none duration-200"
+                      className="text-transparent bg-[#39aca4] flex items-center justify-center py-2 px-4 rounded-full -translate-y-1 shadow outline-[#fff] hover:bg-[#39aca4aa] duration-200"
                     />
                     <p
                       title="Select the month & year to see that month's Incomes!"
@@ -143,19 +135,51 @@ export default function Profile() {
                   </div>
                 </div>
 
-                {/* chart */}
-                {/* <BarChart
-                  data1={historyData?.incomes?.sort(
-                    (a, b) =>
-                      Number(a.dateAdded.slice(-2)) -
-                      Number(b.dateAdded.slice(-2))
-                  )}
-                  data2={historyData?.expenses?.sort(
-                    (a, b) =>
-                      Number(a.dateAdded.slice(-2)) -
-                      Number(b.dateAdded.slice(-2))
-                  )}
-                /> */}
+                <div className="relative w-full h-full">
+                  <div className="absolute bottom-0 flex-grow flex items-center justify-center w-full h-full">
+                    {/* chart */}
+                    <BarChart
+                      data1={historyData?.incomes?.sort(
+                        (a, b) =>
+                          Number(a.dateAdded.slice(-2)) -
+                          Number(b.dateAdded.slice(-2))
+                      )}
+                      data2={historyData?.expenses?.sort(
+                        (a, b) =>
+                          Number(a.dateAdded.slice(-2)) -
+                          Number(b.dateAdded.slice(-2))
+                      )}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="accounts overflow-y-auto sm:flex-[1] flex flex-col bg-white p-4 w-full h-full max-h-[100%] rounded-xl shadow-[inset_-0px_-3px_4px_#39aca433]">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                  My Accounts
+                </h3>
+
+                <ul className="overflow-auto flex flex-col w-full h-full max-h-[100%]">
+                  {userData?.accounts?.map((account, i) => (
+                    <li
+                      key={i}
+                      className={`flex rounded-md p-2 text-gray-900 bg-[#39aca433] hover:bg-[#39aca444] duration-100 text-sm items-center gap-x-4 mb-1 shadow-[inset_-0px_-3px_4px_#39aca433] cursor-pointer`}
+                    >
+                      <div className="text-lg icon">
+                        <FaPiggyBank className="fill-[#2c8781]" />
+                      </div>
+                      <h3
+                        className={`flex flex-wrap gap-1 origin-left duration-200 w-full text-lg`}
+                      >
+                        {account?.alias}
+                      </h3>
+
+                      <div className="iconContainer ">
+                        <AiTwotoneDelete className="text-2xl text-[#2c8781] hover:text-[#f48a] hover:scale-150 duration-300" />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

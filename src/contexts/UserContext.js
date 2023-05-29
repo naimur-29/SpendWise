@@ -37,11 +37,19 @@ const getTextTf = (serial) => {
   return `${monthDict[serial.slice(0, 2)]}, ${serial.slice(2)}`;
 };
 
+// global variables:
+let today = new Date();
+today = [
+  today.getFullYear(),
+  today.getMonth() < 10 ? `0${today.getMonth()}` : today.getMonth(),
+  today.getDay() < 10 ? `0${today.getDay()}` : today.getDay(),
+].join("-");
+
 export const UserContextProvider = ({ children }) => {
   // states:
   const [currentUser, setCurrentUser] = useState(null);
   const [activeAccountIndex, setActiveAccountIndex] = useState(0);
-  const [userDefTimeFrame, setUserDefTimeFrame] = useState("");
+  const [userDefTimeFrame, setUserDefTimeFrame] = useState(today);
 
   useEffect(() => {
     auth.onAuthStateChanged(setCurrentUser);
