@@ -55,7 +55,7 @@ export const EditProfileCard = () => {
   }, [isResponseMessageActive]);
 
   return (
-    <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] duration-200">
+    <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433]">
       <div className="wrapper relative mb-[20px] h-full max-h-[35vh] flex-grow overflow-hidden rounded-xl bg-slate-200 duration-200 lg:h-0 lg:max-h-full">
         <div className="_overlay absolute left-0 top-0 h-full w-full shadow-[inset_0px_-5px_8px_#0003]"></div>
 
@@ -73,7 +73,7 @@ export const EditProfileCard = () => {
       </div>
 
       {responseMessage ? (
-        <div className="flex items-center justify-center w-full mb-1 _wrapper">
+        <div className="flex items-center justify-center w-full -mt-3 _wrapper">
           <p className="w-[100%] rounded bg-[#39aca4] px-2 py-1 text-center font-mono text-[#fff]">
             {responseMessage}
           </p>
@@ -83,7 +83,7 @@ export const EditProfileCard = () => {
       )}
 
       <div className="flex flex-col gap-1 p-1">
-        <label className="text-lg font-semibold">Username</label>
+        <label className="text-lg font-semibold">Name</label>
         <input
           type="text"
           onChange={(e) => setNewUsername(e.target.value)}

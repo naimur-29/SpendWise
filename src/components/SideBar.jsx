@@ -111,7 +111,7 @@ export const SideBar = () => {
             >
               <div className="flex items-center justify-between space-x-4 rounded-xl bg-[#fff3] p-2 duration-200 hover:-translate-y-[0.1rem] hover:bg-[#fff4]">
                 <Link
-                  to="profile"
+                  to="/"
                   title="visit profile"
                   className="flex items-center justify-center gap-[8px]"
                 >
@@ -182,7 +182,7 @@ export const SideBar = () => {
             {/* bottom list items start  */}
             <ul className="bottomList mt-2 cursor-pointer overflow-y-auto rounded-xl bg-[#fff3] p-2">
               <h1 className="mb-3 flex items-center justify-between font-semibold text-[#fff]">
-                Accounts
+                {isCreateAccountLoading ? "Loading..." : "Accounts"}
                 {isNewAccountInputActive ? (
                   <MdOutlineCancel
                     title="Cancel"
@@ -248,10 +248,8 @@ export const SideBar = () => {
                   type="text"
                   onChange={(e) => setNewAccAlias(e.target.value)}
                   value={newAccAlias}
-                  placeholder={
-                    isCreateAccountLoading ? "Loading..." : "account name"
-                  }
-                  className="flex h-full w-full flex-[8] items-center rounded-md bg-[#fff2] px-2 py-1 text-[#fff] outline-[#fff] placeholder:-translate-y-[2px] placeholder:text-slate-600 placeholder:duration-200 focus:bg-[#fff4] focus:placeholder:-translate-y-3 focus:placeholder:opacity-0"
+                  placeholder="account name"
+                  className="flex h-full w-full flex-[8] items-center rounded-md bg-[#fff2] px-2 py-1 text-[#fff] outline-[#fff] placeholder:-translate-y-[2px] placeholder:text-slate-200 placeholder:duration-200 focus:bg-[#fff4] focus:placeholder:-translate-y-3 focus:placeholder:opacity-0"
                 />
 
                 <button

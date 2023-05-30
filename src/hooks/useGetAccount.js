@@ -35,7 +35,7 @@ const useGetAccount = (id) => {
     getData();
   }, [id]);
 
-  return { isLoading, data, errorMessage };
+  return { isLoading, data, setData, errorMessage };
 };
 
 export default useGetAccount;
