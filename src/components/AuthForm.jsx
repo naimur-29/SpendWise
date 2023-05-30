@@ -88,7 +88,9 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
 
   const demoLogin = async () => {
     const demoEmail = "fakecake420@gmail.com";
+    setEmail(demoEmail);
     const demoPassword = "123456";
+    setPassword(demoPassword);
 
     setIsLoading(true);
     try {

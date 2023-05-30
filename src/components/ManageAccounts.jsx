@@ -1,5 +1,5 @@
 // importing libraries:
-import { useContext } from "react";
+import { useState, useContext } from "react";
 
 // local contexts:
 import { userContext } from "../contexts/UserContext";
@@ -10,6 +10,7 @@ import useDeleteAccount from "../hooks/useDeleteAccount";
 // importing icons:
 import { FaPiggyBank } from "react-icons/fa";
 import { AiTwotoneDelete } from "react-icons/ai";
+import { MdCancel, MdCheckCircle } from "react-icons/md";
 
 export const ManageAccounts = () => {
   // user contexts:
@@ -39,6 +40,9 @@ export const ManageAccounts = () => {
 };
 
 const AccountCard = ({ data, deleteAccount }) => {
+  // states:
+  const [isDeleteButtonActive, setIsDeleteButtonActive] = useState(false);
+
   // user contexts:
   const { userData, accountData, setAccountData, setActiveAccountIndex } =
     useContext(userContext);
@@ -55,7 +59,7 @@ const AccountCard = ({ data, deleteAccount }) => {
 
   return (
     <section
-      className={`mb-1 flex cursor-pointer items-center gap-x-4 rounded-md bg-[#39aca433] p-2 text-sm text-gray-900 shadow-[inset_-0px_-3px_4px_#39aca433] duration-100 hover:bg-[#39aca444]`}
+      className={`mb-1 flex items-center gap-x-4 rounded-md bg-[#39aca433] p-2 text-sm text-gray-900 shadow-[inset_-0px_-3px_4px_#39aca433] duration-100 hover:bg-[#39aca444] sm:cursor-pointer`}
     >
       <div className="text-lg icon">
         <FaPiggyBank className="fill-[#2c8781]" />
@@ -66,9 +70,29 @@ const AccountCard = ({ data, deleteAccount }) => {
         {data?.alias}
       </h3>
 
-      <div onClick={handleAccountRemove} className="iconContainer">
-        <AiTwotoneDelete className="text-2xl text-[#2c8781] duration-300 hover:scale-150 hover:text-[#f48a] active:scale-100" />
-      </div>
+      {!isDeleteButtonActive ? (
+        <div onClick={() => setIsDeleteButtonActive(true)}>
+          <AiTwotoneDelete className="text-2xl text-[#2c8781] duration-300 hover:scale-150 hover:text-[#f48a] active:scale-100" />
+        </div>
+      ) : (
+        <></>
+      )}
+
+      {isDeleteButtonActive ? (
+        <div className="flex items-center gap-1">
+          <MdCheckCircle
+            onClick={handleAccountRemove}
+            className="cursor-pointer text-2xl text-[#2c8781] duration-300 hover:text-[#45d29a] sm:hover:scale-110 sm:active:scale-100"
+          />
+
+          <MdCancel
+            onClick={() => setIsDeleteButtonActive(false)}
+            className="cursor-pointer text-2xl text-[#2c8781] duration-300 hover:text-[#f48a] sm:hover:scale-110 sm:active:scale-100"
+          />
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };

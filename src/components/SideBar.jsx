@@ -180,7 +180,7 @@ export const SideBar = () => {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="bottomList mt-2 cursor-pointer overflow-y-auto rounded-xl bg-[#fff3] p-2">
+            <ul className="bottomList mt-2 overflow-y-auto rounded-xl bg-[#fff3] p-2 sm:cursor-pointer">
               <h1 className="mb-3 flex items-center justify-between font-semibold text-[#fff]">
                 {isCreateAccountLoading ? "Loading..." : "Accounts"}
                 {isNewAccountInputActive ? (
@@ -190,13 +190,13 @@ export const SideBar = () => {
                       setIsNewAccountInputActive(false);
                       setNewAccAlias("");
                     }}
-                    className="scale-[1.1] rounded-full text-xl active:scale-90"
+                    className="scale-[1.1] cursor-pointer rounded-full text-xl active:scale-90"
                   />
                 ) : (
                   <GoDiffAdded
                     title="Add new account!"
                     onClick={() => setIsNewAccountInputActive(true)}
-                    className="text-xl active:scale-90"
+                    className="text-xl cursor-pointer active:scale-90"
                   />
                 )}
               </h1>
@@ -209,9 +209,9 @@ export const SideBar = () => {
                   }}
                   className={
                     i === activeAccountIndex
-                      ? `mb-1 flex items-center gap-x-4 rounded-md bg-gray-50 p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100 
+                      ? `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md bg-gray-50 p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100
               `
-                      : `mb-1 flex items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[#fff3] 
+                      : `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[#fff3]
               `
                   }
                 >
