@@ -7,11 +7,11 @@ const useCreateAccount = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const post = async ({ alias, id, userData }) => {
+  const post = async ({ uid, id, alias, userData }) => {
     setIsLoading(true);
 
     // if no id:
-    if (!id || !alias || !userData) {
+    if (!id || !alias || !userData || !uid) {
       setErrorMessage("Invalid Account ID");
       setIsLoading(false);
       return;
@@ -21,7 +21,8 @@ const useCreateAccount = () => {
       // create account:
       console.log("posting...");
       await setDoc(getAccountsRef(id), {
-        alias: alias,
+        userId: uid,
+        alias,
         currentBalance: 0,
         currentTimeFrame: "",
         histories: [],

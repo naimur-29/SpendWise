@@ -71,8 +71,9 @@ export const SideBar = () => {
   // handle create account on click:
   const handleCreateNewAcc = () => {
     createNewAccount({
-      alias: newAccAlias.trim(),
+      uid: userData?.userId,
       id: userData && `${userData?.userId}.${newAccAlias}`,
+      alias: newAccAlias.trim(),
       userData,
     });
 

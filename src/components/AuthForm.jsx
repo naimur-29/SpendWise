@@ -117,8 +117,9 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       });
 
       createAccount({
-        alias: "default",
+        uid,
         id: `${uid}.default`,
+        alias: "default",
         userData: {
           userId: uid,
           username: username,

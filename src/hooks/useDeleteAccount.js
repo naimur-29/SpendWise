@@ -35,9 +35,9 @@ const useDeleteAccount = () => {
         accounts: arrayRemove(accountData),
       });
 
-      console.log(`Account "${accountData?.alias}" has been removed!`);
+      setResponseMessage(`Account "${accountData?.alias}" has been removed!`);
     } catch (error) {
-      console.log(error.message);
+      setErrorMessage(error.message);
     }
 
     setIsLoading(false);

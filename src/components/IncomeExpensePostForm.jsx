@@ -35,7 +35,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
   const onSubmitIncome = () => {
     const accountId = userData.accounts[activeAccountIndex].id;
 
-    post(accountId);
+    post(accountId, userData?.userId);
 
     // set user history time frame to latest dateAdded:
     incomeExpenseData.dateAdded &&

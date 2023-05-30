@@ -13,7 +13,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 const getCurrentTF = (today) =>
   String(today.getMonth() + 1).padStart(2, "0") + today.getFullYear();
 
-const getTemplateDoc = (date) => {
+const getTemplateDoc = (date, accountId, userId) => {
   const monthDict = {
     "01": "Jan",
     "02": "Feb",
@@ -32,6 +32,8 @@ const getTemplateDoc = (date) => {
   const tF = `${monthDict[date.split("-")[1]]}, ${date.split("-")[0]}`;
 
   return {
+    userId,
+    accountId,
     timeFrame: tF,
     totalIncomeAmount: 0,
     totalExpenseAmount: 0,
@@ -52,7 +54,7 @@ const usePostIncomeExpense = (data, isIncome) => {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   // functions:
-  const post = async (accountId) => {
+  const post = async (accountId, userId) => {
     setIsLoading(true);
 
     // set data stat:
@@ -137,7 +139,7 @@ const usePostIncomeExpense = (data, isIncome) => {
         } else {
           // create history with that 'id':
           await setDoc(getIncomeExpenseHistoriesRef(historyId), {
-            ...getTemplateDoc(data.dateAdded),
+            ...getTemplateDoc(data.dateAdded, accountId, userId),
             ...getNewIncomeExpenseData({}, false),
           });
 

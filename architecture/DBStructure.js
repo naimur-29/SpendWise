@@ -23,6 +23,7 @@ export const users = [
 
 export const accounts = [
   {
+    userId: "<userId>",
     id: "<userId>.<accountAlias>", // key
     alias: "<accountAlias>",
     currentBalance: 10000,
@@ -37,11 +38,12 @@ export const accounts = [
 
 export const incomeExpenseHistories = [
   {
+    userId: "<userId>",
+    accountId: "<userId>.<accountAlias>",
     id: "<userId>.<accountAlias>.<month><year>", // key
     timeFrame: "<month>, <year>",
     totalIncomeAmount: 1000,
     totalExpenseAmount: 500,
-    budgetTarget: 10000,
     incomes: [
       {
         amount: 100,
