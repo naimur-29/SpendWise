@@ -5,8 +5,8 @@ import { TbCurrencyTaka } from "react-icons/tb";
 
 export const IncomeExpenseCard = ({ data, del, accountId, isIncome }) => {
   return (
-    <section className="block mb-2 w-full  p-0 sm:p-1 customMid:p-2 bg-[#39aca4] rounded-md shadow-md">
-      <div className="cardContainer grid grid-cols-12 gap-1 py-1 hover:bg-[#fff3] hover:-translate-y-[0.1rem] duration-200">
+    <section className="customMid:p-2 mb-2 block  w-full rounded-md bg-[#39aca4] p-0 shadow-md sm:p-1">
+      <div className="cardContainer grid grid-cols-12 gap-1 py-1 duration-200 hover:-translate-y-[0.1rem] hover:bg-[#fff3]">
         {/* left side of card starts  */}
         <div className="col-span-1 m-auto cardLeft">
           <div className="flex bodyIcon">
@@ -24,7 +24,7 @@ export const IncomeExpenseCard = ({ data, del, accountId, isIncome }) => {
           <div className="midContainer">
             {/* midTop starts */}
             <div className="flex mb-1 midTop">
-              <span className={`text-[#fff] text-xl font-bold flex`}>
+              <span className={`flex text-xl font-bold text-[#fff]`}>
                 <TbCurrencyTaka className="self-center" />
                 {data?.amount}
               </span>
@@ -32,15 +32,15 @@ export const IncomeExpenseCard = ({ data, del, accountId, isIncome }) => {
             {/* midTop ends */}
 
             {/* midBottom starts  */}
-            <div className="midBottom flex justify-between w-[100%] sm:w-[96%] md:w-[95%] lg:w-[92%]">
+            <div className="midBottom flex w-[100%] justify-between sm:w-[96%] md:w-[95%] lg:w-[92%]">
               <div className="flex midBottomLeft">
-                <p className="text-[#fffd] text-sm md:text-base mr-2 line-clamp-1">
+                <p className="mr-2 line-clamp-1 text-sm text-[#fffd] md:text-base">
                   {data?.context}
                 </p>
               </div>
 
-              <div className="midBottomMid flex px-2 min-w-[100px]">
-                <p className="text-[#fffd] font-semibold text-sm md:text-base">
+              <div className="midBottomMid flex min-w-[100px] px-2">
+                <p className="text-sm font-semibold text-[#fffd] md:text-base">
                   {data?.dateAdded}
                 </p>
               </div>
@@ -56,7 +56,7 @@ export const IncomeExpenseCard = ({ data, del, accountId, isIncome }) => {
           className="flex items-center justify-center col-span-1 -ml-2 cursor-pointer cardRight"
         >
           <div className="iconContainer ">
-            <AiTwotoneDelete className="text-2xl text-[#fff] hover:text-[#f48a] hover:scale-150 duration-300" />
+            <AiTwotoneDelete className="text-2xl text-[#fff] duration-300 hover:scale-150 hover:text-[#f48a]" />
           </div>
         </div>
         {/* right side of card ends  */}

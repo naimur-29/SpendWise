@@ -24,7 +24,7 @@ export default function Histories() {
   } = useContext(userContext);
 
   return (
-    <section className="incomeContainer w-full md:w-[calc(100%-16rem)] min-h-screen bg-slate-100">
+    <section className="incomeContainer min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
       <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
         {/* top container starts  */}
         <div className="flex items-center gap-3 mb-4 heading">
@@ -38,11 +38,11 @@ export default function Histories() {
               title="Select the month & year to see that month's Histories!"
               onChange={(e) => setUserDefTimeFrame(e.target.value)}
               value={userDefTimeFrame}
-              className="text-transparent bg-[#39aca4] flex items-center justify-center py-2 px-4 rounded-full -translate-y-1 shadow outline-[#fff] hover:bg-[#39aca4aa] rounded-r-none duration-200"
+              className="flex -translate-y-1 items-center justify-center rounded-full rounded-r-none bg-[#39aca4] px-4 py-2 text-transparent shadow outline-[#fff] duration-200 hover:bg-[#39aca4aa]"
             />
             <p
               title="Select the month & year to see that month's Incomes!"
-              className="date-overlay text-slate-100 bg-[#39aca4] px-4 py-2 rounded-full absolute top-0 left-[0] w-[120px] -translate-y-1"
+              className="date-overlay absolute left-[0] top-0 w-[120px] -translate-y-1 rounded-full bg-[#39aca4] px-4 py-2 text-slate-100"
             >
               {getTextTf(
                 getTFfromDate(userDefTimeFrame) || accountData?.currentTimeFrame
@@ -52,8 +52,8 @@ export default function Histories() {
         </div>
 
         {/* top container ends  */}
-        <div className="input-container flex flex-col justify-center mx-auto w-[95%] extra-lg:w-[70%] items-center mb-[40px]">
-          <h2 className="text-2xl uppercase mb-[10px]">Overview</h2>
+        <div className="input-container mx-auto mb-[40px] flex w-[95%] flex-col items-center justify-center extra-lg:w-[70%]">
+          <h2 className="mb-[10px] text-2xl uppercase">Overview</h2>
           <BarChart
             data1={historyData?.incomes?.sort(
               (a, b) =>
@@ -70,15 +70,15 @@ export default function Histories() {
         <div className="flex flex-col items-center justify-center pb-5 bodyContainer extra-lg:gap-0">
           {/* body left container starts  */}
           <div className="topContainerCard mb-[10px]">
-            <h2 className="text-center text-2xl uppercase mb-[10px]">
+            <h2 className="mb-[10px] text-center text-2xl uppercase">
               All Histories
             </h2>
 
             {/* search bar */}
-            <div className="flex justify-center items-center w-full p-2 bg-[#39aca4] rounded-md drop-shadow-md border-[3px] border-[#fff]">
+            <div className="flex w-full items-center justify-center rounded-md border-[3px] border-[#fff] bg-[#39aca4] p-2 drop-shadow-md">
               <div className="cardTop">
-                <div className="text-2xl uppercase font-bold self-center text-[#fff] flex flex-wrap gap-1 justify-center items-center">
-                  <span className="lg:flex-[1] w-full h-full text-center">
+                <div className="flex flex-wrap items-center justify-center gap-1 self-center text-2xl font-bold uppercase text-[#fff]">
+                  <span className="h-full w-full text-center lg:flex-[1]">
                     Search Context :
                   </span>
                   <input
@@ -87,15 +87,15 @@ export default function Histories() {
                     onChange={(e) =>
                       setSearchText(e.target.value.trim().toLowerCase())
                     }
-                    className="flex-[1] w-full h-full bg-[#fff3] focus:bg-[#fff6] outline-[#fff] px-2 py-1"
+                    className="h-full w-full flex-[1] bg-[#fff3] px-2 py-1 outline-[#fff] focus:bg-[#fff6]"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bodyContainerRight w-full customSm:w-[80%] md:w-full m-auto mt-1 col-span-2 customMid:col-span-8 customMid:mt-3 p-1 md:p-0">
-            <div className="rightCardSection h-[68vh] w-[100%] md:w-[100%] customMid:w-[99%] lg:w-[92%] m-auto overflow-auto">
+          <div className="bodyContainerRight customSm:w-[80%] customMid:col-span-8 customMid:mt-3 col-span-2 m-auto mt-1 w-full p-1 md:w-full md:p-0">
+            <div className="rightCardSection customMid:w-[99%] m-auto h-[68vh] w-[100%] overflow-auto md:w-[100%] lg:w-[92%]">
               {isHistoryDataLoading ? (
                 <h3 className="text-center text-slate-600">Loading...</h3>
               ) : historyData?.incomes[0] || historyData?.expenses[0] ? (

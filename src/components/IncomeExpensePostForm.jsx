@@ -50,9 +50,9 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
 
   return (
     <div className="flex justify-center w-full">
-      <div className="flex flex-col gap-2 extra-lg:w-[400px] lg:w-[90%] w-[95%] items-center">
+      <div className="flex w-[95%] flex-col items-center gap-2 lg:w-[90%] extra-lg:w-[400px]">
         {responseMessage ? (
-          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2 mb-1">
+          <p className="mb-1 w-full bg-[#39aca4] px-2 py-1 text-center font-mono text-[#fff]">
             Latest: {responseMessage}
           </p>
         ) : (
@@ -60,7 +60,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
         )}
 
         {errorMessage ? (
-          <p className="w-full text-center font-mono text-[#fff] bg-[#39aca4] py-1 px-2 mb-1">
+          <p className="mb-1 w-full bg-[#39aca4] px-2 py-1 text-center font-mono text-[#fff]">
             Error: {errorMessage}
           </p>
         ) : (
@@ -81,7 +81,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
                 amount: filterAmount(e.target.value),
               }));
             }}
-            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 bg-[#39aca433]"
+            className="flex-[8] rounded bg-[#39aca433] px-2 py-2 font-mono text-lg text-slate-950 shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[#fff] focus:placeholder:translate-x-[-100%]"
           />
         </div>
 
@@ -101,7 +101,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
                 context: e.target.value,
               }));
             }}
-            className="flex-[8] text-lg font-mono px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 bg-[#39aca433]"
+            className="flex-[8] rounded bg-[#39aca433] px-2 py-2 font-mono text-lg text-slate-950 shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[#fff] focus:placeholder:translate-x-[-100%]"
           />
         </div>
 
@@ -119,13 +119,13 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
                 dateAdded: e.target.value,
               }));
             }}
-            className="flex-[8] px-2 py-2 shadow text-slate-950 rounded outline-[#42c8bf] placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] focus:-translate-y-[1px] focus:shadow-2xl focus:shadow-[#fff] duration-700 bg-[#39aca433]"
+            className="flex-[8] rounded bg-[#39aca433] px-2 py-2 text-slate-950 shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[#fff] focus:placeholder:translate-x-[-100%]"
           />
         </div>
 
         <button
           onClick={onSubmitIncome}
-          className="w-full px-4 py-2 mt-1 text-xl font-bold flex justify-center items-center gap-1 bg-[#fff] rounded-lg text-[#42c8bf] hover:shadow-lg hover:bg-[#42c8bf11] duration-200 border-[3px] border-[#42c8bf] active:shadow-none shadow-[inset_-0px_-3px_4px_#39aca433]"
+          className="mt-1 flex w-full items-center justify-center gap-1 rounded-lg border-[3px] border-[#42c8bf] bg-[#fff] px-4 py-2 text-xl font-bold text-[#42c8bf] shadow-[inset_-0px_-3px_4px_#39aca433] duration-200 hover:bg-[#42c8bf11] hover:shadow-lg active:shadow-none"
         >
           {isLoading ? "Loading..." : "Add"}
         </button>

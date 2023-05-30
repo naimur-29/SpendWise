@@ -74,7 +74,7 @@ function App() {
           path="*"
           element={
             <Loading duration={1000}>
-              <h3 className="text-3xl flex items-center justify-center min-h-screen w-full md:w-[calc(100%-16rem)] bg-slate-300 text-red-700 font-semibold">
+              <h3 className="flex min-h-screen w-full items-center justify-center bg-slate-300 text-3xl font-semibold text-red-700 md:w-[calc(100%-16rem)]">
                 404 page not found!
               </h3>
             </Loading>

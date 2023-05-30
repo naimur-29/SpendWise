@@ -19,18 +19,18 @@ const SignUpModal = ({ isSignUpModalActive, setIsSignUpModalActive }) => {
         backgroundPosition: "center",
       }}
       className={
-        "right flex flex-col p-3 w-[100%] h-full md:w-[40%] duration-300 absolute top-0 right-0" +
+        "right absolute right-0 top-0 flex h-full w-[100%] flex-col p-3 duration-300 md:w-[40%]" +
         (isSignUpModalActive ? "" : " top-[-100%]")
       }
     >
       {/* color overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[#39aca4] opacity-[0.8]"></div>
+      <div className="absolute left-0 top-0 h-full w-full bg-[#39aca4] opacity-[0.8]"></div>
 
       <div className="z-10 flex justify-between close-modal md:justify-end">
         <div className="flex items-center logo md:hidden">
           <img
             src={Logo}
-            className="h-8 mr-2 cursor-pointer bg-white rounded-full p-[2px] min-w-[33px] object-cover object-center"
+            className="mr-2 h-8 min-w-[33px] cursor-pointer rounded-full bg-white object-cover object-center p-[2px]"
             alt="Logo"
           />
           <span className="text-2xl font-semibold text-white">SpendWise</span>
@@ -38,10 +38,10 @@ const SignUpModal = ({ isSignUpModalActive, setIsSignUpModalActive }) => {
 
         <div
           onClick={() => setIsSignUpModalActive(false)}
-          className="flex flex-col items-center justify-center cursor-pointer py-4 w-[50px] h-[50px]"
+          className="flex h-[50px] w-[50px] cursor-pointer flex-col items-center justify-center py-4"
         >
-          <div className="line w-[40px] h-[2px] bg-white -rotate-45"></div>
-          <div className="line w-[40px] h-[2px] bg-white rotate-45"></div>
+          <div className="line h-[2px] w-[40px] -rotate-45 bg-white"></div>
+          <div className="line h-[2px] w-[40px] rotate-45 bg-white"></div>
         </div>
       </div>
 
@@ -59,14 +59,14 @@ export default SignUpModal;
 // Sign Up Prompt:
 const SignUpPrompt = ({ setIsSignUpFormActive }) => {
   return (
-    <div className="z-10 signup-modal-container bg-[#fff3] h-full flex flex-col items-center justify-center gap-6 rounded-md shadow p-2">
+    <div className="signup-modal-container z-10 flex h-full flex-col items-center justify-center gap-6 rounded-md bg-[#fff3] p-2 shadow">
       <h3 className="text-5xl font-bold text-white">New Here?</h3>
-      <p className="text-slate-100 text-center text-[1.2rem] max-w-[400px]">
+      <p className="max-w-[400px] text-center text-[1.2rem] text-slate-100">
         Sign up and discover a great way to spend you money wisely!
       </p>
       <button
         onClick={() => setIsSignUpFormActive(true)}
-        className="bg-white text-slate-600 w-[300px] px-4 py-3 font-bold text-xl rounded-full text-center shadow-md active:scale-[95%] hover:shadow-xl hover:scale-[103%] md:w-[270px] lg:w-[300px]"
+        className="w-[300px] rounded-full bg-white px-4 py-3 text-center text-xl font-bold text-slate-600 shadow-md hover:scale-[103%] hover:shadow-xl active:scale-[95%] md:w-[270px] lg:w-[300px]"
       >
         Sign Up
       </button>
@@ -77,7 +77,7 @@ const SignUpPrompt = ({ setIsSignUpFormActive }) => {
 // sign up form:
 const SignUpForm = ({ setIsSignUpModalActive }) => {
   return (
-    <div className="z-10 signup-modal-container bg-[#fff3] h-full flex flex-col items-center justify-center gap-6 rounded-md shadow p-2">
+    <div className="signup-modal-container z-10 flex h-full flex-col items-center justify-center gap-6 rounded-md bg-[#fff3] p-2 shadow">
       <AuthForm setIsSignUpModalActive={setIsSignUpModalActive} />
     </div>
   );

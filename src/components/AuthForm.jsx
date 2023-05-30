@@ -132,16 +132,16 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
     <div
       className={
         isSignIn
-          ? "flex flex-col gap-3 w-full max-w-[640px] items-center translate-y-[-10%]"
-          : "flex flex-col gap-2 w-full max-w-[640px] items-center"
+          ? "flex w-full max-w-[640px] translate-y-[-10%] flex-col items-center gap-3"
+          : "flex w-full max-w-[640px] flex-col items-center gap-2"
       }
     >
       {/* heading */}
       <h3
         className={
           isSignIn
-            ? "text-slate-900 leading-tight text-[2.4rem] mb-1 text-center lg:text-6xl font-bold"
-            : "text-white text-4xl lg:text-5xl mb-4 font-bold text-center"
+            ? "mb-1 text-center text-[2.4rem] font-bold leading-tight text-slate-900 lg:text-6xl"
+            : "mb-4 text-center text-4xl font-bold text-white lg:text-5xl"
         }
       >
         {isLoading
@@ -152,7 +152,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       </h3>
 
       {isSignIn ? (
-        <p className="text-slate-700 text-center mb-6 text-[1.2rem] max-w-[400px]">
+        <p className="mb-6 max-w-[400px] text-center text-[1.2rem] text-slate-700">
           Sign in and take control of your finances with ease and precision.
         </p>
       ) : (
@@ -164,8 +164,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         <p
           className={
             isSignIn
-              ? "error-msg font-semibold text-slate-100 bg-[#f48a] shadow w-[95%] lg:w-[90%] px-1 py-2 text-center rounded-full mb-1"
-              : "error-msg font-semibold text-slate-100 bg-[#f48a] shadow w-full px-1 py-2 text-center rounded-lg mb-1"
+              ? "error-msg mb-1 w-[95%] rounded-full bg-[#f48a] px-1 py-2 text-center font-semibold text-slate-100 shadow lg:w-[90%]"
+              : "error-msg mb-1 w-full rounded-lg bg-[#f48a] px-1 py-2 text-center font-semibold text-slate-100 shadow"
           }
         >
           {errorMsg}
@@ -183,12 +183,12 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         onChange={(e) => setEmail(e.target.value)}
         className={
           isSignIn
-            ? `w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 ${
+            ? `w-[95%] rounded-full px-4 py-3 text-slate-950 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#39aca466] focus:placeholder:translate-x-[-100%] lg:w-[90%] ${
                 email && email.includes("@") && email.includes(".")
                   ? "bg-[#0f76]"
                   : "bg-[#39aca433]"
               }`
-            : `w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-100 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 ${
+            : `w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-100 focus:bg-[#fff6] focus:placeholder:translate-x-[-100%] ${
                 email && email.includes("@") && email.includes(".")
                   ? "bg-[#0f73]"
                   : "bg-[#fff3]"
@@ -205,9 +205,9 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         onChange={(e) => setPassword(e.target.value)}
         className={
           isSignIn
-            ? "w-[95%] lg:w-[90%] px-4 py-3 shadow text-slate-950 rounded-full outline-gray-200 placeholder:text-slate-500 focus:placeholder:translate-x-[-100%] focus:bg-[#39aca466] duration-700 " +
+            ? "w-[95%] rounded-full px-4 py-3 text-slate-950 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#39aca466] focus:placeholder:translate-x-[-100%] lg:w-[90%] " +
               (password.length > 5 ? "bg-[#0f76]" : "bg-[#39aca433]")
-            : "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-100 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 " +
+            : "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-100 focus:bg-[#fff6] focus:placeholder:translate-x-[-100%] " +
               (password.length > 5 ? "bg-[#0f73]" : "bg-[#fff3]")
         }
       />
@@ -221,7 +221,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           value={rePassword}
           onChange={(e) => setRePassword(e.target.value)}
           className={
-            "w-full px-4 py-3 shadow text-gray-900 rounded-lg outline-gray-200 placeholder:text-slate-100 focus:placeholder:translate-x-[-100%] focus:bg-[#fff6] duration-700 " +
+            "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-100 focus:bg-[#fff6] focus:placeholder:translate-x-[-100%] " +
             (rePassword && password === rePassword
               ? "bg-[#0f73]"
               : "bg-[#fff3]")
@@ -235,8 +235,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       <div
         className={
           isSignIn
-            ? "flex justify-between w-[95%] lg:w-[90%] text-slate-700 px-1"
-            : "flex justify-between w-full text-slate-100 px-1"
+            ? "flex w-[95%] justify-between px-1 text-slate-700 lg:w-[90%]"
+            : "flex w-full justify-between px-1 text-slate-100"
         }
       >
         <button
@@ -245,7 +245,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
             setErrorMsg("");
           }}
           className={
-            "hover:underline hover:text-slate-700 duration-200 md:w-full text-left"
+            "text-left duration-200 hover:text-slate-700 hover:underline md:w-full"
           }
         >
           {isSignIn ? "create new account?" : "already have an account?"}
@@ -263,8 +263,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         <div
           className={
             isSignIn
-              ? "flex items-center w-[95%] lg:w-[90%] gap-2"
-              : "flex items-center w-full gap-2"
+              ? "flex w-[95%] items-center gap-2 lg:w-[90%]"
+              : "flex w-full items-center gap-2"
           }
         >
           {/* email/password sign in btn */}
@@ -272,8 +272,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
             onClick={isSignIn ? signInEmailPassword : signUpEmailPassword}
             className={
               isSignIn
-                ? "w-full p-2 font-semibold uppercase bg-[#3dc0b7] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#39aca4]"
-                : "w-full p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg text-center shadow-md active:scale-[97%] hover:shadow-xl"
+                ? "w-full rounded-full bg-[#3dc0b7] p-2 text-center font-semibold uppercase text-slate-100 shadow-md hover:bg-[#39aca4] hover:shadow-xl active:scale-[97%]"
+                : "w-full rounded-lg bg-white p-2 text-center font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
             }
           >
             {isSignIn ? "Sign In" : "Sign Up"}
@@ -285,8 +285,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
               onClick={demoLogin}
               className={
                 isSignIn
-                  ? "w-full p-2 font-semibold uppercase bg-[#3dc0b7] text-slate-100 rounded-full text-center shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#39aca4]"
-                  : "w-full p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg text-center shadow-md active:scale-[97%] hover:shadow-xl"
+                  ? "w-full rounded-full bg-[#3dc0b7] p-2 text-center font-semibold uppercase text-slate-100 shadow-md hover:bg-[#39aca4] hover:shadow-xl active:scale-[97%]"
+                  : "w-full rounded-lg bg-white p-2 text-center font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
               }
             >
               Demo Login
@@ -301,8 +301,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           onClick={signUpInGoogle}
           className={
             isSignIn
-              ? "w-[95%] lg:w-[90%] flex items-center gap-1 justify-center p-2 font-semibold uppercase bg-[#3dc0b7] text-slate-100 rounded-full shadow-md active:scale-[97%] hover:shadow-xl hover:bg-[#39aca4]"
-              : "w-full flex items-center gap-1 justify-center p-2 font-semibold uppercase bg-white text-slate-600 rounded-lg shadow-md active:scale-[97%] hover:shadow-xl"
+              ? "flex w-[95%] items-center justify-center gap-1 rounded-full bg-[#3dc0b7] p-2 font-semibold uppercase text-slate-100 shadow-md hover:bg-[#39aca4] hover:shadow-xl active:scale-[97%] lg:w-[90%]"
+              : "flex w-full items-center justify-center gap-1 rounded-lg bg-white p-2 font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
           }
         >
           {isSignIn ? "Sign In With Google" : "Sign Up With Google"}

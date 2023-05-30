@@ -86,11 +86,11 @@ export const SideBar = () => {
     <>
       {/* sidebar container starts  */}
       <div
-        className={`h-full absolute top-0 ${
+        className={`absolute top-0 h-full ${
           isSidebarActive ? "left-[0%]" : "left-[-100%]"
-        } z-20 SideBarContainer md:left-0 duration-200`}
+        } SideBarContainer z-20 duration-200 md:left-0`}
       >
-        <div className="flex fixed top-0 bg-[#2c8781] h-full border-r-[8px] border-[#fff] shadow-2xl md:shadow-none shadow-[#fff]">
+        <div className="fixed top-0 flex h-full border-r-[8px] border-[#fff] bg-[#2c8781] shadow-2xl shadow-[#fff] md:shadow-none">
           {/* background overlay Logo */}
           <div
             style={{
@@ -100,7 +100,7 @@ export const SideBar = () => {
               backgroundPosition: "center",
               opacity: "0.1",
             }}
-            className="overlay absolute bottom-0 left-0 w-full h-[50%] rounded-xl -z-10"
+            className="overlay absolute bottom-0 left-0 -z-10 h-[50%] w-full rounded-xl"
           ></div>
 
           <div className="flex flex-col w-64 h-screen gap-1 p-4 pt-5 duration-300 mainContainer sm:w-64">
@@ -109,7 +109,7 @@ export const SideBar = () => {
               onClick={() => setIsSidebarActive(false)}
               className="mb-2 topContainer AccountContainer"
             >
-              <div className="flex items-center justify-between space-x-4 hover:bg-[#fff4] hover:-translate-y-[0.1rem] duration-200 rounded-xl p-2 bg-[#fff3]">
+              <div className="flex items-center justify-between space-x-4 rounded-xl bg-[#fff3] p-2 duration-200 hover:-translate-y-[0.1rem] hover:bg-[#fff4]">
                 <Link
                   to="profile"
                   title="visit profile"
@@ -117,17 +117,17 @@ export const SideBar = () => {
                 >
                   {userData?.photoUrl ? (
                     <img
-                      className="object-cover p-[2px] rounded-full w-11 h-11 bg-gray-100 shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]"
+                      className="h-11 w-11 rounded-full bg-gray-100 object-cover p-[2px] shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]"
                       src={userData?.photoUrl}
                       alt="avatar"
                     />
                   ) : (
-                    <p className="flex items-center justify-center min-w-[2.75rem] uppercase text-3xl font-bold object-cover p-[2px] rounded-full w-11 h-11 bg-[#fff] text-[#39aca4] shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]">
+                    <p className="flex h-11 w-11 min-w-[2.75rem] items-center justify-center rounded-full bg-[#fff] object-cover p-[2px] text-3xl font-bold uppercase text-[#39aca4] shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]">
                       {userData?.username[0]}
                     </p>
                   )}
 
-                  <div className="block font-medium text-gray-100 max-w-[80%] break-words">
+                  <div className="block max-w-[80%] break-words font-medium text-gray-100">
                     <p>{userData?.username}</p>
                     <div className="text-sm font-normal text-gray-300">
                       {userData?.accounts
@@ -147,7 +147,7 @@ export const SideBar = () => {
                       console.log(error.message);
                     }
                   }}
-                  className="flex justify-end items-center cursor-pointer h-[50px] hover:scale-110 duration-200"
+                  className="flex h-[50px] cursor-pointer items-center justify-end duration-200 hover:scale-110"
                 >
                   <IoExitOutline className="text-2xl text-white" />
                 </div>
@@ -156,7 +156,7 @@ export const SideBar = () => {
             {/* top account container ends */}
 
             {/* top list items starts  */}
-            <ul className="topList bg-[#fff3] rounded-xl p-2 cursor-pointer">
+            <ul className="topList cursor-pointer rounded-xl bg-[#fff3] p-2">
               {topMenuItems.map((ele, i) => (
                 <NavLink
                   key={i}
@@ -164,9 +164,9 @@ export const SideBar = () => {
                   onClick={() => setIsSidebarActive(false)}
                   className={({ isActive }) =>
                     isActive
-                      ? `flex rounded-md p-2 cursor-pointer bg-gray-50 text-gray-700 duration-100 text-sm items-center gap-x-4 mb-1 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] 
+                      ? `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md bg-gray-50 p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100 
               `
-                      : `flex rounded-md p-2 cursor-pointer text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
+                      : `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[#fff3] 
               `
                   }
                 >
@@ -180,8 +180,8 @@ export const SideBar = () => {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="mt-2 bottomList bg-[#fff3] rounded-xl p-2 cursor-pointer overflow-y-auto">
-              <h1 className="flex items-center justify-between mb-3 font-semibold text-[#fff]">
+            <ul className="bottomList mt-2 cursor-pointer overflow-y-auto rounded-xl bg-[#fff3] p-2">
+              <h1 className="mb-3 flex items-center justify-between font-semibold text-[#fff]">
                 Accounts
                 {isNewAccountInputActive ? (
                   <MdOutlineCancel
@@ -190,7 +190,7 @@ export const SideBar = () => {
                       setIsNewAccountInputActive(false);
                       setNewAccAlias("");
                     }}
-                    className="text-xl scale-[1.1] active:scale-90 rounded-full"
+                    className="scale-[1.1] rounded-full text-xl active:scale-90"
                   />
                 ) : (
                   <GoDiffAdded
@@ -209,9 +209,9 @@ export const SideBar = () => {
                   }}
                   className={
                     i === activeAccountIndex
-                      ? `flex rounded-md p-2 bg-gray-50 text-gray-700 duration-100 text-sm items-center gap-x-4 mb-1 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] 
+                      ? `mb-1 flex items-center gap-x-4 rounded-md bg-gray-50 p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100 
               `
-                      : `flex rounded-md p-2 text-gray-200 hover:bg-[#fff3] hover:-translate-y-[1px] duration-100 text-sm items-center gap-x-4 mb-1 
+                      : `mb-1 flex items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[#fff3] 
               `
                   }
                 >
@@ -219,12 +219,12 @@ export const SideBar = () => {
                     <FaPiggyBank />
                   </div>
                   <h3
-                    className={`flex flex-wrap gap-1 origin-left duration-200 w-full`}
+                    className={`flex w-full origin-left flex-wrap gap-1 duration-200`}
                   >
                     {ele?.alias}
 
                     {i === activeAccountIndex ? (
-                      <span className={`text-[#38a097] flex font-bold`}>
+                      <span className={`flex font-bold text-[#38a097]`}>
                         (<TbCurrencyTaka className="self-center" />
                         {isAccountDataLoading
                           ? "Loading..."
@@ -240,8 +240,8 @@ export const SideBar = () => {
 
               {/* Add new account input btn */}
               <div
-                className={`flex items-center justify-between rounded-md duration-300 bg-[#fff3] overflow-hidden ${
-                  isNewAccountInputActive ? "h-[40px] mt-2" : "h-[0] opacity-0"
+                className={`flex items-center justify-between overflow-hidden rounded-md bg-[#fff3] duration-300 ${
+                  isNewAccountInputActive ? "mt-2 h-[40px]" : "h-[0] opacity-0"
                 }`}
               >
                 <input
@@ -251,14 +251,14 @@ export const SideBar = () => {
                   placeholder={
                     isCreateAccountLoading ? "Loading..." : "account name"
                   }
-                  className="flex-[8] flex items-center bg-[#fff2] focus:bg-[#fff4] rounded-md focus:placeholder:-translate-y-3 focus:placeholder:opacity-0 placeholder:text-slate-600 placeholder:-translate-y-[2px] outline-[#fff] text-[#fff] px-2 py-1 w-full h-full placeholder:duration-200"
+                  className="flex h-full w-full flex-[8] items-center rounded-md bg-[#fff2] px-2 py-1 text-[#fff] outline-[#fff] placeholder:-translate-y-[2px] placeholder:text-slate-600 placeholder:duration-200 focus:bg-[#fff4] focus:placeholder:-translate-y-3 focus:placeholder:opacity-0"
                 />
 
                 <button
                   onClick={handleCreateNewAcc}
-                  className="flex-[2] flex items-center justify-center w-full h-full outline-1 outline-[#fff] rounded-md"
+                  className="flex h-full w-full flex-[2] items-center justify-center rounded-md outline-1 outline-[#fff]"
                 >
-                  <TiTick className="active:scale-110 text-[#44ff9b] w-[75%] h-[75%]" />
+                  <TiTick className="h-[75%] w-[75%] text-[#44ff9b] active:scale-110" />
                 </button>
               </div>
             </ul>
@@ -271,22 +271,22 @@ export const SideBar = () => {
       {/* hamburger menu */}
       <div
         onClick={() => setIsSidebarActive(!isSidebarActive)}
-        className="fixed bottom-[10px] h-[50px] right-[10px] md:hidden bg-[#153d3b] rounded z-50 shadow-2xl shadow-[#fff]"
+        className="fixed bottom-[10px] right-[10px] z-50 h-[50px] rounded bg-[#153d3b] shadow-2xl shadow-[#fff] md:hidden"
       >
         <div className="flex flex-col justify-center w-full h-full gap-2 p-2 duration-200 rounded cursor-pointer hover:scale-105">
           <div
-            className={`line duration-300 h-[5px] w-[40px] bg-[#fff] rounded ${
-              isSidebarActive ? "-rotate-[135deg] translate-y-[13px]" : ""
+            className={`line h-[5px] w-[40px] rounded bg-[#fff] duration-300 ${
+              isSidebarActive ? "translate-y-[13px] -rotate-[135deg]" : ""
             }`}
           ></div>
           <div
-            className={`line duration-300 h-[5px] w-[40px]  bg-[#fff] rounded ${
+            className={`line h-[5px] w-[40px] rounded  bg-[#fff] duration-300 ${
               isSidebarActive ? "opacity-0" : ""
             }`}
           ></div>
           <div
-            className={`line duration-300 h-[5px] w-[40px]  bg-[#fff] rounded ${
-              isSidebarActive ? "rotate-[135deg] translate-y-[-13px]" : ""
+            className={`line h-[5px] w-[40px] rounded  bg-[#fff] duration-300 ${
+              isSidebarActive ? "translate-y-[-13px] rotate-[135deg]" : ""
             }`}
           ></div>
         </div>

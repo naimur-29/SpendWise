@@ -54,7 +54,7 @@ export default function Expenses() {
   const { deleteHistory } = useDeleteIncomeExpense();
 
   return (
-    <section className="incomeContainer w-full md:w-[calc(100%-16rem)] min-h-screen bg-slate-100">
+    <section className="incomeContainer min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
       <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
         {/* top container starts  */}
         <div className="flex items-center gap-3 mb-4 heading">
@@ -68,11 +68,11 @@ export default function Expenses() {
               title="Select the month & year to see that month's Expenses!"
               onChange={(e) => setUserDefTimeFrame(e.target.value)}
               value={userDefTimeFrame}
-              className="text-transparent bg-[#39aca4] flex items-center justify-center py-2 px-4 rounded-full -translate-y-1 outline-[#fff] hover:bg-[#39aca4aa] rounded-r-none duration-200 shadow cursor-pointer"
+              className="flex -translate-y-1 cursor-pointer items-center justify-center rounded-full rounded-r-none bg-[#39aca4] px-4 py-2 text-transparent shadow outline-[#fff] duration-200 hover:bg-[#39aca4aa]"
             />
             <p
               title="Select the month & year to see that month's Incomes!"
-              className="date-overlay text-slate-100 bg-[#39aca4] px-4 py-2 rounded-full absolute top-0 left-[0] w-[120px] -translate-y-1"
+              className="date-overlay absolute left-[0] top-0 w-[120px] -translate-y-1 rounded-full bg-[#39aca4] px-4 py-2 text-slate-100"
             >
               {getTextTf(
                 getTFfromDate(userDefTimeFrame) || accountData?.currentTimeFrame
@@ -81,11 +81,11 @@ export default function Expenses() {
           </div>
         </div>
         <div className="topContainerCard mb-[40px]">
-          <div className="flex justify-center items-center w-full p-2 bg-[#39aca4] rounded-md drop-shadow-md border-[3px] border-[#fff]">
+          <div className="flex w-full items-center justify-center rounded-md border-[3px] border-[#fff] bg-[#39aca4] p-2 drop-shadow-md">
             <div className="cardTop">
-              <h3 className="text-2xl uppercase font-bold self-center text-[#fff] flex flex-wrap justify-center items-center">
+              <h3 className="flex flex-wrap items-center justify-center self-center text-2xl font-bold uppercase text-[#fff]">
                 Total expense :
-                <span className="text-[#fff8bd] flex items-center">
+                <span className="flex items-center text-[#fff8bd]">
                   <TbCurrencyTaka />
                   {isHistoryDataLoading
                     ? "Loading..."
@@ -107,12 +107,12 @@ export default function Expenses() {
           {/* body left container ends  */}
 
           {/* body Right container starts  */}
-          <div className="bodyContainerRight w-full customSm:w-[80%] md:w-full m-auto mt-1 col-span-2 customMid:col-span-8 customMid:mt-3 p-1 md:p-0">
-            <h2 className="text-center text-2xl uppercase mb-[20px]">
+          <div className="bodyContainerRight customSm:w-[80%] customMid:col-span-8 customMid:mt-3 col-span-2 m-auto mt-1 w-full p-1 md:w-full md:p-0">
+            <h2 className="mb-[20px] text-center text-2xl uppercase">
               Expense Histories
             </h2>
 
-            <div className="rightCardSection h-[68vh] w-[100%] md:w-[100%] customMid:w-[99%] lg:w-[92%] m-auto overflow-auto">
+            <div className="rightCardSection customMid:w-[99%] m-auto h-[68vh] w-[100%] overflow-auto md:w-[100%] lg:w-[92%]">
               {isHistoryDataLoading ? (
                 <h3 className="text-center text-slate-600">Loading...</h3>
               ) : historyData?.expenses[0] ? (

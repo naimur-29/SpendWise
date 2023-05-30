@@ -15,7 +15,7 @@ export default function LandingPage() {
     <section className="relative flex w-full h-screen overflow-hidden bg-white">
       {/* left side */}
       <div
-        className={`left w-[100%] h-full ${
+        className={`left h-full w-[100%] ${
           isSignUpModalActive ? "md:w-[60%] " : "md:w-[100%] "
         }p-3 duration-300`}
       >

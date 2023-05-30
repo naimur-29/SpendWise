@@ -1,22 +1,22 @@
 export default function Overview() {
   return (
-    <section className="w-full flex flex-col gap-[20px] md:w-[calc(100%-16rem)] bg-slate-900 min-h-screen p-[40px] text-white">
+    <section className="flex min-h-screen w-full flex-col gap-[20px] bg-slate-900 p-[40px] text-white md:w-[calc(100%-16rem)]">
       <div className="heading bg-[#fff3]">
         <h3 className="text-2xl">Overview</h3>
       </div>
 
       {/* main card container */}
-      <div className="card-container flex flex-col justify-between h-full gap-[20px]">
+      <div className="card-container flex h-full flex-col justify-between gap-[20px]">
         {/* first row */}
-        <div className="card-cols flex flex-col lg:flex-row justify-between flex-[1] gap-[20px]">
-          <div className="card w-full flex-[1] bg-[#fff3] rounded-lg px-2 py-1"></div>
-          <div className="card w-full flex-[1] bg-[#fff3] rounded-lg px-2 py-1"></div>
-          <div className="card w-full flex-[1] bg-[#fff3] rounded-lg px-2 py-1 flex flex-col gap-1">
+        <div className="card-cols flex flex-[1] flex-col justify-between gap-[20px] lg:flex-row">
+          <div className="card w-full flex-[1] rounded-lg bg-[#fff3] px-2 py-1"></div>
+          <div className="card w-full flex-[1] rounded-lg bg-[#fff3] px-2 py-1"></div>
+          <div className="card flex w-full flex-[1] flex-col gap-1 rounded-lg bg-[#fff3] px-2 py-1">
             <div className="heading">
               <h3>Latest Transactions</h3>
             </div>
 
-            <div className="content flex flex-col gap-1">
+            <div className="flex flex-col gap-1 content">
               <div className="item flex justify-between bg-[#fff3]">
                 <div className="left">
                   <p>Food</p>
@@ -45,22 +45,22 @@ export default function Overview() {
         </div>
 
         {/* second row container */}
-        <div className="card-cols flex flex-col lg:flex-row justify-between flex-[2] gap-[20px]">
+        <div className="card-cols flex flex-[2] flex-col justify-between gap-[20px] lg:flex-row">
           {/* first col */}
-          <div className="card-cols flex flex-col justify-between flex-[1] gap-[20px]">
-            <div className="card w-full flex-[8] bg-[#fff3] rounded-lg"></div>
-            <div className="card w-full flex-[6] bg-[#fff3] rounded-lg"></div>
+          <div className="card-cols flex flex-[1] flex-col justify-between gap-[20px]">
+            <div className="card w-full flex-[8] rounded-lg bg-[#fff3]"></div>
+            <div className="card w-full flex-[6] rounded-lg bg-[#fff3]"></div>
           </div>
 
           {/* second col */}
-          <div className="card-cols flex flex-col justify-between flex-[1] gap-[20px]">
-            <div className="card w-full flex-[8] bg-[#fff3] rounded-lg"></div>
-            <div className="card w-full flex-[6] bg-[#fff3] rounded-lg"></div>
+          <div className="card-cols flex flex-[1] flex-col justify-between gap-[20px]">
+            <div className="card w-full flex-[8] rounded-lg bg-[#fff3]"></div>
+            <div className="card w-full flex-[6] rounded-lg bg-[#fff3]"></div>
           </div>
 
           {/* third col */}
-          <div className="card-cols flex flex-col justify-between flex-[1] gap-[20px]">
-            <div className="card w-full flex-[1] bg-[#fff3] rounded-lg"></div>
+          <div className="card-cols flex flex-[1] flex-col justify-between gap-[20px]">
+            <div className="card w-full flex-[1] rounded-lg bg-[#fff3]"></div>
           </div>
         </div>
       </div>
