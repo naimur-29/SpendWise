@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { setDoc, updateDoc } from "firebase/firestore";
+import { setDoc } from "firebase/firestore";
 
 // importing icons:
 import { FcGoogle } from "react-icons/fc";

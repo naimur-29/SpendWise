@@ -11,7 +11,7 @@ export default function Dashboard() {
   return (
     <section className="min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
       <div className="flex flex-col w-full h-full _wrapper">
-        <div className="_top flex w-full  flex-col items-start gap-1 px-[20px] pb-[16px] pt-[20px] sm:flex-row sm:items-center sm:justify-between md:px-[27px] md:pb-[20px]">
+        <div className="_top flex w-full items-center justify-between gap-2 px-[20px] pb-[16px] pt-[20px] sm:gap-1 md:px-[27px] md:pb-[20px]">
           <div className="_left">
             <h3 className="text-2xl font-semibold text-gray-900 extra-sm:text-3xl">
               My SpendWise Profile
@@ -31,7 +31,7 @@ export default function Dashboard() {
                   console.log(error.message);
                 }
               }}
-              className="rounded-lg bg-[#39aca4] px-8 py-2 text-lg font-bold uppercase text-slate-100 shadow-lg duration-200 hover:scale-95 hover:bg-[#2c8781] hover:shadow-md active:scale-100"
+              className="min-w-[110px] rounded-lg bg-[#39aca4] p-2 text-lg font-semibold uppercase text-slate-100 shadow-lg duration-200 hover:scale-95 hover:bg-[#2c8781] hover:shadow-md active:scale-100 sm:px-8 sm:py-2"
             >
               Sign Out
             </button>

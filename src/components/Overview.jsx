@@ -19,7 +19,7 @@ export const Overview = () => {
   } = useContext(userContext);
 
   return (
-    <section className="_overview flex h-full max-h-[100%] w-full max-w-[100%] flex-col items-center rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] sm:flex-[1]">
+    <section className="_overview flex h-full max-h-[100%] min-h-[280px] w-full max-w-[100%] flex-col items-center rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] sm:flex-[1]">
       <div className="_heading mb-4 flex min-w-[50%] items-center justify-between gap-3">
         <h2 className="mb-2 text-2xl font-semibold">Overview</h2>
 

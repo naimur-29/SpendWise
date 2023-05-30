@@ -14,15 +14,19 @@ export const EditProfileCard = () => {
 
   return (
     <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433]">
-      <div className="wrapper mb-[20px] h-full flex-grow overflow-hidden rounded-xl bg-slate-300 lg:h-0">
+      <div className="wrapper relative mb-[20px] h-full max-h-[35vh] flex-grow overflow-hidden rounded-xl bg-slate-200 duration-200 lg:h-0 lg:max-h-full">
+        <div className="_overlay shadow-[inset_0px_-5px_8px_rgba(0, 0, 0, .25)] absolute left-0 top-0 h-full w-full"></div>
+
         {userData?.photoUrl ? (
           <img
-            className="h-full w-full rounded-xl object-cover object-center"
+            className="h-full max-h-[35vh] w-full rounded-xl object-cover object-top lg:max-h-full"
             src={newPhotoUrl || userData?.photoUrl}
             alt="avatar"
           />
         ) : (
-          <p className="">{userData?.username[0]}</p>
+          <p className="flex h-full min-h-[280px] w-full items-center justify-center rounded-xl bg-white text-[8rem] font-semibold uppercase text-[#39aca4]">
+            {userData?.username[0]}
+          </p>
         )}
       </div>
 

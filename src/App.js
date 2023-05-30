@@ -25,6 +25,7 @@ import Dashboard from "./pages/Dashboard";
 import { UserContextProvider } from "./contexts/UserContext";
 
 function App() {
+  // create router:
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route
@@ -37,6 +38,7 @@ function App() {
           </Loading>
         }
       >
+        {/* Dashboard Route */}
         <Route
           index
           element={
@@ -45,6 +47,7 @@ function App() {
             </Loading>
           }
         />
+        {/* Incomes Route */}
         <Route
           path="incomes"
           element={
@@ -53,6 +56,7 @@ function App() {
             </Loading>
           }
         />
+        {/* Expenses Route */}
         <Route
           path="expenses"
           element={
@@ -61,6 +65,7 @@ function App() {
             </Loading>
           }
         />
+        {/* Histories Route */}
         <Route
           path="histories"
           element={
@@ -70,6 +75,7 @@ function App() {
           }
         />
 
+        {/* Error Routes */}
         <Route
           path="*"
           element={
