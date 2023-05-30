@@ -1,6 +1,10 @@
 // importing libraries:
+import { useContext } from "react";
 import { auth } from "../services/firebaseApi";
 import { signOut } from "firebase/auth";
+
+// local contexts:
+import { userContext } from "../contexts/UserContext";
 
 // local components:
 import { EditProfileCard } from "../components/EditProfileCard";
@@ -8,20 +12,23 @@ import { Overview } from "../components/Overview";
 import { ManageAccounts } from "../components/ManageAccounts";
 
 export default function Dashboard() {
+  // user context:
+  const { userData } = useContext(userContext);
+
   return (
     <section className="min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
-      <div className="flex flex-col w-full h-full _wrapper">
+      <div className="_wrapper flex h-full w-full flex-col">
         <div className="_top flex w-full items-center justify-between gap-2 px-[20px] pb-[16px] pt-[20px] sm:gap-1 md:px-[27px] md:pb-[20px]">
           <div className="_left">
             <h3 className="text-2xl font-semibold text-gray-900 extra-sm:text-3xl">
-              My SpendWise Profile
-            </h3>
-            <p className="text-gray-600 text-md extra-sm:text-lg">
               Welcome to SpendWise!
+            </h3>
+            <p className="text-md text-gray-600 extra-sm:text-lg">
+              {userData?.username || "Loading..."}
             </p>
           </div>
 
-          <div className="flex items-center justify-center _right">
+          <div className="_right flex items-center justify-center">
             <button
               onClick={async () => {
                 try {
