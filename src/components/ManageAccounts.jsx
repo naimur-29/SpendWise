@@ -13,7 +13,7 @@ export const ManageAccounts = () => {
   const { userData } = useContext(userContext);
 
   return (
-    <section className="_accounts flex h-full max-h-[100%] min-h-[280px] w-full flex-col overflow-y-auto rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] sm:flex-[1]">
+    <section className="_accounts flex h-full max-h-[35vh] min-h-[280px] w-full flex-col overflow-y-auto rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] sm:flex-[1]">
       <h3 className="mb-3 text-2xl font-semibold text-gray-900">My Accounts</h3>
 
       <div className="flex h-full max-h-[100%] w-full flex-col overflow-auto">
