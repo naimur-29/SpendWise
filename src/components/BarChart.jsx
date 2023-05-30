@@ -1,29 +1,9 @@
 // importing libraries:
 import { Chart } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  BarController,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from "chart.js";
+import { Chart as ChartJS } from "chart.js/auto";
 
-ChartJS.register(
-  BarController,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
+// dummy:
+ChartJS.register();
 
 export const BarChart = ({ data1, data2 }) => {
   const data = {
