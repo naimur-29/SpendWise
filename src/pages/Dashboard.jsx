@@ -7,7 +7,7 @@ import { EditProfileCard } from "../components/EditProfileCard";
 import { Overview } from "../components/Overview";
 import { ManageAccounts } from "../components/ManageAccounts";
 
-export default function Profile() {
+export default function Dashboard() {
   return (
     <section className="min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
       <div className="flex flex-col w-full h-full _wrapper">

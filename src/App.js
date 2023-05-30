@@ -19,7 +19,7 @@ import { Loading } from "./components/Loading";
 import Incomes from "./pages/Incomes";
 import Expenses from "./pages/Expenses";
 import Histories from "./pages/Histories";
-import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 
 // importing context providers:
 import { UserContextProvider } from "./contexts/UserContext";
@@ -41,7 +41,7 @@ function App() {
           index
           element={
             <Loading duration={1000}>
-              <Profile />
+              <Dashboard />
             </Loading>
           }
         />
