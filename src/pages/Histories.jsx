@@ -27,7 +27,7 @@ export default function Histories() {
     <section className="incomeContainer min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
       <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
         {/* top container starts  */}
-        <div className="flex items-center gap-3 mb-4 heading">
+        <div className="heading mb-4 flex items-center gap-3">
           <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl ">
             Histories of
           </h2>
@@ -63,11 +63,13 @@ export default function Histories() {
               (a, b) =>
                 Number(a.dateAdded.slice(-2)) - Number(b.dateAdded.slice(-2))
             )}
+            totalIncome={historyData?.totalIncomeAmount}
+            totalExpense={historyData?.totalExpenseAmount}
           />
         </div>
 
         {/* body container starts */}
-        <div className="flex flex-col items-center justify-center pb-5 bodyContainer extra-lg:gap-0">
+        <div className="bodyContainer flex flex-col items-center justify-center pb-5 extra-lg:gap-0">
           {/* body left container starts  */}
           <div className="topContainerCard mb-[10px]">
             <h2 className="mb-[10px] text-center text-2xl uppercase">

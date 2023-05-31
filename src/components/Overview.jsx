@@ -42,8 +42,8 @@ export const Overview = () => {
         </div>
       </div>
 
-      <div className="relative w-full h-full">
-        <div className="absolute bottom-0 flex items-center justify-center flex-grow w-full h-full">
+      <div className="relative h-full w-full">
+        <div className="absolute bottom-0 flex h-full w-full flex-grow items-center justify-center">
           {/* chart */}
           <BarChart
             data1={historyData?.incomes?.sort(
@@ -54,6 +54,8 @@ export const Overview = () => {
               (a, b) =>
                 Number(a.dateAdded.slice(-2)) - Number(b.dateAdded.slice(-2))
             )}
+            totalIncome={historyData?.totalIncomeAmount}
+            totalExpense={historyData?.totalExpenseAmount}
           />
         </div>
       </div>

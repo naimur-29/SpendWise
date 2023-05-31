@@ -1,16 +1,16 @@
 // importing libraries:
 import { Chart } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import { Chart as ChartJS, registerables } from "chart.js";
 
-// dummy:
-ChartJS.register();
+// chart.js not registered fix:
+ChartJS.register(...registerables);
 
-export const BarChart = ({ data1, data2 }) => {
+export const BarChart = ({ data1, data2, totalIncome, totalExpense }) => {
   const data = {
     labels: new Array(30).fill(0).map((i, j) => j + 1),
     datasets: [
       {
-        label: "Income Amount",
+        label: "Income " + totalIncome + "/-",
         data: new Array(30).fill(0).map((i, j) => {
           let a = 0;
           data1?.forEach((e) => {
@@ -26,7 +26,7 @@ export const BarChart = ({ data1, data2 }) => {
         borderWidth: 1,
       },
       {
-        label: "Expense Amount",
+        label: "Expense " + totalExpense + "/-",
         data: new Array(30).fill(0).map((i, j) => {
           let a = 0;
           data2?.forEach((e) => {

@@ -16,9 +16,9 @@ export const Loading = ({ children, duration, isWithoutSidebar }) => {
       <section
         className={`w-full ${
           !isWithoutSidebar ? "md:w-[calc(100%-16rem)]" : ""
-        } flex min-h-screen items-center justify-center bg-gray-100`}
+        } z-50 flex min-h-screen items-center justify-center bg-gray-100`}
       >
-        <h3 className="w-full text-4xl text-center text-gray-700">
+        <h3 className="w-full text-center text-4xl text-gray-700">
           Loading...
         </h3>
       </section>

@@ -8,6 +8,9 @@ import { userContext } from "../contexts/UserContext";
 // importing pages:
 import LandingPage from "../pages/LandingPage";
 
+// importing local components:
+import { Loading } from "../components/Loading";
+
 export const Unauthorized = ({ children }) => {
   // contexts:
   const { currentUser } = useContext(userContext);
@@ -15,10 +18,10 @@ export const Unauthorized = ({ children }) => {
   // if not signed in, then return to landing page:
   if (!currentUser) {
     return (
-      <>
+      <Loading>
         <LandingPage />
         <Navigate to={"/"} />
-      </>
+      </Loading>
     );
   }
 
