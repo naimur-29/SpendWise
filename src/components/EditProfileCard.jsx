@@ -59,7 +59,7 @@ export const EditProfileCard = () => {
       <div className="wrapper relative mb-[20px] h-full max-h-[35vh] flex-grow overflow-hidden rounded-xl bg-slate-200 duration-200 lg:h-0 lg:max-h-full">
         <div className="_overlay absolute left-0 top-0 h-full w-full shadow-[inset_0px_-5px_8px_#0003]"></div>
 
-        {userData?.photoUrl ? (
+        {userData?.photoUrl || newPhotoUrl ? (
           <img
             className="h-full max-h-[35vh] w-full rounded-xl object-cover object-top lg:max-h-full"
             src={newPhotoUrl || userData?.photoUrl}
@@ -73,7 +73,7 @@ export const EditProfileCard = () => {
       </div>
 
       {responseMessage ? (
-        <div className="flex items-center justify-center w-full -mt-3 _wrapper">
+        <div className="_wrapper -mt-3 flex w-full items-center justify-center">
           <p className="w-[100%] rounded bg-[#39aca4] px-2 py-1 text-center font-mono text-[#fff]">
             {responseMessage}
           </p>
