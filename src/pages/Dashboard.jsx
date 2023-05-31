@@ -1,5 +1,5 @@
 // importing libraries:
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { auth } from "../services/firebaseApi";
 import { signOut } from "firebase/auth";
 
@@ -14,6 +14,11 @@ import { ManageAccounts } from "../components/ManageAccounts";
 export default function Dashboard() {
   // user context:
   const { userData } = useContext(userContext);
+
+  // scroll to top on page load:
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">

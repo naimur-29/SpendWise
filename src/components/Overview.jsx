@@ -20,20 +20,22 @@ export const Overview = () => {
 
   return (
     <section className="_overview flex h-full max-h-[100%] min-h-[280px] w-full max-w-[100%] flex-col items-center rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] sm:flex-[1]">
-      <div className="_heading mb-4 flex min-w-[50%] items-center justify-between gap-3">
+      <div className="_heading mb-4 flex min-w-[50%] flex-wrap items-center justify-center gap-2">
         <h2 className="mb-2 text-2xl font-semibold">Overview</h2>
 
-        <div className="relative">
+        <div className="relative -translate-y-1">
           <input
             type="date"
+            id="session-date"
+            name="session-date"
             title="Select the month & year to see that month's Histories!"
             onChange={(e) => setUserDefTimeFrame(e.target.value)}
             value={userDefTimeFrame}
-            className="flex -translate-y-1 items-center justify-center rounded-full bg-[#39aca4] px-4 py-2 text-transparent shadow outline-[#fff] duration-200 hover:bg-[#39aca4aa]"
+            className="z-10 flex h-full w-full items-center justify-center rounded-full bg-transparent p-2 text-transparent outline-[#fff] duration-200"
           />
           <p
             title="Select the month & year to see that month's Incomes!"
-            className="date-overlay absolute left-[0] top-0 w-[120px] -translate-y-1 rounded-full bg-[#39aca4] px-4 py-2 text-slate-100"
+            className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full bg-[#39aca4] font-semibold text-slate-100"
           >
             {getTextTf(
               getTFfromDate(userDefTimeFrame) || accountData?.currentTimeFrame

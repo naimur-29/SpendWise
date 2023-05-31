@@ -20,6 +20,7 @@ import Incomes from "./pages/Incomes";
 import Expenses from "./pages/Expenses";
 import Histories from "./pages/Histories";
 import Dashboard from "./pages/Dashboard";
+import Error from "./pages/Error";
 
 // importing context providers:
 import { UserContextProvider } from "./contexts/UserContext";
@@ -80,9 +81,7 @@ function App() {
           path="*"
           element={
             <Loading duration={1000}>
-              <h3 className="flex min-h-screen w-full items-center justify-center bg-slate-300 text-3xl font-semibold text-red-700 md:w-[calc(100%-16rem)]">
-                404 page not found!
-              </h3>
+              <Error />
             </Loading>
           }
         />

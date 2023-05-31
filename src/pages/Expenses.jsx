@@ -1,5 +1,5 @@
 // importing libraries:
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 // importing icons:
 import { TbCurrencyTaka } from "react-icons/tb";
@@ -53,26 +53,33 @@ export default function Expenses() {
   // delete history functionality through custom hook:
   const { deleteHistory } = useDeleteIncomeExpense();
 
+  // scroll to top on page load:
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="incomeContainer min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
       <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
         {/* top container starts  */}
-        <div className="flex items-center gap-3 mb-4 heading">
-          <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl ">
+        <div className="heading mb-4 flex items-center gap-3">
+          <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl">
             Expenses of
           </h2>
 
-          <div className="relative">
+          <div className="relative -translate-y-1">
             <input
               type="date"
-              title="Select the month & year to see that month's Expenses!"
+              id="session-date"
+              name="session-date"
+              title="Select the month & year to see that month's Histories!"
               onChange={(e) => setUserDefTimeFrame(e.target.value)}
               value={userDefTimeFrame}
-              className="flex -translate-y-1 cursor-pointer items-center justify-center rounded-full rounded-r-none bg-[#39aca4] px-4 py-2 text-transparent shadow outline-[#fff] duration-200 hover:bg-[#39aca4aa]"
+              className="z-10 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-transparent px-4 py-2 text-transparent outline-[#fff] duration-200"
             />
             <p
               title="Select the month & year to see that month's Incomes!"
-              className="date-overlay absolute left-[0] top-0 w-[120px] -translate-y-1 rounded-full bg-[#39aca4] px-4 py-2 text-slate-100"
+              className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-[#39aca4] font-semibold text-slate-100"
             >
               {getTextTf(
                 getTFfromDate(userDefTimeFrame) || accountData?.currentTimeFrame
@@ -80,6 +87,7 @@ export default function Expenses() {
             </p>
           </div>
         </div>
+
         <div className="topContainerCard mb-[40px]">
           <div className="flex w-full items-center justify-center rounded-md border-[3px] border-[#fff] bg-[#39aca4] p-2 drop-shadow-md">
             <div className="cardTop">

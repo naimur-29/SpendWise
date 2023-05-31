@@ -98,12 +98,12 @@ export const SideBar = () => {
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
-              opacity: "0.1",
+              opacity: "0.05",
             }}
             className="overlay absolute bottom-0 left-0 -z-10 h-[50%] w-full rounded-xl"
           ></div>
 
-          <div className="mainContainer flex h-screen w-64 flex-col gap-1 p-4 pt-5 duration-300 sm:w-64">
+          <div className="mainContainer flex h-screen w-64 flex-col gap-1 p-4 pt-5 duration-300">
             {/* top account container starts */}
             <div
               onClick={() => setIsSidebarActive(false)}
