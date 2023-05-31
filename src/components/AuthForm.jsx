@@ -111,7 +111,11 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
 
     setIsLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(
+        auth,
+        demoAccount.email,
+        demoAccount.password
+      );
 
       setEmail("");
       setPassword("");
@@ -208,7 +212,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
                   ? "bg-[#0f74]"
                   : "bg-[#39aca433]"
               }`
-            : `w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-600 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] ${
+            : `w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] ${
                 email && email.includes("@") && email.includes(".")
                   ? "bg-[#0f74]"
                   : "bg-[#fff6]"
@@ -227,7 +231,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           isSignIn
             ? "w-[95%] rounded-full px-4 py-3 text-slate-950 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#39aca466] focus:placeholder:translate-x-[-100%] lg:w-[90%] " +
               (password.length > 5 ? "bg-[#0f74]" : "bg-[#39aca433]")
-            : "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-600 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
+            : "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
               (password.length > 5 ? "bg-[#0f74]" : "bg-[#fff6]")
         }
       />
@@ -241,7 +245,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           value={rePassword}
           onChange={(e) => setRePassword(e.target.value)}
           className={
-            "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-600 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
+            "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
             (rePassword && password === rePassword
               ? "bg-[#0f74]"
               : "bg-[#fff6]")
@@ -256,7 +260,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         className={
           isSignIn
             ? "flex w-[95%] justify-between px-1 text-slate-700 lg:w-[90%]"
-            : "flex w-full justify-between px-1 font-semibold text-slate-50"
+            : "flex w-full justify-between px-1 text-slate-50"
         }
       >
         <button

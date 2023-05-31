@@ -18,8 +18,8 @@ export const Unauthorized = ({ children }) => {
   // if not signed in, then return to landing page:
   if (!currentUser) {
     return (
-      <Loading>
-        <LandingPage isWithoutSidebar />
+      <Loading isWithoutSidebar>
+        <LandingPage />
         <Navigate to={"/"} />
       </Loading>
     );

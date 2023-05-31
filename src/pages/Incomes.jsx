@@ -75,7 +75,7 @@ export default function Incomes() {
               title="Select the month & year to see that month's Histories!"
               onChange={(e) => setUserDefTimeFrame(e.target.value)}
               value={userDefTimeFrame}
-              className="z-10 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-transparent px-4 py-2 text-transparent outline-[#fff] duration-200"
+              className="z-10 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-transparent px-4 py-2 text-transparent outline-[#fff] duration-200 focus:select-none"
             />
             <p
               title="Select the month & year to see that month's Incomes!"
