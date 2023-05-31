@@ -104,11 +104,11 @@ export const SideBar = () => {
             className="overlay absolute bottom-0 left-0 -z-10 h-[50%] w-full rounded-xl"
           ></div>
 
-          <div className="flex flex-col w-64 h-screen gap-1 p-4 pt-5 duration-300 mainContainer sm:w-64">
+          <div className="mainContainer flex h-screen w-64 flex-col gap-1 p-4 pt-5 duration-300 sm:w-64">
             {/* top account container starts */}
             <div
               onClick={() => setIsSidebarActive(false)}
-              className="mb-2 topContainer AccountContainer"
+              className="topContainer AccountContainer mb-2"
             >
               <div className="flex items-center justify-between space-x-4 rounded-xl bg-[#fff3] p-2 duration-200 hover:-translate-y-[0.1rem] hover:bg-[#fff4]">
                 <Link
@@ -129,7 +129,11 @@ export const SideBar = () => {
                   )}
 
                   <div className="block max-w-[80%] break-words font-medium text-gray-100">
-                    <p>{userData?.username}</p>
+                    <p>
+                      {userData?.username?.length > 10
+                        ? `${userData?.username.slice(0, 10)}...`
+                        : userData?.username}
+                    </p>
                     <div className="text-sm font-normal text-gray-300">
                       {userData?.accounts
                         ? userData?.accounts[activeAccountIndex]?.alias
@@ -171,7 +175,7 @@ export const SideBar = () => {
               `
                   }
                 >
-                  <div className="text-lg icon">{ele.src}</div>
+                  <div className="icon text-lg">{ele.src}</div>
                   <span className={` flex origin-left duration-200`}>
                     {ele.title}
                   </span>
@@ -197,7 +201,7 @@ export const SideBar = () => {
                   <GoDiffAdded
                     title="Add new account!"
                     onClick={() => setIsNewAccountInputActive(true)}
-                    className="text-xl cursor-pointer active:scale-90"
+                    className="cursor-pointer text-xl active:scale-90"
                   />
                 )}
               </h1>
@@ -216,7 +220,7 @@ export const SideBar = () => {
               `
                   }
                 >
-                  <div className="text-lg icon">
+                  <div className="icon text-lg">
                     <FaPiggyBank />
                   </div>
                   <h3
@@ -272,7 +276,7 @@ export const SideBar = () => {
         onClick={() => setIsSidebarActive(!isSidebarActive)}
         className="fixed bottom-[10px] right-[10px] z-50 h-[50px] rounded bg-[#153d3b] shadow-2xl shadow-[#fff] md:hidden"
       >
-        <div className="flex flex-col justify-center w-full h-full gap-2 p-2 duration-200 rounded cursor-pointer hover:scale-105">
+        <div className="flex h-full w-full cursor-pointer flex-col justify-center gap-2 rounded p-2 duration-200 hover:scale-105">
           <div
             className={`line h-[5px] w-[40px] rounded bg-[#fff] duration-300 ${
               isSidebarActive ? "translate-y-[13px] -rotate-[135deg]" : ""
