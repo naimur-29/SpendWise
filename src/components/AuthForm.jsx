@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { setDoc } from "firebase/firestore";
+import { setDoc, getDoc } from "firebase/firestore";
 
 // importing icons:
 import { FcGoogle } from "react-icons/fc";
@@ -110,22 +110,22 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
 
   const createNewUserOnSignUp = async (uid, username) => {
     try {
-      await setDoc(getUsersRef(uid), {
-        userId: uid,
-        username: username,
-        photoUrl: "",
-      });
+      const user = await getDoc(getUsersRef(uid));
 
-      createAccount({
-        uid,
-        id: `${uid}.default`,
-        alias: "default",
-        userData: {
+      if (!user.exists()) {
+        console.log("creating user...");
+        await setDoc(getUsersRef(uid), {
           userId: uid,
           username: username,
           photoUrl: "",
-        },
-      });
+        });
+
+        createAccount({
+          uid,
+          id: `${uid}.default`,
+          alias: "default",
+        });
+      }
     } catch (error) {
       setErrorMsg(error.message.slice(10));
     }
@@ -262,7 +262,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       </div>
 
       {/* sign in/up buttons */}
-      <div className="flex flex-col items-center w-full gap-2 btn-container">
+      <div className="btn-container flex w-full flex-col items-center gap-2">
         <div
           className={
             isSignIn

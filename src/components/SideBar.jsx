@@ -74,7 +74,6 @@ export const SideBar = () => {
       uid: userData?.userId,
       id: userData && `${userData?.userId}.${newAccAlias}`,
       alias: newAccAlias.trim(),
-      userData,
     });
 
     if (!isCreateAccountLoading) {

@@ -7,11 +7,11 @@ const useCreateAccount = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const post = async ({ uid, id, alias, userData }) => {
+  const post = async ({ uid, id, alias }) => {
     setIsLoading(true);
 
     // if no id:
-    if (!id || !alias || !userData || !uid) {
+    if (!id || !alias || !uid) {
       setErrorMessage("Invalid Account ID");
       setIsLoading(false);
       return;
@@ -30,7 +30,6 @@ const useCreateAccount = () => {
 
       // update user data:
       await updateDoc(getUsersRef(id.split(".")[0]), {
-        ...userData,
         accounts: arrayUnion({
           alias,
           id,

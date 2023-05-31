@@ -24,7 +24,9 @@ export const EditProfileCard = () => {
 
     // check if data valid:
     if (!newUsername && !newPhotoUrl) {
-      setResponseMessage("Already up to date!");
+      setResponseMessage("Invalid Data or Already Up To Date!");
+      setNewUsername(userData?.username);
+      setNewPhotoUrl(userData?.photoUrl);
       return;
     }
 

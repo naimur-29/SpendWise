@@ -14,6 +14,7 @@ const SignUpModal = ({ isSignUpModalActive, setIsSignUpModalActive }) => {
   return (
     <div
       style={{
+        backgroundColor: "#39aca4",
         backgroundImage: `url("${BGImage}")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -26,8 +27,8 @@ const SignUpModal = ({ isSignUpModalActive, setIsSignUpModalActive }) => {
       {/* color overlay */}
       <div className="absolute left-0 top-0 h-full w-full bg-[#39aca4] opacity-[0.8]"></div>
 
-      <div className="z-10 flex justify-between close-modal md:justify-end">
-        <div className="flex items-center logo md:hidden">
+      <div className="close-modal z-10 flex justify-between md:justify-end">
+        <div className="logo flex items-center md:hidden">
           <img
             src={Logo}
             className="mr-2 h-8 min-w-[33px] cursor-pointer rounded-full bg-white object-cover object-center p-[2px]"
