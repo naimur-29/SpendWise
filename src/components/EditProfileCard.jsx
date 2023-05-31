@@ -6,6 +6,9 @@ import { updateDoc } from "firebase/firestore";
 // local contexts:
 import { userContext } from "../contexts/UserContext";
 
+// importing local assets:
+import Logo from "../assets/spend-wise-logo.webp";
+
 export const EditProfileCard = () => {
   // states:
   const [newPhotoUrl, setNewPhotoUrl] = useState(undefined);
@@ -59,7 +62,7 @@ export const EditProfileCard = () => {
   return (
     <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433]">
       <div className="wrapper relative mb-[20px] h-full max-h-[35vh] flex-grow overflow-hidden rounded-xl bg-slate-200 duration-200 lg:h-0 lg:max-h-full">
-        <div className="_overlay absolute left-0 top-0 h-full w-full shadow-[inset_0px_-5px_8px_#0003]"></div>
+        <div className="_overlay absolute left-0 top-0 h-full w-full shadow-[inset_0px_-3px_8px_#0003]"></div>
 
         {userData?.photoUrl || newPhotoUrl ? (
           <img
@@ -68,7 +71,13 @@ export const EditProfileCard = () => {
             alt="avatar"
           />
         ) : (
-          <p className="flex h-full min-h-[280px] w-full items-center justify-center rounded-xl bg-white text-[8rem] font-semibold uppercase text-[#39aca4]">
+          <p className="relative flex h-full min-h-[280px] w-full items-center justify-center rounded-xl bg-transparent text-[12rem] font-semibold uppercase text-[#39aca4]">
+            <img
+              src={Logo}
+              alt="SpendWise Logo"
+              className="absolute left-0 top-0 h-full w-full object-cover object-center opacity-[0.1]"
+            />
+
             {userData?.username[0]}
           </p>
         )}
@@ -89,7 +98,7 @@ export const EditProfileCard = () => {
         <input
           type="text"
           onChange={(e) => setNewUsername(e.target.value)}
-          placeholder="new username"
+          placeholder="ex: fakecake420"
           value={newUsername === undefined ? userData?.username : newUsername}
           className="rounded bg-[#39aca433] px-2 py-2 text-slate-950 shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 placeholder:duration-200 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[#fff] focus:placeholder:translate-x-[-100%]"
         />
@@ -100,7 +109,7 @@ export const EditProfileCard = () => {
         <input
           type="text"
           onChange={(e) => setNewPhotoUrl(e.target.value)}
-          placeholder="new photo url"
+          placeholder="ex: https://..."
           value={newPhotoUrl === undefined ? userData?.photoUrl : newPhotoUrl}
           className="rounded bg-[#39aca433] px-2 py-2 text-slate-950 shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 placeholder:duration-200 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[#fff] focus:placeholder:translate-x-[-100%]"
         />

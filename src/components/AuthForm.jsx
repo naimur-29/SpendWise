@@ -1,5 +1,5 @@
 // importing libraries:
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { auth, googleProvider, getUsersRef } from "../services/firebaseApi";
 import {
   createUserWithEmailAndPassword,
@@ -8,12 +8,31 @@ import {
 } from "firebase/auth";
 import { setDoc, getDoc } from "firebase/firestore";
 
+// local contexts:
+import { userContext } from "../contexts/UserContext";
+
 // importing icons:
 import { FcGoogle } from "react-icons/fc";
 
 // importing custom hooks:
 import useFocusNext from "../hooks/useFocusNext";
 import useCreateAccount from "../hooks/useCreateAccount";
+
+// global variables:
+const demoAccounts = [
+  {
+    email: "demo001@gmail.com",
+    password: "0123456789",
+  },
+  {
+    email: "demo002@gmail.com",
+    password: "0123456789",
+  },
+  {
+    email: "demo003@gmail.com",
+    password: "0123456789",
+  },
+];
 
 export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
   // states:
@@ -25,6 +44,9 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
 
   // using hooks:
   const focusNext = useFocusNext();
+
+  // user contexts:
+  const { setActiveAccountIndex } = useContext(userContext);
 
   // auth functions:
   const signUpEmailPassword = async () => {
@@ -87,14 +109,15 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
   };
 
   const demoLogin = async () => {
-    const demoEmail = "fakecake420@gmail.com";
-    setEmail(demoEmail);
-    const demoPassword = "123456";
-    setPassword(demoPassword);
+    // choose demo randomly:
+    const demoAccount = demoAccounts[Math.floor(Math.random() * 3)];
+
+    setEmail(demoAccount.email);
+    setPassword(demoAccount.password);
 
     setIsLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, demoEmail, demoPassword);
+      await signInWithEmailAndPassword(auth, email, password);
 
       setEmail("");
       setPassword("");
@@ -120,11 +143,13 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           photoUrl: "",
         });
 
-        createAccount({
+        await createAccount({
           uid,
           id: `${uid}.default`,
           alias: "default",
         });
+
+        setActiveAccountIndex(0);
       }
     } catch (error) {
       setErrorMsg(error.message.slice(10));

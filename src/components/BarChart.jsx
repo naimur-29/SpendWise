@@ -10,7 +10,7 @@ export const BarChart = ({ data1, data2, totalIncome, totalExpense }) => {
     labels: new Array(30).fill(0).map((i, j) => j + 1),
     datasets: [
       {
-        label: "Income " + totalIncome + "/-",
+        label: "Income " + (totalIncome || "0") + "/-",
         data: new Array(30).fill(0).map((i, j) => {
           let a = 0;
           data1?.forEach((e) => {
@@ -26,7 +26,7 @@ export const BarChart = ({ data1, data2, totalIncome, totalExpense }) => {
         borderWidth: 1,
       },
       {
-        label: "Expense " + totalExpense + "/-",
+        label: "Expense " + (totalExpense || "0") + "/-",
         data: new Array(30).fill(0).map((i, j) => {
           let a = 0;
           data2?.forEach((e) => {

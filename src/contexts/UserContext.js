@@ -48,7 +48,7 @@ today = [
 export const UserContextProvider = ({ children }) => {
   // states:
   const [currentUser, setCurrentUser] = useState(null);
-  const [activeAccountIndex, setActiveAccountIndex] = useState(0);
+  const [activeAccountIndex, setActiveAccountIndex] = useState(null);
   const [userDefTimeFrame, setUserDefTimeFrame] = useState(today);
 
   useEffect(() => {
@@ -66,7 +66,9 @@ export const UserContextProvider = ({ children }) => {
     setData: setAccountData,
     isLoading: isAccountDataLoading,
   } = useGetAccount(
-    !isUserDataLoading && userData?.accounts?.length
+    activeAccountIndex &&
+      !isUserDataLoading &&
+      activeAccountIndex < userData?.accounts?.length
       ? userData?.accounts[activeAccountIndex].id
       : undefined
   );

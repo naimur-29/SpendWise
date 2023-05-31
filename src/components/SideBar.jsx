@@ -23,7 +23,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { IoExitOutline } from "react-icons/io5";
 
 // importing local assets:
-import Logo from "../assets/spend-wise-logo.webp";
+import BG from "../assets/landing-page-bg.webp";
 
 // global variables:
 const topMenuItems = [
@@ -94,11 +94,11 @@ export const SideBar = () => {
           {/* background overlay Logo */}
           <div
             style={{
-              backgroundImage: `url("${Logo}")`,
+              backgroundImage: `url("${BG}")`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
-              opacity: "0.05",
+              opacity: "0.1",
             }}
             className="overlay absolute bottom-0 left-0 -z-10 h-[50%] w-full rounded-xl"
           ></div>
@@ -160,7 +160,7 @@ export const SideBar = () => {
             {/* top account container ends */}
 
             {/* top list items starts  */}
-            <ul className="topList cursor-pointer rounded-xl bg-[#fff3] p-2">
+            <ul className="topList rounded-xl bg-[#fff3] p-2 extra-sm:cursor-pointer">
               {topMenuItems.map((ele, i) => (
                 <NavLink
                   key={i}
@@ -184,7 +184,7 @@ export const SideBar = () => {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="bottomList mt-2 overflow-y-auto rounded-xl bg-[#fff3] p-2 sm:cursor-pointer">
+            <ul className="bottomList mt-2 overflow-y-auto rounded-xl bg-[#fff3] p-2 extra-sm:cursor-pointer">
               <h1 className="mb-3 flex items-center justify-between font-semibold text-[#fff]">
                 {isCreateAccountLoading ? "Loading..." : "Accounts"}
                 {isNewAccountInputActive ? (
