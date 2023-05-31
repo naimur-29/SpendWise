@@ -20,10 +20,10 @@ export default function Dashboard() {
       <div className="_wrapper flex h-full w-full flex-col">
         <div className="_top flex w-full items-center justify-between gap-2 px-[20px] pb-[16px] pt-[20px] sm:gap-1 md:px-[27px] md:pb-[20px]">
           <div className="_left">
-            <h3 className="text-2xl font-semibold text-gray-900 extra-sm:text-3xl">
+            <h3 className="text-lg font-semibold text-gray-900 extra-sm:text-2xl sm:text-3xl">
               Welcome to SpendWise!
             </h3>
-            <p className="text-md text-gray-600 extra-sm:text-lg">
+            <p className="text-sm text-gray-600 extra-sm:text-lg">
               {userData?.username || "Loading..."}
             </p>
           </div>
