@@ -64,7 +64,7 @@ export default function Expenses() {
         {/* top container starts  */}
         <div className="heading mb-4 flex items-center gap-3">
           <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl">
-            Expenses of
+            Expenses Of
           </h2>
 
           <div className="relative -translate-y-1">

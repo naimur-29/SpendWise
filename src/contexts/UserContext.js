@@ -10,6 +10,22 @@ import useGetHistory from "../hooks/useGetHistory";
 // creating context:
 export const userContext = createContext(null);
 
+// global variables:
+const monthDict = {
+  "01": "Jan",
+  "02": "Feb",
+  "03": "Mar",
+  "04": "Apr",
+  "05": "May",
+  "06": "Jun",
+  "07": "Jul",
+  "08": "Aug",
+  "09": "Sep",
+  10: "Oct",
+  11: "Nov",
+  12: "Dec",
+};
+
 // functions:
 const getTFfromDate = (date) => {
   if (!date) return "";
@@ -17,42 +33,31 @@ const getTFfromDate = (date) => {
 };
 
 const getTextTf = (serial) => {
-  const monthDict = {
-    "01": "Jan",
-    "02": "Feb",
-    "03": "Mar",
-    "04": "Apr",
-    "05": "May",
-    "06": "Jun",
-    "07": "Jul",
-    "08": "Aug",
-    "09": "Sep",
-    10: "Oct",
-    11: "Nov",
-    12: "Dec",
-  };
-
   if (!serial) return "Loading...";
 
   return `${monthDict[serial.slice(0, 2)]}, ${serial.slice(2)}`;
 };
 
-// global variables:
-let today = new Date();
-today = [
-  today.getFullYear(),
-  today.getMonth() < 10 ? `0${today.getMonth()}` : today.getMonth(),
-  today.getDay() < 10 ? `0${today.getDay()}` : today.getDay(),
-].join("-");
+function getKeyByValue(object, value) {
+  return Object.keys(object).find((key) => object[key] === value);
+}
 
 export const UserContextProvider = ({ children }) => {
   // states:
   const [currentUser, setCurrentUser] = useState(null);
-  const [activeAccountIndex, setActiveAccountIndex] = useState(null);
-  const [userDefTimeFrame, setUserDefTimeFrame] = useState(today);
+  const [activeAccountIndex, setActiveAccountIndex] = useState(0);
+  const [userDefTimeFrame, setUserDefTimeFrame] = useState(undefined);
 
   useEffect(() => {
     auth.onAuthStateChanged(setCurrentUser);
+
+    // set userDefTimeFrame to current date:
+    let today = new Date();
+    today = String(new Date()).slice(4, 15).split(" ");
+    let temp = [today[2], getKeyByValue(monthDict, today[0]), today[1]].join(
+      "-"
+    );
+    setUserDefTimeFrame(temp);
   }, []);
 
   // fetching user using custom hook:
@@ -66,9 +71,7 @@ export const UserContextProvider = ({ children }) => {
     setData: setAccountData,
     isLoading: isAccountDataLoading,
   } = useGetAccount(
-    activeAccountIndex &&
-      !isUserDataLoading &&
-      activeAccountIndex < userData?.accounts?.length
+    !isUserDataLoading && activeAccountIndex < userData?.accounts?.length
       ? userData?.accounts[activeAccountIndex].id
       : undefined
   );

@@ -19,7 +19,7 @@ export const Unauthorized = ({ children }) => {
   if (!currentUser) {
     return (
       <Loading>
-        <LandingPage />
+        <LandingPage isWithoutSidebar />
         <Navigate to={"/"} />
       </Loading>
     );

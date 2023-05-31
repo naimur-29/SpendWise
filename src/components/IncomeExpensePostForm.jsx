@@ -50,7 +50,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
   };
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex w-full justify-center">
       <div className="flex w-[95%] flex-col items-center gap-2 lg:w-[90%] extra-lg:w-[400px]">
         {responseMessage ? (
           <p className="mb-1 w-full bg-[#39aca4] px-2 py-1 text-center font-mono text-[#fff]">
@@ -68,7 +68,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
           <></>
         )}
 
-        <div className="flex items-center justify-between w-full gap-3">
+        <div className="flex w-full items-center justify-between gap-3">
           <label htmlFor="amount" className="flex-[2]">
             Amount:{" "}
           </label>
@@ -86,7 +86,7 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
           />
         </div>
 
-        <div className="flex items-center justify-between w-full gap-3">
+        <div className="flex w-full items-center justify-between gap-3">
           <label htmlFor="context" className="flex-[2]">
             Context:{" "}
           </label>
@@ -106,13 +106,14 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
           />
         </div>
 
-        <div className="flex items-center justify-between w-full gap-3">
+        <div className="flex w-full items-center justify-between gap-3">
           <label htmlFor="dateAdded" className="flex-[2]">
             Date:{" "}
           </label>
           <input
             ref={focusNext}
             type="date"
+            placeholder="select date!"
             value={incomeExpenseData.dateAdded}
             onChange={(e) => {
               setIncomeExpenseData((prev) => ({
