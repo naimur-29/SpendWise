@@ -181,7 +181,7 @@ const usePostIncomeExpense = (data, isIncome) => {
     setIsLoading(false);
   };
 
-  return { isLoading, post, responseMessage, errorMessage };
+  return { isLoading, post, responseMessage, errorMessage, setErrorMessage };
 };
 
 export default usePostIncomeExpense;

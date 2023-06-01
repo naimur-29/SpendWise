@@ -13,7 +13,7 @@ import { ManageAccounts } from "../components/ManageAccounts";
 
 export default function Dashboard() {
   // user context:
-  const { userData } = useContext(userContext);
+  const { userData, setActiveAccountIndex } = useContext(userContext);
 
   // scroll to top on page load:
   useEffect(() => {
@@ -38,6 +38,7 @@ export default function Dashboard() {
               onClick={async () => {
                 try {
                   await signOut(auth);
+                  setActiveAccountIndex(0);
                   console.log("Logout Successful!");
                 } catch (error) {
                   console.log(error.message);

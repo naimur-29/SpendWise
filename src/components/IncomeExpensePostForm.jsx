@@ -17,7 +17,8 @@ const filterAmount = (num) => {
 
 export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
   // get userData from userContext:
-  const { userData, activeAccountIndex } = useContext(userContext);
+  const { userData, activeAccountIndex, setActiveAccountIndex } =
+    useContext(userContext);
 
   // states:
   const [incomeExpenseData, setIncomeExpenseData] = useState({
@@ -27,12 +28,22 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
   });
 
   // using custom hooks:
-  const { isLoading, post, responseMessage, errorMessage } =
+  const { isLoading, post, responseMessage, errorMessage, setErrorMessage } =
     usePostIncomeExpense(incomeExpenseData, isIncome);
 
   const focusNext = useFocusNext();
 
   const onSubmitIncome = () => {
+    // if user has no accounts:
+    if (!userData?.accounts?.length) {
+      setErrorMessage("Create An Account First!");
+      return;
+    }
+
+    if (activeAccountIndex >= userData?.accounts?.length) {
+      setActiveAccountIndex(0);
+    }
+
     const accountId = userData.accounts[activeAccountIndex].id;
 
     post(accountId, userData?.userId);

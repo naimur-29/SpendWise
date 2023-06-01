@@ -147,6 +147,7 @@ export const SideBar = () => {
                     try {
                       await signOut(auth);
                       console.log("Logout Successful!");
+                      setActiveAccountIndex(0);
                     } catch (error) {
                       console.log(error.message);
                     }
