@@ -113,7 +113,6 @@ export const IncomeExpensePostForm = ({ isIncome, setUserDefTimeFrame }) => {
           <input
             ref={focusNext}
             type="date"
-            placeholder="select date!"
             value={incomeExpenseData.dateAdded}
             onChange={(e) => {
               setIncomeExpenseData((prev) => ({

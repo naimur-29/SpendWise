@@ -63,7 +63,7 @@ const SignUpPrompt = ({ setIsSignUpFormActive }) => {
     <div className="signup-modal-container z-10 flex h-full flex-col items-center justify-center gap-6 rounded-md bg-[#fff3] p-2 shadow">
       <h3 className="text-5xl font-bold text-white">New Here?</h3>
       <p className="max-w-[400px] text-center text-[1.2rem] text-slate-100">
-        Sign up and discover a great way to spend you money wisely!
+        Join SpendWise and take charge of your finances!
       </p>
       <button
         onClick={() => setIsSignUpFormActive(true)}

@@ -1,6 +1,9 @@
 // importing libraries:
 import { useState, useEffect } from "react";
 
+// importing stylesheets:
+import "./css/Loading.css";
+
 export const Loading = ({ children, duration, isWithoutSidebar }) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,12 +17,20 @@ export const Loading = ({ children, duration, isWithoutSidebar }) => {
   if (isLoading) {
     return (
       <section
-        className={`w-full ${
+        style={{
+          "--animationDuration": duration ? `${duration}ms` : "2000ms",
+        }}
+        className={`_main-container w-full ${
           !isWithoutSidebar ? "md:w-[calc(100%-16rem)]" : ""
-        } z-50 flex min-h-screen items-center justify-center bg-gray-100`}
+        } z-50 h-screen`}
       >
-        <h3 className="w-full text-center text-4xl text-gray-700">
-          Loading...
+        <h3
+          data-text="SpendWise"
+          className={
+            isWithoutSidebar ? "_main-text" : "_main-text isWithoutSideBar"
+          }
+        >
+          SpendWise
         </h3>
       </section>
     );
