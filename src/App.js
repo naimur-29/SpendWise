@@ -40,41 +40,13 @@ function App() {
         }
       >
         {/* Dashboard Route */}
-        <Route
-          index
-          element={
-            <Loading duration={1000}>
-              <Dashboard />
-            </Loading>
-          }
-        />
+        <Route index element={<Dashboard />} />
         {/* Incomes Route */}
-        <Route
-          path="incomes"
-          element={
-            <Loading duration={1000}>
-              <Incomes />
-            </Loading>
-          }
-        />
+        <Route path="incomes" element={<Incomes />} />
         {/* Expenses Route */}
-        <Route
-          path="expenses"
-          element={
-            <Loading duration={1000}>
-              <Expenses />
-            </Loading>
-          }
-        />
+        <Route path="expenses" element={<Expenses />} />
         {/* Histories Route */}
-        <Route
-          path="histories"
-          element={
-            <Loading duration={1000}>
-              <Histories />
-            </Loading>
-          }
-        />
+        <Route path="histories" element={<Histories />} />
 
         {/* Error Routes */}
         <Route

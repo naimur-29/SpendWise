@@ -28,26 +28,24 @@ export const EditProfileCard = () => {
     // check if data valid:
     if (!newUsername && !newPhotoUrl) {
       setResponseMessage("Invalid Data or Already Up To Date!");
-      setNewUsername(userData?.username);
-      setNewPhotoUrl(userData?.photoUrl);
       return;
-    }
+    } else {
+      // try to update data:
+      try {
+        setIsUpdateLoading(true);
+        await updateDoc(getUsersRef(userData?.userId), {
+          photoUrl: newPhotoUrl || userData?.photoUrl,
+          username: newUsername || userData?.username,
+        });
 
-    // try to update data:
-    try {
-      setIsUpdateLoading(true);
-      await updateDoc(getUsersRef(userData?.userId), {
-        photoUrl: newPhotoUrl || userData?.photoUrl,
-        username: newUsername || userData?.username,
-      });
-
-      setResponseMessage("Update Successful!");
-      setNewPhotoUrl(undefined);
-      setNewUsername(undefined);
-    } catch (error) {
-      setResponseMessage(error.message);
+        setResponseMessage("Update Successful!");
+        setNewPhotoUrl(undefined);
+        setNewUsername(undefined);
+      } catch (error) {
+        setResponseMessage(error.message);
+      }
+      setIsUpdateLoading(false);
     }
-    setIsUpdateLoading(false);
   };
 
   useEffect(() => {
