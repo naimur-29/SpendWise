@@ -1,5 +1,5 @@
 // importing libraries:
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useCallback } from "react";
 import { auth } from "../services/firebaseApi";
 
 // importing custom hooks:
@@ -47,6 +47,24 @@ export const UserContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [activeAccountIndex, setActiveAccountIndex] = useState(0);
   const [userDefTimeFrame, setUserDefTimeFrame] = useState(undefined);
+  const [spendWiseTheme, setSpendWiseTheme] = useState("light");
+
+  // functions:
+  const setTheme = useCallback((theme) => {
+    if (theme === "dark" || theme === "light") {
+      window.localStorage.setItem("spendWiseTheme", theme);
+      setSpendWiseTheme(theme);
+    } else {
+      window.localStorage.setItem("spendWiseTheme", "light");
+      setSpendWiseTheme("light");
+    }
+  }, []);
+
+  // fetch/set theme from local storage
+  useEffect(() => {
+    const theme = window.localStorage.getItem("spendWiseTheme");
+    setTheme(theme);
+  }, [setTheme]);
 
   useEffect(() => {
     auth.onAuthStateChanged(setCurrentUser);
@@ -100,6 +118,8 @@ export const UserContextProvider = ({ children }) => {
     getTextTf,
     historyData,
     isHistoryDataLoading,
+    spendWiseTheme,
+    setTheme,
   };
 
   return <userContext.Provider value={value}>{children}</userContext.Provider>;

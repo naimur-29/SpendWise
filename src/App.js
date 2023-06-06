@@ -72,7 +72,7 @@ export default App;
 
 const Root = () => {
   return (
-    <section className="relative flex justify-end">
+    <section id="light" className="relative flex justify-end">
       <SideBar />
       <Outlet />
     </section>

@@ -17,7 +17,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <section className="relative flex h-screen w-full overflow-hidden bg-white">
+    <section className="relative flex h-screen w-full overflow-hidden bg-[--main-bg]">
       {/* left side */}
       <div
         className={`left h-full w-[100%] ${
@@ -26,7 +26,9 @@ export default function LandingPage() {
       >
         <div className="logo flex items-center">
           <img src={Logo} className="mr-2 h-8 cursor-pointer" alt="Logo" />
-          <span className="text-2xl font-semibold">SpendWise</span>
+          <span className="text-2xl font-semibold text-[--main-text]">
+            SpendWise
+          </span>
         </div>
 
         <div className="login-container flex h-full flex-col items-center justify-center gap-6 rounded-md p-2">

@@ -5,14 +5,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #39aca4;
+  background-color: var(--main-loading-bg);
 }
 
 ._main-text {
   position: relative;
   font-size: 14vw;
   font-weight: bold;
-  color: #f1f5f9;
+  color: var(--main-loading-text);
   -webkit-text-stroke: 0.3vw #39aca4;
   transform: translateY(-2vh);
 }
@@ -28,9 +28,9 @@
   left: 0;
   width: 0%;
   height: 100%;
-  color: #f1f5f9;
-  -webkit-text-stroke: 0.3vw #3dc0b7;
-  border-bottom: 0.7vw solid #f1f5f9;
+  color: var(--after-main-loading-text);
+  -webkit-text-stroke: 0.3vw var(--after-main-loading-stroke);
+  border-bottom: 0.7vw solid var(--after-main-loading-border);
   text-shadow: -5px 0px 4px #3dc0b799, 0px 5px 4px #51fbce33,
     0px -5px 4px #51fbce33;
   overflow: hidden;

@@ -10,6 +10,61 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* THEMING START */
+#light {
+  --main-loading-bg: #39aca4;
+  --main-bg: #fff;
+  --main-error-bg: #f48a;
+  --main-btn-bg: #3dc0b7;
+  --hover-main-btn-bg: #3dc0b7;
+  --main-modal-bg: #39aca4;
+  --main-overlay-bg: #fff3;
+  --main-overlay-btn-bg: #fff;
+  --main-overlay-input-bg: #fff6;
+
+  --main-overlay-opacity: 0.8;
+
+  --main-loading-text: #f1f5f9;
+  --after-main-loading-text: #f1f5f9;
+  --after-main-loading-stroke: #3dc0b7;
+  --after-main-loading-border: #f1f5f9;
+  --main-text: #0f172a;
+  --light-text: #334155;
+  --light2-text: #f1f5f9;
+  --main-input-outline: #e5e7eb;
+  --main-overlay-text: #fff;
+  --main-overlay-btn-text: #475569;
+  --main-overlay-input-text: #111827;
+}
+
+#dark {
+  --main-loading-bg: #000;
+  --main-bg: #000;
+  --main-error-bg: #f484;
+  --main-btn-bg: #3dc0b799;
+  --hover-main-btn-bg: #3dc0b7cc;
+  --main-modal-bg: #071514;
+  --main-overlay-bg: #39aca433;
+  --main-overlay-btn-bg: #3dc0b7;
+  --main-overlay-input-bg: #0006;
+
+  --main-overlay-opacity: 0.9;
+
+  --main-loading-text: #39aca433;
+  --after-main-loading-text: #3dc0b733;
+  --after-main-loading-stroke: #4aede2;
+  --after-main-loading-border: #4aede2;
+  --main-text: #f1f5f9;
+  --light-text: #64748b;
+  --light2-text: #f1f5f9;
+  --main-error-text: #f48a;
+  --main-input-outline: #030712;
+  --main-overlay-text: #e2e8f0;
+  --main-overlay-btn-text: #fff;
+  --main-overlay-input-text: #d1d5db;
+}
+/* THEMING END */
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

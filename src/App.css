@@ -8,3 +8,9 @@ body {
   max-width: 2200px;
   scroll-behavior: smooth;
 }
+
+*,
+*::before,
+*::after {
+  transition: background-color 300ms ease;
+}

@@ -1,12 +1,20 @@
 // importing libraries:
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 // importing stylesheets:
 import "./css/Loading.css";
 
+// importing local contexts:
+import { userContext } from "../contexts/UserContext";
+
 export const Loading = ({ children, duration, isWithoutSidebar }) => {
+  // states:
   const [isLoading, setIsLoading] = useState(true);
 
+  // user context:
+  const { spendWiseTheme } = useContext(userContext);
+
+  // setting loading state by duration:
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -17,6 +25,7 @@ export const Loading = ({ children, duration, isWithoutSidebar }) => {
   if (isLoading) {
     return (
       <section
+        id={spendWiseTheme || "light"}
         style={{
           "--animationDuration": duration ? `${duration}ms` : "2000ms",
         }}

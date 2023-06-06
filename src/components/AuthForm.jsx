@@ -164,8 +164,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       <h3
         className={
           isSignIn
-            ? "mb-1 text-center text-[2.4rem] font-bold leading-tight text-slate-900 lg:text-6xl"
-            : "mb-4 text-center text-4xl font-bold text-white lg:text-5xl"
+            ? "mb-1 text-center text-[2.4rem] font-bold leading-tight text-[--main-text] lg:text-6xl"
+            : "mb-4 text-center text-4xl font-bold text-[--main-overlay-text] lg:text-5xl"
         }
       >
         {isLoading
@@ -176,7 +176,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       </h3>
 
       {isSignIn ? (
-        <p className="mb-6 max-w-[400px] text-center text-[1.2rem] text-slate-700">
+        <p className="mb-6 max-w-[400px] text-center text-[1.2rem] text-[--light-text]">
           Sign in and take control of your finances with ease and precision.
         </p>
       ) : (
@@ -188,8 +188,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         <p
           className={
             isSignIn
-              ? "error-msg mb-1 w-[95%] rounded-full bg-[#f48a] px-1 py-2 text-center font-semibold text-slate-100 shadow lg:w-[90%]"
-              : "error-msg mb-1 w-full rounded-lg bg-[#f48a] px-1 py-2 text-center font-semibold text-slate-100 shadow"
+              ? "error-msg mb-1 w-[95%] rounded-full bg-[--main-error-bg] px-1 py-2 text-center font-semibold text-[--main-error-text] shadow lg:w-[90%]"
+              : "error-msg mb-1 w-full rounded-lg bg-[--main-error-bg] px-1 py-2 text-center font-semibold text-[--main-error-text] shadow"
           }
         >
           {errorMsg}
@@ -207,15 +207,15 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         onChange={(e) => setEmail(e.target.value)}
         className={
           isSignIn
-            ? `w-[95%] rounded-full px-4 py-3 text-slate-950 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#39aca466] focus:placeholder:translate-x-[-100%] lg:w-[90%] ${
+            ? `w-[95%] rounded-full px-4 py-3 text-[--main-text] shadow outline-[--main-input-outline] duration-700 placeholder:text-slate-500 focus:bg-[#39aca466] focus:placeholder:translate-x-[-100%] lg:w-[90%] ${
                 email && email.includes("@") && email.includes(".")
                   ? "bg-[#0f74]"
                   : "bg-[#39aca433]"
               }`
-            : `w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] ${
+            : `w-full rounded-lg px-4 py-3 text-[--main-overlay-input-text] shadow outline-[--main-input-outline] duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] ${
                 email && email.includes("@") && email.includes(".")
                   ? "bg-[#0f74]"
-                  : "bg-[#fff6]"
+                  : "bg-[--main-overlay-input-bg]"
               }`
         }
       />
@@ -229,10 +229,12 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         onChange={(e) => setPassword(e.target.value)}
         className={
           isSignIn
-            ? "w-[95%] rounded-full px-4 py-3 text-slate-950 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#39aca466] focus:placeholder:translate-x-[-100%] lg:w-[90%] " +
+            ? "w-[95%] rounded-full px-4 py-3 text-[--main-text] shadow outline-[--main-input-outline] duration-700 placeholder:text-slate-500 focus:bg-[#39aca466] focus:placeholder:translate-x-[-100%] lg:w-[90%] " +
               (password.length > 5 ? "bg-[#0f74]" : "bg-[#39aca433]")
-            : "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
-              (password.length > 5 ? "bg-[#0f74]" : "bg-[#fff6]")
+            : "w-full rounded-lg px-4 py-3 text-[--main-overlay-input-text] shadow outline-[--main-input-outline] duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
+              (password.length > 5
+                ? "bg-[#0f74]"
+                : "bg-[--main-overlay-input-bg]")
         }
       />
 
@@ -245,10 +247,10 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           value={rePassword}
           onChange={(e) => setRePassword(e.target.value)}
           className={
-            "w-full rounded-lg px-4 py-3 text-gray-900 shadow outline-gray-200 duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
+            "w-full rounded-lg px-4 py-3 text-[--main-overlay-input-text] shadow outline-[--main-input-outline] duration-700 placeholder:text-slate-500 focus:bg-[#fff1] focus:text-slate-50 focus:placeholder:translate-x-[-100%] " +
             (rePassword && password === rePassword
               ? "bg-[#0f74]"
-              : "bg-[#fff6]")
+              : "bg-[--main-overlay-input-bg]")
           }
         />
       ) : (
@@ -259,7 +261,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
       <div
         className={
           isSignIn
-            ? "flex w-[95%] justify-between px-1 text-slate-700 lg:w-[90%]"
+            ? "flex w-[95%] justify-between px-1 text-[--light-text] lg:w-[90%]"
             : "flex w-full justify-between px-1 text-slate-50"
         }
       >
@@ -269,7 +271,9 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
             setErrorMsg("");
           }}
           className={
-            "text-left duration-200 hover:text-slate-700 hover:underline md:w-full"
+            isSignIn
+              ? "text-left duration-200 hover:text-[--main-text] hover:underline md:w-full"
+              : "text-left text-[--main-overlay-text] duration-200 hover:underline md:w-full"
           }
         >
           {isSignIn ? "create new account?" : "already have an account?"}
@@ -278,7 +282,9 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
         {isSignIn ? (
           <></>
         ) : (
-          <p className="text-right md:w-full">*min 6 characters*</p>
+          <p className="text-right text-[--main-overlay-text] md:w-full">
+            *min 6 characters*
+          </p>
         )}
       </div>
 
@@ -296,8 +302,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
             onClick={isSignIn ? signInEmailPassword : signUpEmailPassword}
             className={
               isSignIn
-                ? "w-full rounded-full bg-[#3dc0b7] p-2 text-center font-semibold uppercase text-slate-100 shadow-md hover:bg-[#39aca4] hover:shadow-xl active:scale-[97%]"
-                : "w-full rounded-lg bg-white p-2 text-center font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
+                ? "w-full rounded-full bg-[--main-btn-bg] p-2 text-center font-semibold uppercase text-slate-100 shadow-md hover:bg-[--hover-main-btn-bg] hover:shadow-xl active:scale-[97%]"
+                : "w-full rounded-lg bg-[--main-overlay-text] p-2 text-center font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
             }
           >
             {isSignIn ? "Sign In" : "Sign Up"}
@@ -309,7 +315,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
               onClick={demoLogin}
               className={
                 isSignIn
-                  ? "w-full rounded-full bg-[#3dc0b7] p-2 text-center font-semibold uppercase text-slate-100 shadow-md hover:bg-[#39aca4] hover:shadow-xl active:scale-[97%]"
+                  ? "w-full rounded-full bg-[--main-btn-bg] p-2 text-center font-semibold uppercase text-slate-100 shadow-md hover:bg-[--hover-main-btn-bg] hover:shadow-xl active:scale-[97%]"
                   : "w-full rounded-lg bg-white p-2 text-center font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
               }
             >
@@ -325,8 +331,8 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           onClick={signUpInGoogle}
           className={
             isSignIn
-              ? "flex w-[95%] items-center justify-center gap-1 rounded-full bg-[#3dc0b7] p-2 font-semibold uppercase text-slate-100 shadow-md hover:bg-[#39aca4] hover:shadow-xl active:scale-[97%] lg:w-[90%]"
-              : "flex w-full items-center justify-center gap-1 rounded-lg bg-white p-2 font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
+              ? "flex w-[95%] items-center justify-center gap-1 rounded-full bg-[--main-btn-bg] p-2 font-semibold uppercase text-slate-100 shadow-md hover:bg-[--hover-main-btn-bg] hover:shadow-xl active:scale-[97%] lg:w-[90%]"
+              : "flex w-full items-center justify-center gap-1 rounded-lg bg-[--main-overlay-text] p-2 font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
           }
         >
           {isSignIn ? "Sign In With Google" : "Sign Up With Google"}

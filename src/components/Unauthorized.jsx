@@ -13,14 +13,16 @@ import { Loading } from "../components/Loading";
 
 export const Unauthorized = ({ children }) => {
   // contexts:
-  const { currentUser } = useContext(userContext);
+  const { currentUser, spendWiseTheme } = useContext(userContext);
 
   // if not signed in, then return to landing page:
   if (!currentUser) {
     return (
       <Loading isWithoutSidebar>
-        <LandingPage />
-        <Navigate to={"/"} />
+        <div id={spendWiseTheme || "light"}>
+          <LandingPage />
+          <Navigate to={"/"} />
+        </div>
       </Loading>
     );
   }
