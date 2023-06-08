@@ -21,7 +21,7 @@ export const ManageAccounts = () => {
     useDeleteAccount();
 
   return (
-    <section className="_accounts flex h-full max-h-[35vh] min-h-[280px] w-full flex-col overflow-y-auto rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-300 sm:flex-[1]">
+    <section className="_accounts flex h-full max-h-[35vh] min-h-[280px] w-full flex-col overflow-y-auto rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-[1000ms] sm:flex-[1]">
       <h3 className="mb-3 text-2xl font-semibold text-[--main-text]">
         {isAccountDeleteLoading ? "Loading..." : "My Accounts"}
       </h3>

@@ -1,8 +1,6 @@
 // importing libraries:
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { auth } from "../services/firebaseApi";
-import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 
 // importing contexts:
@@ -20,7 +18,7 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { GoDiffAdded } from "react-icons/go";
 import { TiTick } from "react-icons/ti";
 import { MdOutlineCancel } from "react-icons/md";
-import { IoExitOutline } from "react-icons/io5";
+import { BsEmojiLaughing, BsFillEmojiExpressionlessFill } from "react-icons/bs";
 
 // importing local assets:
 import BG from "../assets/landing-page-bg.webp";
@@ -54,6 +52,9 @@ export const SideBar = () => {
   const [isSidebarActive, setIsSidebarActive] = useState(false);
   const [isNewAccountInputActive, setIsNewAccountInputActive] = useState(false);
   const [newAccAlias, setNewAccAlias] = useState("");
+
+  // references:
+  const inputRef = useRef(null);
 
   // use create account hook:
   const { isLoading: isCreateAccountLoading, post: createNewAccount } =
@@ -92,15 +93,19 @@ export const SideBar = () => {
           isSidebarActive ? "left-[0%]" : "left-[-100%]"
         } SideBarContainer z-20 duration-200 md:left-0`}
       >
-        <div className="fixed top-0 flex h-full border-r-[8px] border-[#fff] bg-[#2c8781] shadow-2xl shadow-[#fff] md:shadow-none">
+        <div className="fixed top-0 flex h-full border-r-[8px] border-[#fff] bg-[--main-sidebar-bg] shadow-2xl shadow-[--main-sidebar-hamburger-menu-shadow] transition-[background-color] duration-[1000ms] md:shadow-none">
           {/* background overlay Logo */}
           <div
             style={{
+              backgroundColor: "var(--main-sidebar-bg)",
               backgroundImage: `url("${BG}")`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
-              opacity: "0.1",
+              backgroundBlendMode:
+                spendWiseTheme === "light" ? "color-burn" : "saturation",
+              opacity: "0.15",
+              transition: "background-blend-mode 1000ms ease",
             }}
             className="overlay absolute bottom-0 left-0 -z-10 h-[50%] w-full rounded-xl"
           ></div>
@@ -111,7 +116,7 @@ export const SideBar = () => {
               onClick={() => setIsSidebarActive(false)}
               className="topContainer AccountContainer mb-2"
             >
-              <div className="flex items-center justify-between space-x-4 rounded-xl bg-[#fff3] p-2 duration-200 hover:-translate-y-[0.1rem] hover:bg-[#fff4]">
+              <div className="flex items-center justify-between space-x-4 rounded-xl bg-[--main-sidebar-items-bg] p-2 duration-200 hover:-translate-y-[0.1rem] hover:bg-[--hover-main-sidebar-items-bg]">
                 <Link
                   to="/"
                   title="visit profile"
@@ -124,7 +129,7 @@ export const SideBar = () => {
                       alt="avatar"
                     />
                   ) : (
-                    <p className="flex h-11 w-11 min-w-[2.75rem] items-center justify-center rounded-full bg-[#fff] object-cover p-[2px] text-3xl font-bold uppercase text-[#39aca4] shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]">
+                    <p className="flex h-11 w-11 min-w-[2.75rem] items-center justify-center rounded-full bg-[--main-sidebar-profile-bg] object-cover p-[2px] text-2xl font-bold uppercase text-[--main-sidebar-profile-text] shadow-[inset_-5px_-3px_8px_rgba(0,0,0,0.25)]">
                       {userData?.username[0]}
                     </p>
                   )}
@@ -144,20 +149,24 @@ export const SideBar = () => {
                 </Link>
 
                 <div
-                  title="Sign Out"
+                  title="Change Theme?"
                   onClick={() =>
                     setTheme(spendWiseTheme === "light" ? "dark" : "light")
                   }
                   className="flex h-[50px] cursor-pointer items-center justify-end duration-200 hover:scale-110"
                 >
-                  <IoExitOutline className="text-2xl text-white" />
+                  {spendWiseTheme === "light" ? (
+                    <BsEmojiLaughing className="text-2xl text-white" />
+                  ) : (
+                    <BsFillEmojiExpressionlessFill className="text-2xl text-[#4aede2]" />
+                  )}
                 </div>
               </div>
             </div>
             {/* top account container ends */}
 
             {/* top list items starts  */}
-            <ul className="topList rounded-xl bg-[#fff3] p-2 extra-sm:cursor-pointer">
+            <ul className="topList rounded-xl bg-[--main-sidebar-items-bg] p-2 extra-sm:cursor-pointer">
               {topMenuItems.map((ele, i) => (
                 <NavLink
                   key={i}
@@ -165,9 +174,9 @@ export const SideBar = () => {
                   onClick={() => setIsSidebarActive(false)}
                   className={({ isActive }) =>
                     isActive
-                      ? `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md bg-gray-50 p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100 
+                      ? `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md bg-[--main-sidebar-active-items-bg] p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100 
               `
-                      : `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[#fff3] 
+                      : `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[--hover-main-sidebar-items-bg] 
               `
                   }
                 >
@@ -181,7 +190,7 @@ export const SideBar = () => {
             {/* top list items ends  */}
 
             {/* bottom list items start  */}
-            <ul className="bottomList mt-2 overflow-y-auto rounded-xl bg-[#fff3] p-2 extra-sm:cursor-pointer">
+            <ul className="bottomList mt-2 overflow-y-auto rounded-xl bg-[--main-sidebar-items-bg] p-2 extra-sm:cursor-pointer">
               <h1 className="mb-3 flex items-center justify-between font-semibold text-[#fff]">
                 {isCreateAccountLoading ? "Loading..." : "Accounts"}
                 {isNewAccountInputActive ? (
@@ -196,7 +205,10 @@ export const SideBar = () => {
                 ) : (
                   <GoDiffAdded
                     title="Add new account!"
-                    onClick={() => setIsNewAccountInputActive(true)}
+                    onClick={() => {
+                      setIsNewAccountInputActive(true);
+                      inputRef.current.focus();
+                    }}
                     className="cursor-pointer text-xl active:scale-90"
                   />
                 )}
@@ -210,9 +222,9 @@ export const SideBar = () => {
                   }}
                   className={
                     i === activeAccountIndex
-                      ? `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md bg-gray-50 p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100
+                      ? `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md bg-[--main-sidebar-active-items-bg] p-2 text-sm text-gray-700 shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] duration-100
               `
-                      : `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[#fff3]
+                      : `mb-1 flex cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-200 duration-100 hover:-translate-y-[1px] hover:bg-[--hover-main-sidebar-items-bg]
               `
                   }
                 >
@@ -225,7 +237,9 @@ export const SideBar = () => {
                     {ele?.alias}
 
                     {i === activeAccountIndex ? (
-                      <span className={`flex font-bold text-[#38a097]`}>
+                      <span
+                        className={`flex font-bold text-[--main-sidebar-items-text-balance]`}
+                      >
                         (<TbCurrencyTaka className="self-center" />
                         {isAccountDataLoading
                           ? "Loading..."
@@ -247,6 +261,7 @@ export const SideBar = () => {
               >
                 <input
                   type="text"
+                  ref={inputRef}
                   onChange={(e) => setNewAccAlias(e.target.value)}
                   value={newAccAlias}
                   placeholder="account name"
@@ -270,21 +285,21 @@ export const SideBar = () => {
       {/* hamburger menu */}
       <div
         onClick={() => setIsSidebarActive(!isSidebarActive)}
-        className="fixed bottom-[10px] right-[10px] z-50 h-[50px] rounded bg-[#153d3b] shadow-2xl shadow-[#fff] md:hidden"
+        className="fixed bottom-[10px] right-[10px] z-50 h-[50px] rounded bg-[--main-sidebar-hamburger-menu-bg] shadow-[inset_-0px_-3px_4px_rgba(0,0,0,0.25)] md:hidden"
       >
         <div className="flex h-full w-full cursor-pointer flex-col justify-center gap-2 rounded p-2 duration-200 hover:scale-105">
           <div
-            className={`line h-[5px] w-[40px] rounded bg-[#fff] duration-300 ${
+            className={`line h-[5px] w-[40px] rounded bg-[--main-sidebar-hamburger-menu-items-bg] duration-300 ${
               isSidebarActive ? "translate-y-[13px] -rotate-[135deg]" : ""
             }`}
           ></div>
           <div
-            className={`line h-[5px] w-[40px] rounded  bg-[#fff] duration-300 ${
+            className={`line h-[5px] w-[40px] rounded  bg-[--main-sidebar-hamburger-menu-items-bg] duration-300 ${
               isSidebarActive ? "opacity-0" : ""
             }`}
           ></div>
           <div
-            className={`line h-[5px] w-[40px] rounded  bg-[#fff] duration-300 ${
+            className={`line h-[5px] w-[40px] rounded  bg-[--main-sidebar-hamburger-menu-items-bg] duration-300 ${
               isSidebarActive ? "translate-y-[-13px] rotate-[135deg]" : ""
             }`}
           ></div>

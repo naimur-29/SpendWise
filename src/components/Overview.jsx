@@ -20,7 +20,7 @@ export const Overview = () => {
   } = useContext(userContext);
 
   return (
-    <section className="_overview flex h-full max-h-[100%] min-h-[280px] w-full max-w-[100%] flex-col items-center rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-300 sm:flex-[1]">
+    <section className="_overview flex h-full max-h-[100%] min-h-[280px] w-full max-w-[100%] flex-col items-center rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-[1000ms] sm:flex-[1]">
       <div className="_heading mb-4 flex min-w-[50%] flex-wrap items-center justify-center gap-2">
         <h2 className="mb-2 text-2xl font-semibold text-[--main-text]">
           Overview

@@ -24,7 +24,7 @@ export default function Dashboard() {
 
   return (
     <Loading duration={1000}>
-      <section className="min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-300 md:w-[calc(100%-16rem)]">
+      <section className="min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-[1000ms] md:w-[calc(100%-16rem)]">
         <div className="_wrapper flex h-full w-full flex-col">
           <div className="_top flex w-full items-center justify-between gap-2 px-[20px] pb-[16px] pt-[20px] sm:gap-1 md:px-[27px] md:pb-[20px]">
             <div className="_left">

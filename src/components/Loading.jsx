@@ -30,7 +30,7 @@ export const Loading = ({ children, duration, isWithoutSidebar }) => {
           "--animationDuration": duration ? `${duration}ms` : "2000ms",
         }}
         className={`_main-container w-full ${
-          !isWithoutSidebar ? "md:w-[calc(100%-16rem)]" : ""
+          !isWithoutSidebar ? "md:w-[calc(100%-16rem-8px)]" : ""
         } z-50 h-screen`}
       >
         <h3

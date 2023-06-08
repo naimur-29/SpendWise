@@ -60,6 +60,9 @@ export const UserContextProvider = ({ children }) => {
     if (theme === "dark" || theme === "light") {
       window.localStorage.setItem("spendWiseTheme", theme);
       setSpendWiseTheme(theme);
+      // set html > body background color to match theme:
+      document.body.style.backgroundColor =
+        theme === "light" ? "#fff" : "#020617";
     } else {
       window.localStorage.setItem("spendWiseTheme", "light");
       setSpendWiseTheme("light");

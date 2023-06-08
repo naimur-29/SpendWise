@@ -32,7 +32,7 @@ export default function Histories() {
 
   return (
     <Loading duration={1000}>
-      <section className="incomeContainer min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-300 md:w-[calc(100%-16rem)]">
+      <section className="incomeContainer min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-[1000ms] md:w-[calc(100%-16rem)]">
         <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
           {/* top container starts  */}
           <div className="heading mb-4 flex items-center gap-3">

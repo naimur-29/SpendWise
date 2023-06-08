@@ -62,7 +62,7 @@ export const EditProfileCard = () => {
   }, [isResponseMessageActive]);
 
   return (
-    <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-300">
+    <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-[1000ms]">
       <div className="wrapper relative mb-[20px] h-full max-h-[35vh] min-h-[35vh] flex-grow overflow-hidden rounded-xl bg-[--main-dashboard-profilePhoto-bg] duration-200 lg:h-0 lg:max-h-full">
         <div className="_overlay absolute left-0 top-0 h-full w-full shadow-[inset_0px_-3px_8px_var(--main-dashboard-profilePhoto-shadow)]"></div>
 
@@ -123,7 +123,7 @@ export const EditProfileCard = () => {
 
       <button
         onClick={handleSave}
-        className="mt-5 rounded-lg bg-[#39aca4] px-8 py-2 text-lg font-bold uppercase text-slate-100 shadow-md duration-200 hover:bg-[#2c8781] hover:shadow-sm active:scale-95"
+        className="mt-5 rounded-lg bg-[--main-btn-bg] px-8 py-2 text-lg font-bold uppercase text-slate-100 shadow-md duration-200 hover:bg-[#2c8781] hover:shadow-sm active:scale-95"
       >
         {isUpdateLoading ? "Loading..." : "Save"}
       </button>

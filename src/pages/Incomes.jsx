@@ -15,28 +15,6 @@ import { IncomeExpensePostForm } from "../components/IncomeExpensePostForm";
 import { IncomeExpenseCard } from "../components/IncomeExpenseCard";
 import { Loading } from "../components/Loading";
 
-// functions:
-const getTextTf = (serial) => {
-  const monthDict = {
-    "01": "Jan",
-    "02": "Feb",
-    "03": "Mar",
-    "04": "Apr",
-    "05": "May",
-    "06": "Jun",
-    "07": "Jul",
-    "08": "Aug",
-    "09": "Sep",
-    10: "Oct",
-    11: "Nov",
-    12: "Dec",
-  };
-
-  if (!serial) return "Loading...";
-
-  return `${monthDict[serial.slice(0, 2)]}, ${serial.slice(2)}`;
-};
-
 export default function Incomes() {
   // states:
 
@@ -62,7 +40,7 @@ export default function Incomes() {
 
   return (
     <Loading duration={1000}>
-      <section className="incomeContainer min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-300 md:w-[calc(100%-16rem)]">
+      <section className="incomeContainer min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-[1000ms] md:w-[calc(100%-16rem)]">
         <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
           {/* top container starts  */}
           <div className="heading mb-4 flex items-center gap-3">
