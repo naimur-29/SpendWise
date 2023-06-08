@@ -303,7 +303,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
             className={
               isSignIn
                 ? "w-full rounded-full bg-[--main-btn-bg] p-2 text-center font-semibold uppercase text-slate-100 shadow-md hover:bg-[--hover-main-btn-bg] hover:shadow-xl active:scale-[97%]"
-                : "w-full rounded-lg bg-[--main-overlay-text] p-2 text-center font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
+                : "w-full rounded-lg bg-[--main-overlay-text] p-2 text-center font-semibold uppercase text-slate-600 shadow-md hover:bg-[#fff] hover:shadow-xl active:scale-[97%]"
             }
           >
             {isSignIn ? "Sign In" : "Sign Up"}
@@ -332,7 +332,7 @@ export const AuthForm = ({ isSignIn, setIsSignUpModalActive }) => {
           className={
             isSignIn
               ? "flex w-[95%] items-center justify-center gap-1 rounded-full bg-[--main-btn-bg] p-2 font-semibold uppercase text-slate-100 shadow-md hover:bg-[--hover-main-btn-bg] hover:shadow-xl active:scale-[97%] lg:w-[90%]"
-              : "flex w-full items-center justify-center gap-1 rounded-lg bg-[--main-overlay-text] p-2 font-semibold uppercase text-slate-600 shadow-md hover:shadow-xl active:scale-[97%]"
+              : "flex w-full items-center justify-center gap-1 rounded-lg bg-[--main-overlay-text] p-2 font-semibold uppercase text-slate-600 shadow-md duration-200 hover:bg-[#fff] hover:shadow-xl active:scale-[97%]"
           }
         >
           {isSignIn ? "Sign In With Google" : "Sign Up With Google"}

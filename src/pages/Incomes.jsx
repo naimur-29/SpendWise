@@ -47,6 +47,7 @@ export default function Incomes() {
     userDefTimeFrame,
     setUserDefTimeFrame,
     getTFfromDate,
+    getTextTf,
     historyData,
     isHistoryDataLoading,
   } = useContext(userContext);
@@ -61,11 +62,11 @@ export default function Incomes() {
 
   return (
     <Loading duration={1000}>
-      <section className="incomeContainer min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
+      <section className="incomeContainer min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-300 md:w-[calc(100%-16rem)]">
         <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
           {/* top container starts  */}
           <div className="heading mb-4 flex items-center gap-3">
-            <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl">
+            <h2 className="mb-3 text-2xl font-semibold text-[--main-text] extra-sm:text-3xl">
               Incomes Of
             </h2>
 
@@ -81,7 +82,7 @@ export default function Incomes() {
               />
               <p
                 title="Select the month & year to see that month's Incomes!"
-                className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-[#39aca4] font-semibold text-slate-100"
+                className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-[--main-btn-bg] font-semibold text-slate-100"
               >
                 {getTextTf(
                   getTFfromDate(userDefTimeFrame) ||
@@ -92,7 +93,7 @@ export default function Incomes() {
           </div>
 
           <div className="_topContainerCard mb-[40px]">
-            <div className="flex w-full items-center justify-center rounded-md border-[3px] border-[#fff] bg-[#39aca4] p-2 drop-shadow-md">
+            <div className="flex w-full items-center justify-center rounded-md border-[3px] border-[--main-income-expense-items-border] bg-[--main-income-expense-items-bg] p-2 drop-shadow-md">
               <div className="cardTop">
                 <h3 className="flex flex-wrap items-center justify-center self-center text-2xl font-bold uppercase text-[#fff]">
                   Total income :
@@ -112,7 +113,9 @@ export default function Incomes() {
           <div className="bodyContainer flex flex-col gap-[40px] extra-lg:flex-row extra-lg:gap-0">
             {/* body left container starts  */}
             <div className="input-container flex flex-col items-center gap-[20px]">
-              <h2 className="text-2xl uppercase">Add Income</h2>
+              <h2 className="text-2xl uppercase text-[--main-text]">
+                Add Income
+              </h2>
               <IncomeExpensePostForm
                 isIncome
                 setUserDefTimeFrame={setUserDefTimeFrame}
@@ -122,7 +125,7 @@ export default function Incomes() {
 
             {/* body Right container starts  */}
             <div className="bodyContainerRight customSm:w-[80%] customMid:col-span-8 customMid:mt-3 col-span-2 m-auto mt-1 w-full p-1 md:w-full md:p-0">
-              <h2 className="mb-[20px] text-center text-2xl uppercase">
+              <h2 className="mb-[20px] text-center text-2xl uppercase text-[--main-text]">
                 Income Histories
               </h2>
 
@@ -141,6 +144,7 @@ export default function Incomes() {
                         key={i}
                         isIncome
                         data={ele}
+                        formDateFun={getTextTf}
                         del={deleteHistory}
                         accountId={`${currentUser?.uid}.${accountData?.alias}`}
                       />

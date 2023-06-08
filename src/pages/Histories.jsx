@@ -32,11 +32,11 @@ export default function Histories() {
 
   return (
     <Loading duration={1000}>
-      <section className="incomeContainer min-h-screen w-full bg-slate-100 md:w-[calc(100%-16rem)]">
+      <section className="incomeContainer min-h-screen w-full bg-[--main-dashboard-bg] transition-[background-color] duration-300 md:w-[calc(100%-16rem)]">
         <div className="incomeContainerWrapper px-[1rem] py-[27px] md:p-[27px]">
           {/* top container starts  */}
           <div className="heading mb-4 flex items-center gap-3">
-            <h2 className="mb-3 text-2xl font-semibold extra-sm:text-3xl">
+            <h2 className="mb-3 text-2xl font-semibold text-[--main-text] extra-sm:text-3xl">
               Histories Of
             </h2>
 
@@ -52,7 +52,7 @@ export default function Histories() {
               />
               <p
                 title="Select the month & year to see that month's Incomes!"
-                className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-[#39aca4] font-semibold text-slate-100"
+                className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full rounded-r-none bg-[--main-btn-bg] font-semibold text-slate-100"
               >
                 {getTextTf(
                   getTFfromDate(userDefTimeFrame) ||
@@ -64,7 +64,9 @@ export default function Histories() {
 
           {/* top container ends  */}
           <div className="input-container mx-auto mb-[40px] flex w-[95%] flex-col items-center justify-center extra-lg:w-[70%]">
-            <h2 className="mb-[10px] text-2xl uppercase">Overview</h2>
+            <h2 className="mb-[10px] text-2xl uppercase text-[--main-text]">
+              Overview
+            </h2>
             <BarChart
               data1={historyData?.incomes?.sort(
                 (a, b) =>
@@ -84,12 +86,12 @@ export default function Histories() {
           <div className="bodyContainer flex flex-col items-center justify-center pb-5 extra-lg:gap-0">
             {/* body left container starts  */}
             <div className="topContainerCard mb-[10px]">
-              <h2 className="mb-[10px] text-center text-2xl uppercase">
+              <h2 className="mb-[10px] text-center text-2xl uppercase text-[--main-text]">
                 All Histories
               </h2>
 
               {/* search bar */}
-              <div className="flex w-full items-center justify-center rounded-md border-[3px] border-[#fff] bg-[#39aca4] p-2 drop-shadow-md">
+              <div className="flex w-full items-center justify-center rounded-md border-[3px] border-[--main-income-expense-items-border] bg-[--main-income-expense-items-bg] p-2 drop-shadow-md">
                 <div className="cardTop">
                   <div className="flex flex-wrap items-center justify-center gap-1 self-center text-2xl font-bold uppercase text-[#fff]">
                     <span className="h-full w-full text-center lg:flex-[1]">
@@ -99,7 +101,7 @@ export default function Histories() {
                       type="text"
                       value={searchText}
                       onChange={(e) =>
-                        setSearchText(e.target.value.trim().toLowerCase())
+                        setSearchText(e.target.value.toLowerCase())
                       }
                       className="h-full w-full flex-[1] bg-[#fff3] px-2 py-1 outline-[#fff] focus:bg-[#fff6]"
                     />
@@ -119,7 +121,10 @@ export default function Histories() {
                         i.context.toLowerCase().includes(searchText) ||
                         String(i.amount).includes(searchText) ||
                         i.dateAdded.includes(searchText) ||
-                        i.stat.includes(searchText)
+                        i.stat.includes(searchText) ||
+                        getTextTf(i.dateAdded, true)
+                          .toLowerCase()
+                          .includes(searchText)
                     )
                     ?.sort(
                       (a, b) =>
@@ -131,7 +136,7 @@ export default function Histories() {
                         key={i}
                         amount={ele.amount}
                         context={ele.context}
-                        dateAdded={ele.dateAdded}
+                        dateAdded={getTextTf(ele.dateAdded, true)}
                         stat={ele.stat}
                       />
                     ))

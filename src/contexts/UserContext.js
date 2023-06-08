@@ -32,8 +32,14 @@ const getTFfromDate = (date) => {
   return `${date.slice(-5, -3)}${date.slice(0, 4)}`;
 };
 
-const getTextTf = (serial) => {
+const getTextTf = (serial, withDate = false) => {
   if (!serial) return "Loading...";
+
+  if (withDate) {
+    return `${serial.slice(-2)} ${
+      monthDict[serial.slice(5, 7)]
+    }, ${serial.slice(0, 4)}`;
+  }
 
   return `${monthDict[serial.slice(0, 2)]}, ${serial.slice(2)}`;
 };

@@ -87,7 +87,7 @@ export const EditProfileCard = () => {
 
       {responseMessage ? (
         <div className="_wrapper -mt-3 flex w-full items-center justify-center">
-          <p className="w-[100%] rounded bg-[#39aca4] px-2 py-1 text-center font-mono text-[#fff]">
+          <p className="w-[100%] rounded bg-[--main-btn-bg] px-2 py-1 text-center font-mono text-[#fff]">
             {responseMessage}
           </p>
         </div>
