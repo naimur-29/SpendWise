@@ -17,12 +17,12 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <section className="relative flex h-screen w-full overflow-hidden bg-[--main-bg]">
+    <section className="[background-color] relative flex h-screen w-full overflow-hidden bg-[--main-bg] duration-300">
       {/* left side */}
       <div
-        className={`left h-full w-[100%] ${
+        className={`left h-full w-[100%] p-3 duration-300 ${
           isSignUpModalActive ? "md:w-[60%] " : "md:w-[100%] "
-        }p-3 duration-300`}
+        }`}
       >
         <div className="logo flex items-center">
           <img src={Logo} className="mr-2 h-8 cursor-pointer" alt="Logo" />

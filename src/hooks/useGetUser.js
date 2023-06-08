@@ -35,7 +35,7 @@ const useGetUser = (uid) => {
     getData();
   }, [uid]);
 
-  return { isLoading, data, errorMessage };
+  return { isLoading, data, setData, errorMessage };
 };
 
 export default useGetUser;

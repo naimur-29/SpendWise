@@ -14,7 +14,8 @@ import { Loading } from "../components/Loading";
 
 export default function Dashboard() {
   // user context:
-  const { userData, setActiveAccountIndex } = useContext(userContext);
+  const { userData, setActiveAccountIndex, setUserData } =
+    useContext(userContext);
 
   // scroll to top on page load:
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function Dashboard() {
                   try {
                     await signOut(auth);
                     setActiveAccountIndex(0);
+                    setUserData(null);
                     console.log("Logout Successful!");
                   } catch (error) {
                     console.log(error.message);

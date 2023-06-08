@@ -79,9 +79,11 @@ export const UserContextProvider = ({ children }) => {
   }, []);
 
   // fetching user using custom hook:
-  const { data: userData, isLoading: isUserDataLoading } = useGetUser(
-    currentUser?.uid
-  );
+  const {
+    data: userData,
+    setData: setUserData,
+    isLoading: isUserDataLoading,
+  } = useGetUser(currentUser?.uid);
 
   // fetching account using custom hook:
   const {
@@ -106,6 +108,7 @@ export const UserContextProvider = ({ children }) => {
   const value = {
     currentUser,
     userData,
+    setUserData,
     isUserDataLoading,
     accountData,
     setAccountData,

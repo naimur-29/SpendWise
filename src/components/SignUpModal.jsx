@@ -19,13 +19,12 @@ const SignUpModal = ({ isSignUpModalActive, setIsSignUpModalActive }) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className={
-        "right absolute right-0 top-0 flex h-full w-[100%] flex-col p-3 duration-300 md:w-[40%]" +
-        (isSignUpModalActive ? "" : " top-[-100%]")
-      }
+      className={`right absolute right-0 top-0 flex h-full w-[100%] flex-col p-3 duration-300 md:w-[40vw] ${
+        isSignUpModalActive ? "" : "top-[-100%]"
+      }`}
     >
       {/* color overlay */}
-      <div className="absolute left-0 top-0 h-full w-full bg-[--main-modal-bg] opacity-[--main-overlay-opacity]"></div>
+      <div className="absolute left-0 top-0 h-full w-full bg-[--main-modal-bg] opacity-[--main-overlay-opacity] transition-[background-color] duration-300"></div>
 
       <div className="close-modal z-10 flex justify-between md:justify-end">
         <div className="logo flex items-center md:hidden">
