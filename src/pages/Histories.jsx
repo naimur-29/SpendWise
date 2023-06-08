@@ -22,6 +22,7 @@ export default function Histories() {
     getTextTf,
     historyData,
     isHistoryDataLoading,
+    spendWiseTheme,
   } = useContext(userContext);
 
   // scroll to top on page load:
@@ -75,6 +76,7 @@ export default function Histories() {
               )}
               totalIncome={historyData?.totalIncomeAmount}
               totalExpense={historyData?.totalExpenseAmount}
+              theme={spendWiseTheme}
             />
           </div>
 

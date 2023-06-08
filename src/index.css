@@ -21,6 +21,12 @@ body {
   --main-overlay-bg: #fff3;
   --main-overlay-btn-bg: #fff;
   --main-overlay-input-bg: #fff6;
+  --main-dashboard-bg: #f1f5f9;
+  --main-dashboard-overBg: #cbd5e1;
+  --main-dashboard-cards-bg: #fff;
+  --main-dashboard-cards-shadow: #39aca433;
+  --main-dashboard-profilePhoto-bg: #e2e8f0;
+  --main-dashboard-profilePhoto-shadow: #0003;
 
   --main-overlay-opacity: 0.8;
 
@@ -35,6 +41,7 @@ body {
   --main-overlay-text: #fff;
   --main-overlay-btn-text: #475569;
   --main-overlay-input-text: #111827;
+  --light-dashboard-text: #4b5563;
 }
 
 #dark {
@@ -47,6 +54,12 @@ body {
   --main-overlay-bg: #39aca433;
   --main-overlay-btn-bg: #3dc0b7;
   --main-overlay-input-bg: #0006;
+  --main-dashboard-bg: #0f172a;
+  --main-dashboard-overBg: #cbd5e133;
+  --main-dashboard-cards-bg: #0f172a;
+  --main-dashboard-cards-shadow: #39aca477;
+  --main-dashboard-profilePhoto-bg: #334155;
+  --main-dashboard-profilePhoto-shadow: var(--main-dashboard-cards-shadow);
 
   --main-overlay-opacity: 0.9;
 
@@ -62,6 +75,7 @@ body {
   --main-overlay-text: #e2e8f0;
   --main-overlay-btn-text: #fff;
   --main-overlay-input-text: #d1d5db;
+  --light-dashboard-text: #9ca3af;
 }
 /* THEMING END */
 

@@ -16,12 +16,15 @@ export const Overview = () => {
     userDefTimeFrame,
     getTextTf,
     getTFfromDate,
+    spendWiseTheme,
   } = useContext(userContext);
 
   return (
-    <section className="_overview flex h-full max-h-[100%] min-h-[280px] w-full max-w-[100%] flex-col items-center rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] sm:flex-[1]">
+    <section className="_overview flex h-full max-h-[100%] min-h-[280px] w-full max-w-[100%] flex-col items-center rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-300 sm:flex-[1]">
       <div className="_heading mb-4 flex min-w-[50%] flex-wrap items-center justify-center gap-2">
-        <h2 className="mb-2 text-2xl font-semibold">Overview</h2>
+        <h2 className="mb-2 text-2xl font-semibold text-[--main-text]">
+          Overview
+        </h2>
 
         <div className="relative -translate-y-1">
           <input
@@ -35,7 +38,7 @@ export const Overview = () => {
           />
           <p
             title="Select the month & year to see that month's Incomes!"
-            className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full bg-[#39aca4] font-semibold text-slate-100"
+            className="_date-overlay absolute left-[0] top-0 flex h-full w-full items-center justify-center rounded-full bg-[--main-btn-bg] font-semibold text-slate-100"
           >
             {getTextTf(
               getTFfromDate(userDefTimeFrame) || accountData?.currentTimeFrame
@@ -44,22 +47,21 @@ export const Overview = () => {
         </div>
       </div>
 
-      <div className="relative h-full w-full">
-        <div className="absolute bottom-0 flex h-full w-full flex-grow items-center justify-center">
-          {/* chart */}
-          <BarChart
-            data1={historyData?.incomes?.sort(
-              (a, b) =>
-                Number(a.dateAdded.slice(-2)) - Number(b.dateAdded.slice(-2))
-            )}
-            data2={historyData?.expenses?.sort(
-              (a, b) =>
-                Number(a.dateAdded.slice(-2)) - Number(b.dateAdded.slice(-2))
-            )}
-            totalIncome={historyData?.totalIncomeAmount}
-            totalExpense={historyData?.totalExpenseAmount}
-          />
-        </div>
+      <div className="flex h-full w-full items-center justify-center">
+        {/* chart */}
+        <BarChart
+          data1={historyData?.incomes?.sort(
+            (a, b) =>
+              Number(a.dateAdded.slice(-2)) - Number(b.dateAdded.slice(-2))
+          )}
+          data2={historyData?.expenses?.sort(
+            (a, b) =>
+              Number(a.dateAdded.slice(-2)) - Number(b.dateAdded.slice(-2))
+          )}
+          totalIncome={historyData?.totalIncomeAmount}
+          totalExpense={historyData?.totalExpenseAmount}
+          theme={spendWiseTheme}
+        />
       </div>
     </section>
   );

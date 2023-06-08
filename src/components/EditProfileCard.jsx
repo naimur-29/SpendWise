@@ -26,7 +26,10 @@ export const EditProfileCard = () => {
     setIsResponseMessageActive(true);
 
     // check if data valid:
-    if (!newUsername && !newPhotoUrl) {
+    if (
+      (!newUsername || newUsername === userData?.username) &&
+      (newPhotoUrl === undefined || newPhotoUrl === userData?.photoUrl)
+    ) {
       setResponseMessage("Invalid Data or Already Up To Date!");
       return;
     } else {
@@ -34,7 +37,8 @@ export const EditProfileCard = () => {
       try {
         setIsUpdateLoading(true);
         await updateDoc(getUsersRef(userData?.userId), {
-          photoUrl: newPhotoUrl || userData?.photoUrl,
+          photoUrl:
+            newPhotoUrl !== undefined ? newPhotoUrl : userData?.photoUrl,
           username: newUsername || userData?.username,
         });
 
@@ -58,9 +62,9 @@ export const EditProfileCard = () => {
   }, [isResponseMessageActive]);
 
   return (
-    <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433]">
-      <div className="wrapper relative mb-[20px] h-full max-h-[35vh] flex-grow overflow-hidden rounded-xl bg-slate-200 duration-200 lg:h-0 lg:max-h-full">
-        <div className="_overlay absolute left-0 top-0 h-full w-full shadow-[inset_0px_-3px_8px_#0003]"></div>
+    <section className="_profile-card flex h-full w-full flex-col rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-300">
+      <div className="wrapper relative mb-[20px] h-full max-h-[35vh] min-h-[35vh] flex-grow overflow-hidden rounded-xl bg-[--main-dashboard-profilePhoto-bg] duration-200 lg:h-0 lg:max-h-full">
+        <div className="_overlay absolute left-0 top-0 h-full w-full shadow-[inset_0px_-3px_8px_var(--main-dashboard-profilePhoto-shadow)]"></div>
 
         {userData?.photoUrl || newPhotoUrl ? (
           <img
@@ -92,24 +96,28 @@ export const EditProfileCard = () => {
       )}
 
       <div className="flex flex-col gap-1 p-1">
-        <label className="text-lg font-semibold">Name</label>
+        <label className="text-lg font-semibold text-[--main-text] ">
+          Name
+        </label>
         <input
           type="text"
           onChange={(e) => setNewUsername(e.target.value)}
           placeholder="ex: fakecake420"
           value={newUsername === undefined ? userData?.username : newUsername}
-          className="rounded bg-[#39aca433] px-2 py-2 text-slate-950 shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 placeholder:duration-200 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[#fff] focus:placeholder:translate-x-[-100%]"
+          className="rounded bg-[#39aca433] px-2 py-2 text-[--main-text] shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 placeholder:duration-200 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[--main-dashboard-profilePhoto-bg] focus:placeholder:translate-x-[-100%]"
         />
       </div>
 
       <div className="flex flex-col gap-1 p-1">
-        <label className="text-lg font-semibold">Photo URL</label>
+        <label className="text-lg font-semibold text-[--main-text]">
+          Photo URL
+        </label>
         <input
           type="text"
           onChange={(e) => setNewPhotoUrl(e.target.value)}
           placeholder="ex: https://..."
           value={newPhotoUrl === undefined ? userData?.photoUrl : newPhotoUrl}
-          className="rounded bg-[#39aca433] px-2 py-2 text-slate-950 shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 placeholder:duration-200 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[#fff] focus:placeholder:translate-x-[-100%]"
+          className="rounded bg-[#39aca433] px-2 py-2 text-[--main-text] shadow outline-[#42c8bf] duration-700 placeholder:text-slate-500 placeholder:duration-200 focus:-translate-y-[1px] focus:bg-[#39aca466] focus:shadow-2xl focus:shadow-[--main-dashboard-profilePhoto-bg] focus:placeholder:translate-x-[-100%]"
         />
       </div>
 

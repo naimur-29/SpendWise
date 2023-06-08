@@ -21,8 +21,8 @@ export const ManageAccounts = () => {
     useDeleteAccount();
 
   return (
-    <section className="_accounts flex h-full max-h-[35vh] min-h-[280px] w-full flex-col overflow-y-auto rounded-xl bg-white p-4 shadow-[inset_-0px_-3px_4px_#39aca433] sm:flex-[1]">
-      <h3 className="mb-3 text-2xl font-semibold text-gray-900">
+    <section className="_accounts flex h-full max-h-[35vh] min-h-[280px] w-full flex-col overflow-y-auto rounded-xl bg-[--main-dashboard-cards-bg] p-4 shadow-[inset_-0px_-3px_4px_var(--main-dashboard-cards-shadow)] transition-[background-color] duration-300 sm:flex-[1]">
+      <h3 className="mb-3 text-2xl font-semibold text-[--main-text]">
         {isAccountDeleteLoading ? "Loading..." : "My Accounts"}
       </h3>
 
@@ -61,11 +61,11 @@ const AccountCard = ({ data, deleteAccount }) => {
     <section
       className={`mb-1 flex items-center gap-x-4 rounded-md bg-[#39aca433] p-2 text-sm text-gray-900 shadow-[inset_-0px_-3px_4px_#39aca433] duration-100 hover:bg-[#39aca444] sm:cursor-pointer`}
     >
-      <div className="text-lg icon">
+      <div className="icon text-lg">
         <FaPiggyBank className="fill-[#2c8781]" />
       </div>
       <h3
-        className={`flex w-full origin-left flex-wrap gap-1 text-lg duration-200`}
+        className={`flex w-full origin-left flex-wrap gap-1 text-lg text-[--main-text] duration-200`}
       >
         {data?.alias}
       </h3>

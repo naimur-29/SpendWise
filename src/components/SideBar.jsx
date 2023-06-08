@@ -66,6 +66,8 @@ export const SideBar = () => {
     setActiveAccountIndex,
     accountData,
     isAccountDataLoading,
+    spendWiseTheme,
+    setTheme,
   } = useContext(userContext);
 
   // handle create account on click:
@@ -143,15 +145,9 @@ export const SideBar = () => {
 
                 <div
                   title="Sign Out"
-                  onClick={async () => {
-                    try {
-                      await signOut(auth);
-                      console.log("Logout Successful!");
-                      setActiveAccountIndex(0);
-                    } catch (error) {
-                      console.log(error.message);
-                    }
-                  }}
+                  onClick={() =>
+                    setTheme(spendWiseTheme === "light" ? "dark" : "light")
+                  }
                   className="flex h-[50px] cursor-pointer items-center justify-end duration-200 hover:scale-110"
                 >
                   <IoExitOutline className="text-2xl text-white" />

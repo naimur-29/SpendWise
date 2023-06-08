@@ -1,4 +1,5 @@
 // importing libraries:
+import { useContext } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -23,7 +24,7 @@ import Dashboard from "./pages/Dashboard";
 import Error from "./pages/Error";
 
 // importing context providers:
-import { UserContextProvider } from "./contexts/UserContext";
+import { UserContextProvider, userContext } from "./contexts/UserContext";
 
 function App() {
   // create router:
@@ -71,8 +72,14 @@ function App() {
 export default App;
 
 const Root = () => {
+  // user context:
+  const { spendWiseTheme } = useContext(userContext);
+
   return (
-    <section id="light" className="relative flex justify-end">
+    <section
+      id={spendWiseTheme || "light"}
+      className="relative flex justify-end"
+    >
       <SideBar />
       <Outlet />
     </section>
