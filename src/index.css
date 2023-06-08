@@ -33,6 +33,7 @@ body {
   --main-income-expense-items-bg: #39aca4;
   --main-income-expense-items-border: #fff;
   --main-income-expense-add-btn-bg: #fff;
+  --hover-main-income-expense-add-btn-bg: #fff;
   --main-income-expense-add-btn-border: #42c8bf;
   --main-history-income-items-bg: #51fbce66;
   --main-history-expense-items-bg: #fff8bd77;
@@ -84,6 +85,7 @@ body {
   --main-income-expense-items-bg: #39aca455;
   --main-income-expense-items-border: #fff7;
   --main-income-expense-add-btn-bg: var(--main-btn-bg);
+  --hover-main-income-expense-add-btn-bg: var(--hover-main-btn-bg);
   --main-income-expense-add-btn-border: var(--main-income-expense-items-border);
   --main-history-income-items-bg: #51fbce33;
   --main-history-expense-items-bg: #fff8bd44;
